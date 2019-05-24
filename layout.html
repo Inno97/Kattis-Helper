@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chatty</title>
+
+  <script src="dist/layout.js"></script>
+</head>
+
+<body>
+    <div id="app" class="preload">
+        <!-- Preserve all the items in here -->
+        <!-- You can modify the nesting -->
+        <input id="left-switch" type="checkbox" />
+        <div id="left">
+            <div class="header-item">
+                <div class="menu-hamburger">
+                    <img src="assets/menu-hamburger.png">
+                </div>
+                <input type="search" id="search-chats" name="search" placeholder="Search Bar">
+            </div>
+           
+            <div id="sidebar">
+                Sidebar
+            </div>
+        </div>
+
+        <div id="right">
+            <div id="header" class="header-item">
+                <label for="left-switch" id="left-toggle">&lArr;</label>
+                Header
+            </div>
+
+            <div class="messages">Messages</div>
+            <div class="chat-input">Chat input</div>
+        </div>
+    </div>
+    
+</body>
+</html>

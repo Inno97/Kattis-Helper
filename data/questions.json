@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Terraces",
+    "url": "https://open.kattis.com/problems/terraces",
+    "category": "floodfill",
+    "difficulty": "3"
+  },
+  {
+    "name": "Conservation",
+    "url": "https://open.kattis.com/problems/conservation",
+    "category": "topological sort",
+    "difficulty": "4"
+  },
+  {
+    "name": "Cats",
+    "url": "https://open.kattis.com/problems/cats",
+    "category": "MST (Standard)",
+    "difficulty": "2"
+  },
+  {
+    "name": "Shortest Path 2",
+    "url": "https://open.kattis.com/problems/shortestpath2",
+    "category": "SSSP, Dijkstra's",
+    "difficulty": "3"
+  }
+]
