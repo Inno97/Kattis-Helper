@@ -27,14 +27,21 @@ html {
     margin-bottom: 1rem;
 }
 
-//dashboard settings
+//overall wrapper for the entire page
+.wrapper {
+	background-color: lightgrey;
+	max-width: 1200px;
+}
 
+//dashboard settings
 .dashboard {
 	display: flex;
 	flex: auto;
 	flex-direction: row;
 	padding: 1em;
 	border: 2px solid grey;
+	max-width: 1200px;
+	position: relative;
 }
 
 .dashboardLeft {
@@ -43,17 +50,15 @@ html {
 
 .dashboardRight {
 	position: relative;
-	left: 700px;
 }
 
 .icon {
 	display: flex;
 	flex: auto;
 	flex-direction: row;
-	padding: 0.5em;
 	border: 4px solid orange;
-	max-width: 200px;
-	max-height: 100px;
+	width: 200px;
+	height: 100px;
 }
 
 .title {
@@ -82,10 +87,12 @@ html {
 	display: flex;
 	flex: auto;
 	flex-direction: row;
-	max-width: 200px;
+	max-width: 300px;
+	max-height: 30px;
+	position: relative;
+	top: 1em;
 	resize: none;
 	border: 2px solid grey;
-	max-height: 30px;
 }
 
 .searchbox {
@@ -95,6 +102,26 @@ html {
 .searchIcon {
 	max-width: 24px;
 	max-height: 24px;
+}
+
+.userIconAnchor {
+	padding: 0.5em;
+}
+
+.userIcon {
+	max-width: 48px;
+	max-height: 48px;
+	border: 1px solid black;
+	background-color: #F0EFEF;
+}
+
+//content box
+.contentWrapper {
+	max-width: 1200px;
+	max-height: 2400px;
+	min-height: 100%;
+	border: 2px solid black;
+	background: #F0EFEF;
 }
 
 // layout

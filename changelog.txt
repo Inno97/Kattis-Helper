@@ -1,9 +1,37 @@
+===================================================================================================
+Site Navigation
+===================================================================================================
+From the dashboard
+1. Front Page
+	- Contains various items, maybe most popular questions / stuff
+	
+2. Problems List
+	- List of problems
+
+3. Help
+	- Miscellaneous stuff
+	
+From the searchbar
+4. Problem Page
+	- Displays the appropriate problem
+	
+	
+===================================================================================================
 Kattis Helper Changelog:
+===================================================================================================
 23/5/19:
 	Initial build
 	Added static question page
 	
-
+27/5/19:
+	Tidied up layout, current template page can be found at template.html
+	Added problemPage.html (display the queried problem for hte user)
+	Added local storage for session (call the script localStorageHandler.js)
+	
+	
+===================================================================================================
+Notes:
+===================================================================================================
 milestone 1	
 1. figure out the general layout of the entire website
 2. figure out how to scrape data from kattis
@@ -21,3 +49,4 @@ other not so important stuff for now
 1. figure out how to do an online IDE (milestone 2)
 2. user accounts (passport.js)
 	2.1 forum for each questions
+	

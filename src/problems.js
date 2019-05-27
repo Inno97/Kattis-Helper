@@ -1,5 +1,5 @@
 import "./css/default.scss";
-import "./css/questions.scss";
+import "./css/problem.scss";
 
 import Axios from "axios";
 import TimeAgo from "javascript-time-ago";
@@ -7,15 +7,17 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addLocale(en)
 const timeAgo = new TimeAgo('en');
 
-const targets = ["tgt0", "tgt1", "tgt2"];
+const targets = ["questions"];
 
 //render all the questions from questions.json
 
 function onload(){
+	console.log("loading up questions.json");
     Axios.get('/data/questions.json')
     .then( resp => {
         renderAll(resp.data);
     });
+	console.log("rendered question data");
 }
 window.addEventListener("load", onload);
 

@@ -1,0 +1,58 @@
+//questions css formatting for problems.html
+.question-card {
+    display: flex;
+    padding: 0.5em;
+    align-items: center;
+    justify-content: center;
+	background: #F0EFEF;
+	border: 2px solid grey;
+	
+	
+    .details {
+        padding-left: 1em;
+        position: relative;
+        flex: auto;
+        min-width: 0;
+		background: #F0EFEF;
+
+        .name {
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            max-width: 8em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .url {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            color: blue;
+        }
+
+        .category {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.8em;
+        }
+		
+        .difficulty {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.8em;
+        }
+		
+		.wrapper {
+			background: #F0EFEF;
+		}
+		
+    }
+}
+
+.questions {
+    max-height: 50em;
+    overflow: hidden;
+}

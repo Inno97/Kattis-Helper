@@ -7,7 +7,9 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addLocale(en)
 const timeAgo = new TimeAgo('en');
 
+//render all the questions from questions.json
+
 function onload(){
-	console.log("loaded index.html");
+	console.log("loaded template.html");
 }
 window.addEventListener("load", onload);

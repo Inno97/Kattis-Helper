@@ -1,0 +1,79 @@
+//css for problemPage.html
+.problemWrapper {
+	max-width: 1000px;
+	max-height: 2000px;
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+	padding: 2em;
+}
+
+//content
+.problemLeft {
+	border: 1px solid grey;
+	width: 800px;
+	height: 1600px;
+	padding: 1em;
+	position: relative;
+	background-color: white;
+}
+
+.problemTitle {
+	font-size: 44px;
+	text-align: center;
+}
+
+.problemContent {
+	padding-top: 1em;
+	text-align: left;
+}
+
+.problemHeaderLarge {
+	padding-top: 1em;
+	font-size: 32px;
+	text-align: left;
+}
+
+
+.testCaseWrapper {
+	max-width: 300px;
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+}
+
+.testCaseHeader {
+	padding-top: 1em;
+	font-size: 24px;
+	text-align: left;
+}
+
+.testCaseBox {
+	padding: 1em;
+	width: 250px;
+	height: 250px;
+	text-align: left;
+	overflow: scroll;
+	border: 1px solid grey;
+	background: #F0EFEF;
+}
+
+//sidebar
+.problemRight {
+	left: 140px;
+	border: 1px solid grey;
+	width: 400px;
+	height: 1600px;
+	padding: 1em;
+	position: relative;
+	background-color: white;
+}
+
+.problemSummaryTitle {
+	font-size: 24px;
+	text-align: center;
+}
+
+.problemSummaryHeader {
+
+}
