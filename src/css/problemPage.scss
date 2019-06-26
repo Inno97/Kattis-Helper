@@ -16,6 +16,7 @@
 	padding: 1em;
 	position: relative;
 	background-color: white;
+	overflow: scroll;
 }
 
 .problemTitle {
@@ -34,12 +35,20 @@
 	text-align: left;
 }
 
-
-.testCaseWrapper {
-	max-width: 300px;
+.testCaseWrapperHorz {
 	display: flex;
 	flex: auto;
 	flex-direction: row;
+}
+
+.testCaseWrapper {
+	padding: 1em;
+	max-width: 800px;
+	max-height: 1000px;
+	overflow: scroll;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
 }
 
 .testCaseHeader {
@@ -50,8 +59,8 @@
 
 .testCaseBox {
 	padding: 1em;
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
 	text-align: left;
 	overflow: scroll;
 	border: 1px solid grey;

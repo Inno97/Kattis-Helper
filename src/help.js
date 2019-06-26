@@ -1,5 +1,4 @@
 import "./css/default.scss";
-import "./css/layout.scss";
 
 function onload(){
 }

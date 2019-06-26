@@ -27,7 +27,33 @@ Kattis Helper Changelog:
 	Tidied up layout, current template page can be found at template.html
 	Added problemPage.html (display the queried problem for hte user)
 	Added local storage for session (call the script localStorageHandler.js)
+
+23/6/19:
+	After a long hiatus, work has continued
+	Tidied up some stuff, implemented searching function for question names (based on URL only)
+	Note: this is not case sensitive, but certain questions like Fire! have ID as fire3 instead
+	we strictly follow the name based on the URL
+	Problems list now is in a table form
 	
+24/6/19:
+	Changed questions.json format to support more information
+	Question page now fetches the appropriate information and stores in local storage
+	* We don't want to keep fetching info at a time, so throw them in local storage
+	
+26/6/19:
+	Merged questions.json using new format
+	Added 100 sample questions
+	Problem page now correctly loads in the information
+	Tidied up problem page layout
+	
+To do:
+Problems list: add a next button, and show only 100 entries (atm we only have 100 so it's ok)
+
+Add in the extra buttons for the separate functionalities for problem page (might have to re-render
+everytime we switch)
+Add these buttons to the above: Test Cases, IDE, forum
+
+Maybe put in random question finder for the front page
 	
 ===================================================================================================
 Notes:

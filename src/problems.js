@@ -7,9 +7,10 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addLocale(en)
 const timeAgo = new TimeAgo('en');
 
-const targets = ["questions"];
+const targets = ["problemTableBody"];
+var numQuestions = 0;
 
-//render all the questions from questions.json
+//render all the questions from questions.json in a table
 
 function onload(){
 	console.log("loading up questions.json");
@@ -29,47 +30,32 @@ function renderAll(questions){
 
 function render(targetDiv, questions){
     questions.forEach( (question) => {
-        const { name, url, category, difficulty } = question;
-        const entry = document.createElement("div");
-        entry.classList.add("question-card");
-		const detailsContainer = document.createElement("div");
-        detailsContainer.classList.add("details");
-        
-		// Name
-        const nameE = document.createElement("div");
-        nameE.classList.add("name")
-        nameE.innerText = name;
-        detailsContainer.appendChild(nameE);
-
-        // url
-        const urlE = document.createElement("a");
-		//urlE.classList.add("url");
-		urlE.innerText = url;
-		urlE.href = url;
+		const { problem, body, table, sidebar, content, testCases, data } = question
+		const detailsContainer = document.createElement("tr");
+		
+		//name
+		const entry = document.createElement("tr");
+		const nameE = document.createElement("td");
+		nameE.innerText = problem;
+		detailsContainer.appendChild(nameE);
+		
+		//url
+		const urlE = document.createElement("td");
+		urlE.innerText = "https://open.kattis.com/problems/" + sidebar.problemID;
 		detailsContainer.appendChild(urlE);
 		
-		// category
-		const catEWrapper = document.createElement("div");
-		catEWrapper.classList.add("wrapper");
-		catEWrapper.innerText = "Category: ";
-        const catE = document.createElement("div");
-        catE.classList.add("category");
-        catE.innerText = category;
-		catEWrapper.appendChild(catE);
-		detailsContainer.appendChild(catEWrapper);
+		//category
 		
-        // difficulty
-        const diffEWrapper = document.createElement("div");
-        diffEWrapper.classList.add("wrapper");
-		diffEWrapper.innerText = "Difficulty: ";
-		const diffE = document.createElement("div");
-        diffE.classList.add("difficulty");
-        diffE.innerText = difficulty;
-		diffEWrapper.appendChild(diffE);
-		detailsContainer.appendChild(diffEWrapper);
+		const categoryE = document.createElement("td");
+		//categoryE.innerText = data.category;
+		detailsContainer.appendChild(categoryE);
 		
-        entry.appendChild(detailsContainer);
-        targetDiv.appendChild(entry);
+		//difficulty
+		const difficultyE = document.createElement("td");
+		difficultyE.innerText = sidebar.difficulty;
+		detailsContainer.appendChild(difficultyE);
+		
+        targetDiv.appendChild(detailsContainer);
+		numQuestions++;
     })
-    
 }
