@@ -5,7 +5,7 @@
 	display: flex;
 	flex: auto;
 	flex-direction: row;
-	padding: 2em;
+	padding: 1em;
 }
 
 //content
@@ -59,7 +59,7 @@
 
 .testCaseBox {
 	padding: 1em;
-	width: 200px;
+	width: 180px;
 	height: 200px;
 	text-align: left;
 	overflow: scroll;
@@ -76,6 +76,7 @@
 	padding: 1em;
 	position: relative;
 	background-color: white;
+	line-height: 2.5;
 }
 
 .problemSummaryTitle {
@@ -85,4 +86,33 @@
 
 .problemSummaryHeader {
 
+}
+
+.sidebarHelperWrapper {
+	padding: 1em;
+	background: #F0EFEF;
+	border: 0.5px solid grey;
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+}
+
+.sidebarHelperButton {
+	width: 150px;
+}
+
+//test case menu
+.testCaseMenuIconWrapper {
+	flex: auto;
+	flex-direction: row;
+	max-width: 500px;
+	padding: 1em;
+	background: #F0EFEF;
+	border: 1px solid grey;
+}
+
+.unusedRender {
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
 }

@@ -1,5 +1,5 @@
 import "./css/default.scss";
-import "./css/problemPage.scss"; // Modify this file as required.
+import "./css/problemPage.scss";
 
 import Axios from "axios";
 import TimeAgo from "javascript-time-ago";
@@ -24,6 +24,8 @@ function verifyProblem() {
 }
 
 function verifyEachProblem(questions) {
+	console.log("domain name");
+	console.log(location.href.includes("/problemPage.html"));
 	questions.forEach( (question) => {
 		const { problem, body, table, sidebar, content, testCases, data } = question
 		/* JSON format
@@ -60,24 +62,24 @@ function verifyEachProblem(questions) {
 			console.log(sidebar.ProblemID);
 			
 			//set local storage here, values are init via localStorageHandler.js
-			userStorage.setItem('questionName', problem);
-			userStorage.setItem('questionID', sidebar.problemID);
-			//userStorage.setItem('questionUrl', url);
-			userStorage.setItem('questionCat', data.category);
-			userStorage.setItem('questionDiff', sidebar.difficulty);
-			userStorage.setItem('questionDesc', body.question);
-			userStorage.setItem('questionIn', body.input);
-			userStorage.setItem('questionOut', body.output);
-			userStorage.setItem('questionCpuLim', sidebar.CPU);
-			userStorage.setItem('questionMemLim', sidebar.memory);
-			userStorage.setItem('questionNumTest', testCases.numTestCase);
-			userStorage.setItem('questionSamIn', table.input);
-			userStorage.setItem('questionSamOut', table.output);
-			userStorage.setItem('questionAuthor', content.author);
-			userStorage.setItem('questionSource', content.source);
-			renderProblem(sidebar.problemID);
+			userStorage.setItem('problemName', problem);
+			userStorage.setItem('problemID', sidebar.problemID);
+			//userStorage.setItem('problemUrl', url);
+			userStorage.setItem('problemCat', data.category);
+			userStorage.setItem('problemDiff', sidebar.difficulty);
+			userStorage.setItem('problemDesc', body.question);
+			userStorage.setItem('problemIn', body.input);
+			userStorage.setItem('problemOut', body.output);
+			userStorage.setItem('problemCpuLim', sidebar.CPU);
+			userStorage.setItem('problemMemLim', sidebar.memory);
+			userStorage.setItem('problemNumTest', testCases.numTestCase);
+			userStorage.setItem('problemSamIn', table.input);
+			userStorage.setItem('problemSamOut', table.output);
+			userStorage.setItem('problemAuthor', content.author);
+			userStorage.setItem('problemSource', content.source);
 			
-			userStorage.setItem('questionNumSample', table.input.length);
+			
+			userStorage.setItem('problemNumSample', table.input.length);
 			var numSampleCases = 0;
 			var inputStringName = "";
 			var outputStringName = "";
@@ -92,33 +94,54 @@ function verifyEachProblem(questions) {
 				numSampleCases++;
 			});
 			
+			renderWrapper();
+			generateDetails(sidebar.problemID);
+			generateTestCase(sidebar.problemID);
+			generateIDE(sidebar.problemID);
+			generateForum(sidebar.problemID);
+			renderDetails(sidebar.problemID);
+			renderSidebar(sidebar.problemID);
 			return 0;
 		}
 	});
 	if (verifyFlag == false) {window.location.href = "problemNotFound.html"; }
 }
 
-function renderProblem(problem) {
-	console.log("rendering problem");
-	console.log(userStorage.getItem('problem'));
-	
+function renderWrapper() {
 	//overall wrapper
 	const problemWrapper = document.createElement("div");
 	problemWrapper.classList.add("problemWrapper");
+	problemWrapper.id = "problemWrapper";
+	document.getElementById('content').appendChild(problemWrapper);
 	
-	//left side / content
+	//create temp left menu
 	const problemLeft = document.createElement("div");
 	problemLeft.classList.add("problemLeft");
-	problemWrapper.appendChild(problemLeft);
+	problemLeft.id = "problemLeft";
+	document.getElementById('problemWrapper').appendChild(problemLeft);
+	
+	//generate menus
+	const menu = document.createElement("div");
+	menu.classList.add('unusedRender');
+	menu.id = "menu";
+	problemWrapper.appendChild(menu);
+}
+
+function generateDetails(problem) {
+	console.log("generating details");
+	//left side / content
+	const problemLeft = document.createElement("div");
+	problemLeft.id = "problemDetails";
+	document.getElementById('menu').appendChild(problemLeft);
 	
 	const problemTitle = document.createElement("div");
 	problemTitle.classList.add("problemTitle");
-	problemTitle.innerText = userStorage.getItem('questionName');
+	problemTitle.innerText = userStorage.getItem('problemName');
 	problemLeft.appendChild(problemTitle);
 	
 	const problemDesc = document.createElement("div");
 	problemDesc.classList.add("problemContent");
-	problemDesc.innerText = userStorage.getItem('questionDesc');
+	problemDesc.innerText = userStorage.getItem('problemDesc');
 	problemLeft.appendChild(problemDesc);
 	
 	//input
@@ -129,7 +152,7 @@ function renderProblem(problem) {
 	
 	const problemInput = document.createElement("div");
 	problemInput.classList.add("problemContent");
-	problemInput.innerText = userStorage.getItem('questionIn');
+	problemInput.innerText = userStorage.getItem('problemIn');
 	problemLeft.appendChild(problemInput);
 	
 	//output
@@ -140,7 +163,7 @@ function renderProblem(problem) {
 	
 	const problemOutput = document.createElement("div");
 	problemOutput.classList.add("problemContent");
-	problemOutput.innerText = userStorage.getItem('questionOut');
+	problemOutput.innerText = userStorage.getItem('problemOut');
 	problemLeft.appendChild(problemOutput);
 	
 	//render all sample test cases
@@ -153,8 +176,8 @@ function renderProblem(problem) {
 	testCaseWrapper.classList.add("testCaseWrapper");
 	problemLeft.appendChild(testCaseWrapper);
 	
-	console.log("rendering sample test cases");
-	for (var i = 1; i <= userStorage.getItem('questionNumSample'); i++) {
+	console.log("generating sample test cases");
+	for (var i = 1; i <= userStorage.getItem('problemNumSample'); i++) {
 		const testCaseWrapperHorz = document.createElement("div");
 		testCaseWrapperHorz.classList.add("testCaseWrapperHorz");
 		console.log(i); //debug
@@ -195,11 +218,211 @@ function renderProblem(problem) {
 		testCaseOutput.appendChild(testCaseOutputContent);
 		testCaseWrapper.appendChild(testCaseWrapperHorz);
 	}
+}
+
+function generateTestCase() {
+	console.log("generating test case");
+	//left side / content
+	const problemLeft = document.createElement("div");
+	problemLeft.id = "problemTestCase";
+	document.getElementById('menu').appendChild(problemLeft);
 	
+	//generate all test cases
+	const iconWrapper = document.createElement("div");
+	iconWrapper.id = "problemTestCaseIconWrapper";
+	iconWrapper.classList.add("testCaseMenuIconWrapper");
+	problemLeft.appendChild(iconWrapper);
+	
+	const testCaseUnused = document.createElement("div");
+	testCaseUnused.classList.add("unusedRender");
+	testCaseUnused.id = "testCaseUnused";
+	problemLeft.appendChild(testCaseUnused);
+	
+	console.log("generating all test cases");
+	for (var i = 1; i <= userStorage.getItem('problemNumSample'); i++) {
+		const testCaseIconButton = document.createElement("input");
+		testCaseIconButton.setAttribute('type', 'image');
+		testCaseIconButton.setAttribute('src', './assets/test_case_icon_medium.png');
+		testCaseIconButton.setAttribute('onclick', "renderSpecificTestCase(" + (i - 1) + ")");
+		iconWrapper.appendChild(testCaseIconButton);
+		
+		const testCaseWrapper = document.createElement("div");
+		testCaseWrapper.id = "testCase" + (i - 1);
+		
+		const testCaseWrapperHorz = document.createElement("div");
+		testCaseWrapperHorz.classList.add("testCaseWrapperHorz");
+		console.log(i); //debug
+		
+		//input
+		var inputName = "input" + (i - 1);
+		const testCaseInput = document.createElement("div");
+		testCaseWrapperHorz.appendChild(testCaseInput);
+		
+		const testCaseInputHeader = document.createElement("div");
+		testCaseInputHeader.classList.add("testCaseHeader");
+		testCaseInputHeader.innerText = "Input " + i;
+		testCaseInput.appendChild(testCaseInputHeader);
+		
+		const testCaseInputContent = document.createElement("div");
+		testCaseInputContent.classList.add("testCaseBox");
+		testCaseInputContent.innerText = userStorage.getItem(inputName.toString());
+		testCaseInput.appendChild(testCaseInputContent);
+		
+		//filler
+		const sampleFiller = document.createElement("div");
+		sampleFiller.classList.add("filler");
+		sampleFiller.innerText = "xxxx";
+		testCaseWrapperHorz.appendChild(sampleFiller);
+		
+		//output
+		var outputName = "output" + (i - 1);
+		const testCaseOutput = document.createElement("div");
+		testCaseWrapperHorz.appendChild(testCaseOutput);
+		
+		const testCaseOutputHeader = document.createElement("div");
+		testCaseOutputHeader.classList.add("testCaseHeader");
+		testCaseOutputHeader.innerText = "Output " + i;
+		testCaseOutput.appendChild(testCaseOutputHeader);
+		
+		const testCaseOutputContent = document.createElement("div");
+		testCaseOutputContent.classList.add("testCaseBox");
+		testCaseOutputContent.innerText = userStorage.getItem(outputName.toString());
+		testCaseOutput.appendChild(testCaseOutputContent);
+		testCaseWrapper.appendChild(testCaseWrapperHorz);
+		
+		testCaseUnused.appendChild(testCaseWrapper);
+	}
+	problemLeft.appendChild(document.getElementById("testCase0"));
+}
+
+function generateIDE() {
+	console.log("generating IDE");
+	//left side / content
+	const problemLeft = document.createElement("div");
+	problemLeft.id = "problemIDE";
+	document.getElementById('menu').appendChild(problemLeft);
+	
+}
+
+function generateForum() {
+	console.log("generating forum");
+	//left side / content
+	const problemLeft = document.createElement("div");
+	problemLeft.id = "problemForum";
+	document.getElementById('menu').appendChild(problemLeft);
+	
+}
+
+//included in localStorageHandler.js because js apparently doesn't recognize this here
+function renderDetails() {
+	console.log("rendering problem");
+	console.log(userStorage.getItem('problem'));
+	
+	if (document.getElementById('problemLeft').contains(document.getElementById('problemDetails'))) {
+		console.log("already at details menu");
+		return;
+	} else if (document.getElementById('problemLeft').hasChildNodes()) {
+		document.getElementById('menu').appendChild(document.getElementById('problemLeft').firstChild);
+	}
+	document.getElementById('problemLeft').appendChild(document.getElementById('problemDetails'));
+	
+	userStorage.setItem('problemStatus', 'details');
+}
+
+function renderTestCase() {
+	console.log("rendering problem");
+	console.log(userStorage.getItem('problem'));
+	
+	if (document.getElementById('problemLeft').contains(document.getElementById('problemTestCase'))) {
+		console.log("already at test case menu");
+		return;
+	} else if (document.getElementById('problemLeft').hasChildNodes()) {
+		document.getElementById('menu').appendChild(document.getElementById('problemLeft').firstChild);
+	}
+	document.getElementById('problemLeft').appendChild(document.getElementById('problemTestCase'));
+	
+	userStorage.setItem('problemStatus', 'testCase');
+}
+
+function renderSpecificTestCase(num) {
+	console.log("rendering specific test case");
+	if (document.getElementById('problemTestCase').childNodes.item(2) == ("testCase" + num).toString()) {
+		console.log("already at test case" + num);
+		return;
+	} else if (document.getElementById('problemLeft').hasChildNodes()) {
+		document.getElementById('testCaseUnused').appendChild(document.getElementById('problemTestCase').childNodes.item(2));
+	}
+	document.getElementById('problemTestCase').appendChild(document.getElementById("testCase" + num));
+}
+
+function renderIDE() {
+	console.log("rendering problem");
+	console.log(userStorage.getItem('problem'));
+	
+	if (document.getElementById('problemLeft').contains(document.getElementById('problemIDE'))) {
+		console.log("already at IDE menu");
+		return;
+	} else if (document.getElementById('problemLeft').hasChildNodes()) {
+		document.getElementById('menu').appendChild(document.getElementById('problemLeft').firstChild);
+	}
+	document.getElementById('problemLeft').appendChild(document.getElementById('problemIDE'));
+	
+	userStorage.setItem('problemStatus', 'ide');
+}
+
+function renderForum() {
+	console.log("rendering problem");
+	console.log(userStorage.getItem('problem'));
+	
+	if (document.getElementById('problemLeft').contains(document.getElementById('problemForum'))) {
+		console.log("already at forum menu");
+		return;
+	} else if (document.getElementById('problemLeft').hasChildNodes()) {
+		document.getElementById('menu').appendChild(document.getElementById('problemLeft').firstChild);
+	}
+	document.getElementById('problemLeft').appendChild(document.getElementById('problemForum'));
+	
+	userStorage.setItem('problemStatus', 'forum');
+}
+
+function renderSidebar(problem) {	
 	//right side / sidebar
 	const problemRight = document.createElement("div");
 	problemRight.classList.add("problemRight");
-	problemWrapper.appendChild(problemRight);
+	document.getElementById('problemWrapper').appendChild(problemRight);
+	
+	//sidebar helper wrapper
+	const sidebarHelper = document.createElement('div');
+	sidebarHelper.classList.add("sidebarHelperWrapper");
+	problemRight.appendChild(sidebarHelper);
+	
+	//question details
+	const detailsButton = document.createElement('button');
+	detailsButton.innerText = "Details";
+	detailsButton.classList.add("sidebarHelperButton");
+	detailsButton.setAttribute("onClick", "renderDetails()");
+	sidebarHelper.appendChild(detailsButton);
+	
+	//test cases
+	const testCaseButton = document.createElement('button');
+	testCaseButton.innerText = "Test Cases";
+	testCaseButton.classList.add("sidebarHelperButton");
+	sidebarHelper.appendChild(testCaseButton);
+	testCaseButton.setAttribute("onClick", "renderTestCase()");
+	
+	//IDE / online compiler
+	const ideButton = document.createElement('button');
+	ideButton.innerText = "IDE";
+	ideButton.classList.add("sidebarHelperButton");
+	sidebarHelper.appendChild(ideButton);
+	ideButton.setAttribute("onClick", "renderIDE()");
+	
+	//forum
+	const forumButton = document.createElement('button');
+	forumButton.innerText = "Forum";
+	forumButton.classList.add("sidebarHelperButton");
+	sidebarHelper.appendChild(forumButton);	
+	forumButton.setAttribute("onClick", "renderForum()");
 	
 	const problemSummaryTitle = document.createElement("div");
 	problemSummaryTitle.classList.add("problemSummaryTitle");
@@ -225,7 +448,7 @@ function renderProblem(problem) {
     const cpuLimitHeaderText = document.createTextNode("CPU Time Limit: ");
 	cpuLimitHeader.appendChild(cpuLimitHeaderText);
 	cpuLimit.appendChild(cpuLimitHeader);
-	const cpuLimitContent = document.createTextNode(userStorage.getItem('questionCpuLim')); //fetch data
+	const cpuLimitContent = document.createTextNode(userStorage.getItem('problemCpuLim')); //fetch data
 	cpuLimit.appendChild(cpuLimitContent);
 	
 	//memory limit
@@ -236,7 +459,7 @@ function renderProblem(problem) {
     const memoryLimitHeaderText = document.createTextNode("Memory Limit: ");
 	memoryLimitHeader.appendChild(memoryLimitHeaderText);
 	memoryLimit.appendChild(memoryLimitHeader);
-	const memoryLimitContent = document.createTextNode(userStorage.getItem('questionMemLim')); //fetch data
+	const memoryLimitContent = document.createTextNode(userStorage.getItem('problemMemLim')); //fetch data
 	memoryLimit.appendChild(memoryLimitContent);
 	
 	//difficulty
@@ -247,7 +470,7 @@ function renderProblem(problem) {
     const difficultyHeaderText = document.createTextNode("Difficulty: ");
 	difficultyHeader.appendChild(difficultyHeaderText);
 	difficulty.appendChild(difficultyHeader);
-	const difficultyContent = document.createTextNode(userStorage.getItem('questionDiff')); //fetch data
+	const difficultyContent = document.createTextNode(userStorage.getItem('problemDiff')); //fetch data
 	difficulty.appendChild(difficultyContent);
 	
 	//num of test cases
@@ -258,7 +481,7 @@ function renderProblem(problem) {
     const numTestCaseHeaderText = document.createTextNode("Number of Test Cases: ");
 	numTestCaseHeader.appendChild(numTestCaseHeaderText);
 	numTestCase.appendChild(numTestCaseHeader);
-	const numTestCaseContent = document.createTextNode(userStorage.getItem('questionNumTest')); //fetch data
+	const numTestCaseContent = document.createTextNode(userStorage.getItem('problemNumTest')); //fetch data
 	numTestCase.appendChild(numTestCaseContent);
 	
 	//author
@@ -269,7 +492,7 @@ function renderProblem(problem) {
     const authorHeaderText = document.createTextNode("Author: ");
 	authorHeader.appendChild(authorHeaderText);
 	author.appendChild(authorHeader);
-	const authorContent = document.createTextNode(userStorage.getItem('questionAuthor')); //fetch data
+	const authorContent = document.createTextNode(userStorage.getItem('problemAuthor')); //fetch data
 	author.appendChild(authorContent);
 	
 	//source
@@ -280,8 +503,7 @@ function renderProblem(problem) {
     const sourceHeaderText = document.createTextNode("Source: ");
 	sourceHeader.appendChild(sourceHeaderText);
 	source.appendChild(sourceHeader);
-	const sourceContent = document.createTextNode(userStorage.getItem('questionSource')); //fetch data
+	const sourceContent = document.createTextNode(userStorage.getItem('problemSource')); //fetch data
 	source.appendChild(sourceContent);
-
-	document.getElementById('content').appendChild(problemWrapper);
+	
 }

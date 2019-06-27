@@ -21,39 +21,65 @@ Kattis Helper Changelog:
 ===================================================================================================
 23/5/19:
 	Initial build
+	
 	Added static question page
 	
 27/5/19:
 	Tidied up layout, current template page can be found at template.html
+	
 	Added problemPage.html (display the queried problem for hte user)
+	
 	Added local storage for session (call the script localStorageHandler.js)
 
 23/6/19:
 	After a long hiatus, work has continued
+	
 	Tidied up some stuff, implemented searching function for question names (based on URL only)
 	Note: this is not case sensitive, but certain questions like Fire! have ID as fire3 instead
 	we strictly follow the name based on the URL
+	
 	Problems list now is in a table form
 	
 24/6/19:
 	Changed questions.json format to support more information
+	
 	Question page now fetches the appropriate information and stores in local storage
 	* We don't want to keep fetching info at a time, so throw them in local storage
 	
 26/6/19:
 	Merged questions.json using new format
+	
 	Added 100 sample questions
+	
 	Problem page now correctly loads in the information
+	
 	Tidied up problem page layout
+	
+27/6/19:
+	Added linking of questions from problem list to actual problem page
+	
+	Fixed bug: searching for a new problem when at the problem page, does not render the sample
+	test cases properly
+	
+	Added context menu switching for problem page:
+		details, test case, IDE, forum (tentative menus)
+		all 4 context menus are stored in a hidden div in the page
+	Split generation and rendering of all 4 context menus
+	
+	Test case context menu currently
+		Currently hooks onto sample test cases until I bother to copy over for each question
+		Possibly want to include a flag to check whether the question has test cases that we have
+		or not
+		Total number of test cases for the question will be manually added
+		Determine whether we have the test cases or not via checking the IO list against the
+		known number of test cases for those questions
 	
 To do:
 Problems list: add a next button, and show only 100 entries (atm we only have 100 so it's ok)
 
-Add in the extra buttons for the separate functionalities for problem page (might have to re-render
-everytime we switch)
-Add these buttons to the above: Test Cases, IDE, forum
-
 Maybe put in random question finder for the front page
+
+userStorage item: problemStatus (shows which context menu is used (pending deletion if not used)
 	
 ===================================================================================================
 Notes:

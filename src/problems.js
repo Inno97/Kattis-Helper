@@ -36,7 +36,13 @@ function render(targetDiv, questions){
 		//name
 		const entry = document.createElement("tr");
 		const nameE = document.createElement("td");
-		nameE.innerText = problem;
+		const linkE = document.createElement("a");
+		//"queryProblem(sidebar.problemID)"
+		linkE.setAttribute("onClick", "fetchProblem('" + sidebar.problemID + "')");
+		nameE.appendChild(linkE);
+		linkE.innerText = problem;
+		
+		//nameE.innerText = problem;
 		detailsContainer.appendChild(nameE);
 		
 		//url
