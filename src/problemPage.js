@@ -72,7 +72,7 @@ function verifyEachProblem(questions) {
 			userStorage.setItem('problemOut', body.output);
 			userStorage.setItem('problemCpuLim', sidebar.CPU);
 			userStorage.setItem('problemMemLim', sidebar.memory);
-			userStorage.setItem('problemNumTest', testCases.numTestCase);
+			userStorage.setItem('problemNumTest', testCases.numTestCases);
 			userStorage.setItem('problemSamIn', table.input);
 			userStorage.setItem('problemSamOut', table.output);
 			userStorage.setItem('problemAuthor', content.author);
@@ -83,13 +83,14 @@ function verifyEachProblem(questions) {
 			var numSampleCases = 0;
 			var inputStringName = "";
 			var outputStringName = "";
-			table.input.forEach( function(input) {
+			console.log(userStorage.getItem('problemNumTest'));
+			testCases.input.forEach( function(input) {
 				inputStringName = "input" + numSampleCases;
 				outputStringName = "output" + numSampleCases;
 				console.log(numSampleCases);
 				console.log(inputStringName);
-				userStorage.setItem(inputStringName.toString(), table.input[numSampleCases]);
-				userStorage.setItem(outputStringName.toString(), table.output[numSampleCases]);
+				userStorage.setItem(inputStringName.toString(), testCases.input[numSampleCases]);
+				userStorage.setItem(outputStringName.toString(), testCases.output[numSampleCases]);
 				//console.log(userStorage.getItem('input0'));
 				numSampleCases++;
 			});
@@ -249,7 +250,7 @@ function generateTestCase() {
 	problemLeft.appendChild(testCaseUnused);
 	
 	console.log("generating all test cases");
-	for (var i = 1; i <= userStorage.getItem('problemNumSample'); i++) {
+	for (var i = 1; i <= userStorage.getItem('problemNumTest'); i++) {
 		const testCaseIconButton = document.createElement("input");
 		testCaseIconButton.setAttribute('type', 'image');
 		testCaseIconButton.setAttribute('src', './assets/test_case_icon_medium.png');

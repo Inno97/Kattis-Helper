@@ -15,7 +15,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " sequences",
+            "problemID": "sequences",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "6.6"
@@ -26,9 +26,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "?0?\n"
+            ],
+            "output": [
+                "3\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -52,7 +58,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " 10kindsofpeople",
+            "problemID": "10kindsofpeople",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.0"
@@ -63,9 +69,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "1 4\n1100\n2\n1 1 1 4\n1 1 1 1\n",
+                "10 20\n11111111111111111111\n11000000000000000101\n11111111111111110000\n11111111111111110000\n11000000000000000111\n00011111111111111111\n00111111111111111111\n10000000000000001111\n11111111111111111111\n11111111111111111111\n3\n2 3 8 16\n8 1 7 3\n1 1 10 20\n"
+            ],
+            "output": [
+                "neither\ndecimal\n",
+                "binary\ndecimal\nneither\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -97,7 +111,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " 2048",
+            "problemID": "2048",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.5"
@@ -108,9 +122,25 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "6",
+            "input": [
+                "2 0 0 2\n4 16 8 2\n2 64 32 4\n1024 1024 64 0\n0\n",
+                "2 0 0 2\n4 16 8 2\n2 64 32 4\n1024 1024 64 0\n1\n",
+                "2 0 0 2\n4 16 8 2\n2 64 32 4\n1024 1024 64 0\n2\n",
+                "2 0 0 2\n4 16 8 2\n2 64 32 4\n1024 1024 64 0\n3\n",
+                "2 2 4 8\n4 0 4 4\n16 16 16 16\n32 16 16 32\n0\n",
+                "2 2 4 8\n4 0 4 4\n16 16 16 16\n32 16 16 32\n2\n"
+            ],
+            "output": [
+                "4 0 0 0\n4 16 8 2\n2 64 32 4\n2048 64 0 0\n",
+                "2 16 8 4\n4 64 32 4\n2 1024 64 0\n1024 0 0 0\n",
+                "0 0 0 4\n4 16 8 2\n2 64 32 4\n0 0 2048 64\n",
+                "2 0 0 0\n4 16 8 0\n2 64 32 4\n1024 1024 64 4\n",
+                "4 4 8 0\n8 4 0 0\n32 32 0 0\n32 32 32 0\n",
+                "0 4 4 8\n0 0 4 8\n0 0 32 32\n0 32 32 32\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -134,7 +164,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " 3dprinter",
+            "problemID": "3dprinter",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.9"
@@ -145,9 +175,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "1\n",
+                "5\n"
+            ],
+            "output": [
+                "1\n",
+                "4\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -169,7 +207,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " threedprinter",
+            "problemID": "threedprinter",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "8.3"
@@ -179,9 +217,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\n6\n4 10 10 0 10 15 0 15 15 0 15 10 0\n4 10 10 0 10 15 0 10 15 20 10 10 20\n4 10 15 0 15 15 0 15 15 20 10 15 20\n4 15 15 0 15 10 0 15 10 20 15 15 20\n4 10 10 0 15 10 0 15 10 20 10 10 20\n4 10 10 20 10 15 20 15 15 20 15 10 20\n6\n4 0 0 0 0 25 0 25 25 0 25 0 0\n4 0 0 0 0 25 0 0 25 0.5 0 0 0.5\n4 0 25 0 25 25 0 25 25 0.5 0 25 0.5\n4 25 25 0 25 0 0 25 0 0.5 25 25 0.5\n4 25 0 0 0 0 0 0 0 0.5 25 0 0.5\n4 0 0 0.5 0 25 0.5 25 25 0.5 25 0 0.5\n"
+            ],
+            "output": [
+                "812.50\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -203,7 +247,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " 3sideddice",
+            "problemID": "3sideddice",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "8.5"
@@ -213,9 +257,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "0 0 10000\n0 10000 0\n10000 0 0\n3000 4000 3000\n\n0 0 10000\n0 10000 0\n3000 4000 3000\n10000 0 0\n\n0 0 0\n"
+            ],
+            "output": [
+                "YES\nNO\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -237,7 +287,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " 4thought",
+            "problemID": "4thought",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.9"
@@ -248,9 +298,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "5\n9\n0\n7\n11\n24\n"
+            ],
+            "output": [
+                "4 + 4 + 4 / 4 = 9\n4 * 4 - 4 * 4 = 0\n4 + 4 - 4 / 4 = 7\nno solution\n4 * 4 + 4 + 4 = 24\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -274,7 +330,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " a1paper",
+            "problemID": "a1paper",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.6"
@@ -285,9 +341,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n1 0 5\n",
+                "3\n0 3\n"
+            ],
+            "output": [
+                "1.60965532263\n",
+                "impossible\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -311,7 +375,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aaah",
+            "problemID": "aaah",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.5"
@@ -322,9 +386,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "aaah\naaaaah\n",
+                "aaah\nah\n"
+            ],
+            "output": [
+                "no\n",
+                "go\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -350,7 +422,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " abandonedanimal",
+            "problemID": "abandonedanimal",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.1"
@@ -361,9 +433,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "3\n3\n0 chocolate\n1 icecream\n2 cookies\n3\nchocolate\ncookies\nicecream\n",
+                "3\n4\n0 chocolate\n1 icecream\n2 cookies\n2 chocolate\n3\nchocolate\nicecream\ncookies\n",
+                "3\n10\n0 tomatoes\n0 cucumber\n1 tomatoes\n2 tomatoes\n2 cucumber\n1 mustard\n0 salt\n2 salad\n2 salt\n2 mustard\n5\ntomatoes\ncucumber\nsalad\nmustard\nsalt\n"
+            ],
+            "output": [
+                "impossible\n",
+                "unique\n",
+                "ambiguous\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -387,7 +469,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " abc",
+            "problemID": "abc",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.7"
@@ -397,9 +479,17 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "1 5 3\nABC\n",
+                "6 4 2\nCAB\n"
+            ],
+            "output": [
+                "1 3 5\n",
+                "6 2 4\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -421,7 +511,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " abinitio",
+            "problemID": "abinitio",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "7.2"
@@ -432,9 +522,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3 2 8\n0 1\n0 2\n2 1 2\n1\n2 3 0\n4 0 2\n3 0\n2 0 3\n6\n5\n"
+            ],
+            "output": [
+                "4\n3 162\n3 161\n2 21\n2 15\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -456,7 +552,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aboveaverage",
+            "problemID": "aboveaverage",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.9"
@@ -466,9 +562,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "5\n5 50 50 70 80 100\n7 100 95 90 80 70 60 50\n3 70 90 80\n3 70 90 81\n9 100 99 98 97 96 95 94 93 91\n"
+            ],
+            "output": [
+                "40.000%\n57.143%\n33.333%\n66.667%\n55.556%\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -492,7 +594,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aplusb",
+            "problemID": "aplusb",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "8.3"
@@ -503,9 +605,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n1 2 3 4\n",
+                "6\n1 1 3 3 4 6\n"
+            ],
+            "output": [
+                "4\n",
+                "10\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -527,7 +637,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " gerrymander",
+            "problemID": "gerrymander",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "8.4"
@@ -537,9 +647,15 @@
             "source": "Waterloo Programming Contest 2003-09-27"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\n49 49\n50 50\n2 1 100\n3\n-1\n"
+            ],
+            "output": [
+                "3 1 50 100\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -561,7 +677,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " abstractart",
+            "problemID": "abstractart",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.2"
@@ -572,9 +688,15 @@
             "license": "https://licensebuttons.net/p/zero/1.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3\n8 7 10 7 17 10 20 17 20 20 17 20 10 17 7 10 7\n4 0 0 0 8 8 8 8 0\n4 3 3 3 13 13 13 13 3\n"
+            ],
+            "output": [
+                "315.00000000 258.50000000\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -598,7 +720,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " absurdistan2",
+            "problemID": "absurdistan2",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "6.7"
@@ -609,9 +731,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n",
+                "2\n"
+            ],
+            "output": [
+                "0.962962962963\n",
+                "1.000000000000\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -635,7 +765,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " absurdistan3",
+            "problemID": "absurdistan3",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.5"
@@ -645,9 +775,17 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n1 2\n2 3\n3 1\n4 1\n",
+                "2\n1 2\n1 2\n"
+            ],
+            "output": [
+                "4 1\n2 1\n3 2\n1 3\n",
+                "2 1\n1 2\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -671,7 +809,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " accesspoints",
+            "problemID": "accesspoints",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.8"
@@ -682,9 +820,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "6\n4 1\n2 4\n3 2\n8 3\n5 6\n2 5\n",
+                "6\n11 6\n23 7\n24 11\n24 32\n27 38\n42 42\n"
+            ],
+            "output": [
+                "22.5\n",
+                "0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -706,7 +852,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " classy",
+            "problemID": "classy",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "4.5"
@@ -716,9 +862,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "1\n5\nmom: upper-upper-lower-middle class\ndad: middle-middle-middle-lower-middle class\nqueenelizabeth: upper-upper-upper class\nchair: lower-lower class\nunclebob: middle-middle-lower-middle class\n"
+            ],
+            "output": [
+                "queenelizabeth\nmom\ndad\nunclebob\nchair\n==============================\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -742,7 +894,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " acm",
+            "problemID": "acm",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.6"
@@ -753,9 +905,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "3 E right\n10 A wrong\n30 C wrong\n50 B wrong\n100 A wrong\n200 A right\n250 C wrong\n300 D right\n-1\n",
+                "7 H right\n15 B wrong\n30 E wrong\n35 E right\n80 B wrong\n80 B right\n100 D wrong\n100 C wrong\n300 C right\n300 D wrong\n-1\n"
+            ],
+            "output": [
+                "3 543\n",
+                "4 502\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -777,7 +937,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " addingwords",
+            "problemID": "addingwords",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.0"
@@ -788,9 +948,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "def foo 3\ncalc foo + bar =\ndef bar 7\ndef programming 10\ncalc foo + bar =\ndef is 4\ndef fun 8\ncalc programming - is + fun =\ndef fun 1\ncalc programming - is + fun =\nclear\n"
+            ],
+            "output": [
+                "foo + bar = unknown\nfoo + bar = programming\nprogramming - is + fun = unknown\nprogramming - is + fun = bar\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -814,7 +980,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " listgame2",
+            "problemID": "listgame2",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "9.1"
@@ -825,9 +991,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "1099511627776\n",
+                "127381\n"
+            ],
+            "output": [
+                "8\n",
+                "3\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -849,7 +1023,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " different",
+            "problemID": "different",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.1"
@@ -859,9 +1033,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "10 12\n71293781758123 72784\n1 12345677654321\n"
+            ],
+            "output": [
+                "2\n71293781685339\n12345677654320\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -885,7 +1065,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " adjoin",
+            "problemID": "adjoin",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.6"
@@ -896,9 +1076,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "6 4\n0 1\n0 2\n3 4\n3 5\n",
+                "11 9\n0 1\n0 3\n0 4\n1 2\n5 4\n6 4\n7 8\n7 9\n7 10\n"
+            ],
+            "output": [
+                "3\n",
+                "4\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -920,7 +1108,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " administrativeproblems",
+            "problemID": "administrativeproblems",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "6.5"
@@ -930,9 +1118,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "1\n2 8\nbmw 5000 150 10\njaguar 7000 200 25\n10 mallory p bmw\n15 jb p jaguar\n20 jb r 500\n35 badluckbrian a 100\n50 mallory a 10\n55 silva p jaguar\n60 mallory r 100\n110 silva a 30\n"
+            ],
+            "output": [
+                "badluckbrian INCONSISTENT\njb 12700\nmallory 1650\nsilva INCONSISTENT\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -954,7 +1148,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " causal",
+            "problemID": "causal",
             "CPU": " 3 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.9"
@@ -964,9 +1158,15 @@
             "source": "Waterloo Programming Contest 2004-01-31"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4\n4 1\n1 -1\n1 3\n1 4\n2 6\n4 2\n1 -1\n1 3\n1 4\n2 6\n4 3\n1 -1\n1 3\n1 4\n2 6\n4 4\n1 -1\n1 3\n1 4\n2 6\n"
+            ],
+            "output": [
+                "Case 1: -2\nCase 2: 0\nCase 3: 0\nCase 4: 1\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -990,7 +1190,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " adventurebegins",
+            "problemID": "adventurebegins",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.1"
@@ -1000,9 +1200,17 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "2 4\n1 1 2\n2\n1 1 2\n2\n",
+                "3 4\n1 1 3\n2\n1 1 3\n2\n"
+            ],
+            "output": [
+                "1\n3\n",
+                "1\n666666674\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1024,7 +1232,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " adventuremoving4",
+            "problemID": "adventuremoving4",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.2"
@@ -1035,9 +1243,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "500\n100 999\n150 888\n200 777\n300 999\n400 1009\n450 1019\n500 1399\n"
+            ],
+            "output": [
+                "450550\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1059,7 +1273,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " favourable",
+            "problemID": "favourable",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "4.6"
@@ -1070,9 +1284,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\n4\n1 3 11 13\n3 favourably\n11 catastrophically\n13 favourably\n10\n1 21 6 17\n3 favourably\n6 catastrophically\n8 favourably\n12 favourably\n15 6 33 12\n17 15 8 33\n21 3 29 15\n29 favourably\n33 catastrophically\n"
+            ],
+            "output": [
+                "2\n5\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1094,7 +1314,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " cats",
+            "problemID": "cats",
             "CPU": " 6 seconds",
             "memory": " 1024 MB",
             "difficulty": "4.3"
@@ -1105,9 +1325,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "1\n20 5\n0 1 4\n0 2 3\n0 3 10\n0 4 15\n1 2 7\n1 3 3\n1 4 5\n2 3 4\n2 4 3\n3 4 8\n"
+            ],
+            "output": [
+                "yes\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1131,7 +1357,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " airconditioned",
+            "problemID": "airconditioned",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.2"
@@ -1142,9 +1368,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "3\n1 2\n2 4\n5 6\n",
+                "5\n1 2\n3 5\n4 6\n7 9\n8 10\n"
+            ],
+            "output": [
+                "2\n",
+                "3\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1166,7 +1400,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " airlinehub",
+            "problemID": "airlinehub",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.9"
@@ -1176,9 +1410,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3\n3.2 -15.0\n20.1 -175\n-30.2 10\n3\n3.2 -15.0\n20.1 -175\n-30.2 10\n"
+            ],
+            "output": [
+                "3.20 -15.00\n3.20 -15.00\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1202,7 +1442,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " airportcoffee",
+            "problemID": "airportcoffee",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.5"
@@ -1213,9 +1453,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "100000 100 138 60 300\n5\n5000 20000 50000 55000 75000\n",
+                "100000 78 86 9 560\n4\n13505 69705 87448 92090\n"
+            ],
+            "output": [
+                "2\n0 3\n",
+                "2\n0 1 \n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1239,7 +1487,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " airport",
+            "problemID": "airport",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "7.5"
@@ -1249,9 +1497,17 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "7\n0 20\n40 0\n40 20\n70 50\n50 70\n30 50\n0 50\n",
+                "3\n0 2017\n-2017 -2017\n2017 0\n"
+            ],
+            "output": [
+                "76.157731059\n",
+                "4510.149110617\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1279,7 +1535,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " airportlogistics",
+            "problemID": "airportlogistics",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "7.4"
@@ -1290,9 +1546,21 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "4",
+            "input": [
+                "60.0 0.0 50.0 170.0\n3\n40.0 0.0 0.0 0.0\n5.0 20.0 5.0 170.0\n95.0 0.0 95.0 80.0\n",
+                "60.0 0.0 50.0 170.0\n3\n40.0 0.0 0.0 0.0\n5.0 20.0 5.0 170.0\n95.0 0.0 95.0 100.0\n",
+                "0.0 1.0 4.0 1.0\n1\n0.0 0.0 4.0 0.0\n",
+                "0.0 1.0 10.0 1.0\n2\n1.0 0.0 2.0 3.0\n6.0 1.0 4.0 1.0\n"
+            ],
+            "output": [
+                "168.7916512460\n",
+                "163.5274740179\n",
+                "3.7320508076\n",
+                "10.0000000000\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1318,7 +1586,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " airports",
+            "problemID": "airports",
             "CPU": " 9 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.2"
@@ -1328,9 +1596,19 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "2 2\n1 1\n0 1\n1 0\n1 2 1\n2 1 1\n",
+                "2 2\n1 1\n0 1\n1 0\n1 2 1\n2 1 3\n",
+                "5 5\n72 54 71 94 23\n0 443 912 226 714\n18 0 776 347 810\n707 60 0 48 923\n933 373 881 0 329\n39 511 151 364 0\n4 2 174\n2 1 583\n4 3 151\n1 4 841\n4 3 993\n"
+            ],
+            "output": [
+                "2\n",
+                "1\n",
+                "3\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1354,7 +1632,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " akcija",
+            "problemID": "akcija",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.1"
@@ -1364,9 +1642,17 @@
             "source": "Croatian Open Competition in Informatics 2015/2016, contest #1"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n3\n2\n3\n2\n",
+                "6\n6\n4\n5\n5\n5\n5\n"
+            ],
+            "output": [
+                "8\n",
+                "21\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1392,7 +1678,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aladin",
+            "problemID": "aladin",
             "CPU": " 6 seconds",
             "memory": " 1024 MB",
             "difficulty": "8.9"
@@ -1403,8 +1689,18 @@
         },
         "testCases": {
             "numTestCases": "",
-            "input": [],
-            "outut": []
+            "input": [
+                "6 3\n2 1 6\n1 1 5 1 2\n2 1 6\n",
+                "4 5\n1 1 4 3 4\n2 1 1\n2 2 2\n2 3 3\n2 4 4\n",
+                "4 4\n1 1 4 7 9\n2 1 4\n1 1 4 1 1\n2 1 4\n"
+            ],
+            "output": [
+                "0\n3\n",
+                "3\n2\n1\n0\n",
+                "16\n0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1426,7 +1722,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " alchemy",
+            "problemID": "alchemy",
             "CPU": " 3 seconds",
             "memory": " 1024 MB",
             "difficulty": "8.2"
@@ -1436,9 +1732,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "8\n0 0 100 -100 -100\n0 0 50 -10 -10\n0 0 10 -100 500\n0 0 1 100 100\n1000 1000 100 -1 1\n1000 1000 50 -1 1\n1000 1000 10 -1 1\n1000 1000 1 -1 1\n"
+            ],
+            "output": [
+                "700\n4 3 1 2 5 6 7 8\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1460,7 +1762,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " alea",
+            "problemID": "alea",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.9"
@@ -1470,9 +1772,15 @@
             "source": "CTU Open 2008"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "69069 5 0\n69069 5 2\n1664525 1013904223 177\n1103515245 12345 67890\n0 0 0\n"
+            ],
+            "output": [
+                "235\n194\n241\n235\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1494,7 +1802,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " alicedigital",
+            "problemID": "alicedigital",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.1"
@@ -1504,9 +1812,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "1\n6 2\n1 3 2 6 2 4\n"
+            ],
+            "output": [
+                "12\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1530,7 +1844,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aliencodebreaking",
+            "problemID": "aliencodebreaking",
             "CPU": " 13 seconds",
             "memory": " 1024 MB",
             "difficulty": "8.9"
@@ -1541,9 +1855,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "14 4\nJQ IRKEYFG EXQ\n",
+                "43 100000\nBLNAMOTPRRNIXRNMPIWHXDZTRQJXRKIAIEEIIPJLGZP\n"
+            ],
+            "output": [
+                "THIS IS A TEST\n",
+                "FRIENDS ROMANS COUNTRYMEN LEND ME YOUR EARS\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1565,7 +1887,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aliennumbers",
+            "problemID": "aliennumbers",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.0"
@@ -1575,9 +1897,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4\n9 0123456789 oF8\nFoo oF8 0123456789\n13 0123456789abcdef 01\nCODE O!CDE? A?JM!.\n"
+            ],
+            "output": [
+                "Case #1: Foo\nCase #2: 9\nCase #3: 10011\nCase #4: JAM!\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1601,7 +1929,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " listgame",
+            "problemID": "listgame",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.9"
@@ -1612,9 +1940,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "65536\n",
+                "127381\n"
+            ],
+            "output": [
+                "16\n",
+                "3\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1636,7 +1972,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " allaboutthatbase",
+            "problemID": "allaboutthatbase",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.1"
@@ -1647,9 +1983,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "8\n6ef + d1 = 7c0\n3 / 2 = 1\n444 / 2 = 222\n10111 * 11 = 1000101\n10111 * 11 = 111221\n5k - 1z = 46\n1111111111 - 1111111 = 111\n2048 - 512 = 1536\n"
+            ],
+            "output": [
+                "g\ninvalid\n56789abcdefghijklmnopqrstuvwxyz0\n2\n3456789abcdefghijklmnopqrstuvwxyz0\ninvalid\n1\na\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1671,7 +2013,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " alldifferentdirections",
+            "problemID": "alldifferentdirections",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.7"
@@ -1682,9 +2024,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3\n87.342 34.30 start 0 walk 10.0\n2.6762 75.2811 start -45.0 walk 40 turn 40.0 walk 60\n58.518 93.508 start 270 walk 50 turn 90 walk 40 turn 13 walk 5\n2\n30 40 start 90 walk 5\n40 50 start 180 walk 10 turn 90 walk 5\n0\n"
+            ],
+            "output": [
+                "97.1547 40.2334 7.63097\n30 45 0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1708,7 +2056,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " allergy",
+            "problemID": "allergy",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "7.5"
@@ -1719,9 +2067,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "3\n2\n2\n2\n",
+                "5\n1\n4\n2\n5\n2\n"
+            ],
+            "output": [
+                "5\n",
+                "10\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1743,7 +2099,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " friends",
+            "problemID": "friends",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "8.5"
@@ -1753,9 +2109,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "5 4\n1 2\n3 4\n2 3\n4 5\n"
+            ],
+            "output": [
+                "4\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1779,7 +2141,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " dream",
+            "problemID": "dream",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "6.5"
@@ -1790,9 +2152,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "10\nE business_as_usual\nE bobby_dies\nS 1 bobby_died\nE stuff_happens\nE jr_does_bad_things\nS 2 !bobby_dies business_as_usual\nE it_goes_on_and_on\nD 4\nS 1 !bobby_dies\nS 2 !bobby_dies it_goes_on_and_on\n",
+                "11\nS 1 !something\nE one\nE two\nE three\nE four\nE five\nS 3 three !four one\nD 1\nS 3 three !four one\nD 1\nS 3 three !four one\n"
+            ],
+            "output": [
+                "Plot Error\n3 Just A Dream\nYes\nPlot Error\n",
+                "Yes\n2 Just A Dream\n1 Just A Dream\nYes\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1814,7 +2184,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " allpairspath",
+            "problemID": "allpairspath",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.7"
@@ -1825,9 +2195,15 @@
             "license": "https://licensebuttons.net/l/by/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4 3 4\n0 1 2\n1 2 2\n3 3 1\n0 2\n1 2\n3 0\n3 3\n2 1 2\n0 1 100\n0 1\n1 0\n0 0 0\n"
+            ],
+            "output": [
+                "4\n2\nImpossible\n0\n\n100\nImpossible\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1849,7 +2225,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " almostperfect",
+            "problemID": "almostperfect",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.6"
@@ -1860,9 +2236,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "6\n65\n650\n"
+            ],
+            "output": [
+                "6 perfect\n65 not perfect\n650 almost perfect\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1884,7 +2266,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " almostunionfind",
+            "problemID": "almostunionfind",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.6"
@@ -1895,9 +2277,15 @@
             "license": "https://licensebuttons.net/l/by/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "5 7\n1 1 2\n2 3 4\n1 3 5\n3 4\n2 4 1\n3 4\n3 3\n"
+            ],
+            "output": [
+                "3 12\n3 7\n2 8\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1921,7 +2309,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " alphabet",
+            "problemID": "alphabet",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.0"
@@ -1931,9 +2319,17 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "xyzabcdefghijklmnopqrstuvw\n",
+                "aiemckgobjfndlhp\n"
+            ],
+            "output": [
+                "3\n",
+                "20\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1957,7 +2353,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " alphabetspam",
+            "problemID": "alphabetspam",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.3"
@@ -1967,9 +2363,17 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "Welcome_NWERC_participants!\n",
+                "\\/\\/in_US$100000_in_our_Ca$h_Lo||ery!!!\n"
+            ],
+            "output": [
+                "0.0740740740740741\n0.666666666666667\n0.222222222222222\n0.0370370370370370\n",
+                "0.128205128205128\n0.333333333333333\n0.102564102564103\n0.435897435897436\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -1995,7 +2399,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " bracketnotation",
+            "problemID": "bracketnotation",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.4"
@@ -2005,9 +2409,19 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "(())\n",
+                "()\n",
+                "((())(()))()\n"
+            ],
+            "output": [
+                "4,8:8,8:\n",
+                "4,4:\n",
+                "5,29:11,17:17,17:23,29:29,29:35,35:\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2031,7 +2445,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " altruisticamphibians",
+            "problemID": "altruisticamphibians",
             "CPU": " 3 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.1"
@@ -2043,8 +2457,16 @@
         },
         "testCases": {
             "numTestCases": "",
-            "input": [],
-            "outut": []
+            "input": [
+                "3 19\n15 5 3\n12 4 4\n20 10 5\n",
+                "3 19\n14 5 3\n12 4 4\n20 10 5\n"
+            ],
+            "output": [
+                "3\n",
+                "2\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2070,7 +2492,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " artichoke",
+            "problemID": "artichoke",
             "CPU": " 5 seconds",
             "memory": " 1024 MB",
             "difficulty": "2.8"
@@ -2080,9 +2502,19 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "42 1 23 4 8 10\n",
+                "100 7 615 998 801 3\n",
+                "100 432 406 867 60 1000\n"
+            ],
+            "output": [
+                "104.855110477\n",
+                "0.00\n",
+                "399.303813\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2108,7 +2540,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " amanda",
+            "problemID": "amanda",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.4"
@@ -2119,9 +2551,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "4 4\n1 2 2\n2 3 1\n3 4 1\n4 1 2\n",
+                "5 5\n1 2 1\n2 3 1\n2 4 1\n2 5 1\n4 5 1\n",
+                "4 5\n1 2 1\n2 3 0\n2 4 1\n3 1 1\n3 4 1\n"
+            ],
+            "output": [
+                "3\n",
+                "impossible\n",
+                "2\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2139,7 +2581,7 @@
             "output": []
         },
         "sidebar": {
-            "problemID": " amazing",
+            "problemID": "amazing",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.3"
@@ -2150,8 +2592,12 @@
         },
         "testCases": {
             "numTestCases": "",
-            "input": [],
-            "outut": []
+            "input": [
+			],
+            "output": [
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2173,7 +2619,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " amazingadventures",
+            "problemID": "amazingadventures",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.1"
@@ -2183,9 +2629,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3 3\n1 1\n3 3\n2 1\n2 2\n\n3 4\n1 1\n3 4\n2 1\n1 2\n\n2 2\n2 1\n2 2\n1 2\n1 1\n\n0 0\n"
+            ],
+            "output": [
+                "YES\nRRUULLD\nNO\nYES\nRD\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2209,7 +2661,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " race",
+            "problemID": "race",
             "CPU": " 6 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.6"
@@ -2220,9 +2672,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "3 352\n93 82 444\n92 76 436\n99 62 -1\n0 70 66 71 97\n76 0 87 66 74\n62 90 0 60 94\n60 68 68 0 69\n83 78 83 73 0\n",
+                "5 696\n96 88 532\n99 70 519\n96 66 637\n90 92 592\n95 94 -1\n0 67 80 81 60 83 61\n72 0 99 68 85 93 82\n100 91 0 88 99 70 68\n69 65 77 0 65 68 75\n63 65 91 96 0 92 100\n65 76 85 62 89 0 75\n93 83 74 65 88 84 0\n"
+            ],
+            "output": [
+                "99\n3\n",
+                "386\n1 2 3 5\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2244,7 +2704,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " result",
+            "problemID": "result",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "7.6"
@@ -2254,9 +2714,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2+1*0\n3+2*5+1*7+16\n0\nEND\n"
+            ],
+            "output": [
+                "0 2\n36 690\n0 0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2282,7 +2748,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " amsterdamdistance",
+            "problemID": "amsterdamdistance",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.8"
@@ -2293,9 +2759,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "6 5 2.0\n1 3 4 2\n",
+                "9 7 3.0\n1 5 9 5\n",
+                "10 10 1.0\n2 0 6 0\n"
+            ],
+            "output": [
+                "1.65663706143592\n",
+                "4.28571428571429\n",
+                "0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2317,7 +2793,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " amultiplicationgame",
+            "problemID": "amultiplicationgame",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.8"
@@ -2327,9 +2803,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "162\n17\n34012226\n"
+            ],
+            "output": [
+                "Stan wins.\nOllie wins.\nStan wins.\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2351,7 +2833,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anagramcounting",
+            "problemID": "anagramcounting",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.0"
@@ -2362,9 +2844,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "at\nordeals\nabcdefghijklmnopqrstuvwxyz\nabcdefghijklmabcdefghijklm\nabcdABCDabcd\n"
+            ],
+            "output": [
+                "2\n5040\n403291461126605635584000000\n49229914688306352000000\n29937600\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2386,7 +2874,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " andrewant",
+            "problemID": "andrewant",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "4.9"
@@ -2396,9 +2884,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "90000 1\n0 R\n10 1\n0 L\n14 5\n3 L\n6 L\n13 L\n8 R\n1 R\n"
+            ],
+            "output": [
+                "The last ant will fall down in 90000 seconds - started at 0.\nThe last ant will fall down in 0 seconds - started at 0.\nThe last ant will fall down in 13 seconds - started at 6 and 8.\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2424,7 +2918,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anewalphabet",
+            "problemID": "anewalphabet",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.8"
@@ -2435,9 +2929,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "All your base are belong to us.\n",
+                "What's the Frequency, Kenneth?\n",
+                "A new alphabet!\n"
+            ],
+            "output": [
+                "@11 `/0|_||Z [email protected]$3 @|Z3 8310[]\\[]6 ']['0 |_|$.\n",
+                "\\/\\/[-]@'][''$ ']['[-]3 #|Z3(,)|_|3[]\\[](`/, |<3[]\\[][]\\[]3']['[-]?\n",
+                "@ []\\[]3\\/\\/ @1|D[-]@83']['!\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2459,7 +2963,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " iforaneye",
+            "problemID": "iforaneye",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.4"
@@ -2470,9 +2974,15 @@
             "license": "https://licensebuttons.net/p/zero/1.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3\nOh say can you see\nI do not understand why you are so cranky just because Karel won\nFormation\n"
+            ],
+            "output": [
+                "O say can u c\nI do not underst& y u r so cranky just bcause Krl 1\n[email protected]\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2498,7 +3008,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " animal",
+            "problemID": "animal",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.5"
@@ -2509,9 +3019,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "5\n((3,(1,(5,2))),4)\n(((5,1),(2,3)),4)\n",
+                "10\n(1,(2,(3,(4,(5,(6,(7,(8,(9,10)))))))))\n(((((((((1,2),3),4),5),6),7),8),9),10)\n",
+                "10\n(10,(9,(8,(7,(6,(5,(4,(3,(2,1)))))))))\n(((((((((1,2),3),4),5),6),7),8),9),10)\n"
+            ],
+            "output": [
+                "7\n",
+                "11\n",
+                "19\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2533,7 +3053,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " industrialspy",
+            "problemID": "industrialspy",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "3.2"
@@ -2544,9 +3064,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4\n17\n1276543\n9999999\n011\n"
+            ],
+            "output": [
+                "3\n1336\n0\n2\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2570,7 +3096,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anotherbrick",
+            "problemID": "anotherbrick",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.9"
@@ -2581,9 +3107,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "2 10 7\n5 5 5 5 5 5 5\n",
+                "2 10 7\n5 5 5 3 5 2 2\n"
+            ],
+            "output": [
+                "YES\n",
+                "NO\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2605,7 +3139,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anothercandies",
+            "problemID": "anothercandies",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.0"
@@ -2616,9 +3150,15 @@
             "license": "https://licensebuttons.net/l/by/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\n\n5\n5\n2\n7\n3\n8\n\n6\n7\n11\n2\n7\n3\n4\n"
+            ],
+            "output": [
+                "YES\nNO\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2640,7 +3180,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anotherdice",
+            "problemID": "anotherdice",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "3.4"
@@ -2651,8 +3191,14 @@
         },
         "testCases": {
             "numTestCases": "",
-            "input": [],
-            "outut": []
+            "input": [
+                "3\n5\n21\n40\n"
+            ],
+            "output": [
+                "0.9934260978934218\n0.8930267371507457\n0.0001461079070016448\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2674,7 +3220,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " queryonarray",
+            "problemID": "queryonarray",
             "CPU": " 3 seconds",
             "memory": " 256 MB",
             "difficulty": "7.8"
@@ -2684,9 +3230,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "8 4\n1 1 8\n0 2 8\n2 4 6\n0 5 6\n"
+            ],
+            "output": [
+                "1974\n462\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2708,7 +3260,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " antennaplacement",
+            "problemID": "antennaplacement",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "6.9"
@@ -2718,9 +3270,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\n7 9\nooo**oooo\n**oo*ooo*\no*oo**o**\nooooooooo\n*******oo\no*o*oo*oo\n*******oo\n10 1\n*\n*\n*\no\n*\n*\n*\n*\n*\n*\n"
+            ],
+            "output": [
+                "17\n5\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2744,7 +3302,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anthony",
+            "problemID": "anthony",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.5"
@@ -2755,9 +3313,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "1 1\n0.500000\n",
+                "3 2\n1.000000\n0.000000\n1.000000\n0.000000\n"
+            ],
+            "output": [
+                "0.500000\n",
+                "1.000000\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2781,7 +3347,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " anthonyanddiablo",
+            "problemID": "anthonyanddiablo",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.4"
@@ -2792,9 +3358,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "1.000000 4.000000\n",
+                "1.000000 0.000000\n"
+            ],
+            "output": [
+                "Diablo is happy!\n",
+                "Need more materials!\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2816,7 +3390,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " antiarithmetic",
+            "problemID": "antiarithmetic",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "7.2"
@@ -2827,9 +3401,15 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "3: 0 2 1\n5: 2 0 1 3 4\n6: 2 4 3 5 0 1\n0\n"
+            ],
+            "output": [
+                "yes\nno\nyes\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2851,7 +3431,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " ants",
+            "problemID": "ants",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "2.4"
@@ -2862,9 +3442,15 @@
             "license": "https://licensebuttons.net/l/by/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\n10 3\n2 6 7\n214 7\n11 12 7 13\n176 23 191\n"
+            ],
+            "output": [
+                "4 8\n38 207\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2890,7 +3476,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " apaxiaaans",
+            "problemID": "apaxiaaans",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.4"
@@ -2900,9 +3486,19 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "robert\n",
+                "rooobert\n",
+                "roooooobertapalaxxxxios\n"
+            ],
+            "output": [
+                "robert\n",
+                "robert\n",
+                "robertapalaxios\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2928,7 +3524,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " apostrophecatastrophe",
+            "problemID": "apostrophecatastrophe",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "6.5"
@@ -2939,9 +3535,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "a+b-c\na-b+d-c\n",
+                "knuth-morris-pratt\nknuthmorrispratt\n",
+                "d+-trouble\ndoubletrouble\n"
+            ],
+            "output": [
+                "- +d-\n",
+                "<any> <empty>\n",
+                "<empty> ouble\no uble\nou ble\noub le\noubl e\nouble <empty>\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -2969,7 +3575,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " appallingarchitecture",
+            "problemID": "appallingarchitecture",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.0"
@@ -2980,9 +3586,21 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "4",
+            "input": [
+                "3 3\n/-\\\n|.|\n#.#\n",
+                "3 3\n...\n___\n..|\n",
+                "3 3\n./\\\n.\\/\n.|.\n",
+                "20 19\n...................\n.........-____---..\n........._/\\\\////-.\n.......--//#\\#\\/_..\n......._/\\///////_.\n......-/#######\\/-.\n......////\\/#\\#/_..\n....../\\#\\#/////_..\n....._/#####\\#\\/...\n....._/\\////////-..\n...../########/-...\n...._///\\/#\\#\\/....\n...._/#/#/\\/\\/_....\n..._/\\#######/-....\n..._/\\////////-....\n.../\\#\\#\\#\\#/-.....\n.._///\\\\\\\\#\\/-.....\n.._//////////-.....\n..////##////-......\n.-____##____.......\n"
+            ],
+            "output": [
+                "balanced\n",
+                "left\n",
+                "balanced\n",
+                "balanced\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3008,7 +3626,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " apparatus",
+            "problemID": "apparatus",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.2"
@@ -3019,9 +3637,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "3 1\n110\n011\n",
+                "4 2\n1000\n1000\n0000\n0010\n",
+                "1000 0\n"
+            ],
+            "output": [
+                "2\n",
+                "0\n",
+                "864722\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3043,7 +3671,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " applemarket",
+            "problemID": "applemarket",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "8.1"
@@ -3053,9 +3681,15 @@
             "source": "\n                                                                \n                                                                "
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2 3 2\n1 2 3\n4 5 6\n1 2 2 3 20\n2 2 1 3 15\n"
+            ],
+            "output": [
+                "20\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3081,7 +3715,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " applescherriesmangos",
+            "problemID": "applescherriesmangos",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.7"
@@ -3092,9 +3726,19 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "3",
+            "input": [
+                "1 2 1\n",
+                "2 2 2\n",
+                "1 1 10\n"
+            ],
+            "output": [
+                "6\n",
+                "30\n",
+                "0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3122,7 +3766,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aprizenoonecanwin",
+            "problemID": "aprizenoonecanwin",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "2.5"
@@ -3133,9 +3777,21 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "4",
+            "input": [
+                "5 6\n1 2 3 4 5\n",
+                "5 10\n4 8 1 9 7\n",
+                "4 10\n1 3 1 7\n",
+                "1 5\n6\n"
+            ],
+            "output": [
+                "3\n",
+                "2\n",
+                "4\n",
+                "1\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3159,7 +3815,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " tank",
+            "problemID": "tank",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.5"
@@ -3170,9 +3826,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n30 50\n20 0\n100 0\n100 40\n20 40\n",
+                "9\n30 70\n110 70\n100 80\n80 80\n-10 60\n-40 30\n-40 25\n20 0\n100 0\n120 10\n"
+            ],
+            "output": [
+                "20.83\n",
+                "19.74\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3196,7 +3860,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " aqueducts",
+            "problemID": "aqueducts",
             "CPU": " 3 seconds",
             "memory": " 1024 MB",
             "difficulty": "5.7"
@@ -3207,9 +3871,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "6 2 2 8\n0 0 6\n3 4 7\n0 8 8\n6 8 8\n6 0 6\n6 4 8\n3 4\n1 5\n",
+                "4 2 2 3\n1 3 2\n3 3 2\n2 1 1\n2 6 1\n1 2\n3 4\n"
+            ],
+            "output": [
+                "20.396078\n",
+                "IMPOSSIBLE\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3233,7 +3905,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " ingestion",
+            "problemID": "ingestion",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "5.8"
@@ -3244,9 +3916,17 @@
             "license": "https://licensebuttons.net/p/zero/1.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "5 900\n800 700 400 300 200\n",
+                "5 900\n800 700 40 300 200\n"
+            ],
+            "output": [
+                "2243\n",
+                "1900\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3268,7 +3948,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " arable",
+            "problemID": "arable",
             "CPU": " 4 seconds",
             "memory": " 1024 MB",
             "difficulty": "7.5"
@@ -3278,9 +3958,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4\n1 1\n5 3\n5 4\n3 5\n5\n3 3\n2 5\n3 4\n5 2\n1 1\n5\n0 0\n0 -50\n-50 -51\n-51 -50\n-50 0\n0\n"
+            ],
+            "output": [
+                "3\n1\n2500\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3304,7 +3990,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " arachnophobia",
+            "problemID": "arachnophobia",
             "CPU": " 8 seconds",
             "memory": " 1024 MB",
             "difficulty": "4.7"
@@ -3315,9 +4001,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4 4 3000\n0 1 1\n1 3 1\n2 0 2018\n2 3 42\n0 3\n1 1\n",
+                "4 4 10\n0 1 1\n1 3 1\n2 0 2018\n2 3 42\n0 3\n1 1\n"
+            ],
+            "output": [
+                "1\n",
+                "0\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3341,7 +4035,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " randomproblem",
+            "problemID": "randomproblem",
             "CPU": " 9 seconds",
             "memory": " 1024 MB",
             "difficulty": "8.1"
@@ -3352,9 +4046,17 @@
             "license": "https://licensebuttons.net/p/zero/1.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "100\n4 7 9 5 9 3 5 0 0 1 7 8 5 0 2 6 3 5 4 4\n4 6 3 3 2 7 1 8 7 8 7 6 1 1 7 2 5 4 7 2\n0 4 4 5 8 3 0 6 9 3 2 6 6 8 5 2 5 1 2 7\n2 4 1 0 0 4 9 1 8 7 5 0 4 4 8 4 3 2 6 8\n8 5 6 7 0 9 7 0 3 6 1 4 4 1 2 3 2 6 9 9\n",
+                "10\n1 2 3 1 2 2 1 1 3 0\n"
+            ],
+            "output": [
+                "triple correlation 4(1)4(3)3 found\n",
+                "random sequence\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3376,7 +4078,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " rationalsequence",
+            "problemID": "rationalsequence",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "4.8"
@@ -3386,9 +4088,17 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "5\n1 1/1\n2 1/3\n3 5/2\n4 2178309/1346269\n5 1/10000000\n",
+				"1000\n1\n1/1\n2\n1/3\n3\n5/2\n4\n2178309/1346269\n5\n1/10000000\n6\n128/1\n7\n1/128\n8\n1073741823/127\n9\n153391689/1\n10\n256/1\n11\n1/256\n12\n357913941/85\n13\n1073741823/8\n14\n512/1\n15\n1/512\n16\n153391689/73\n17\n119304647/1\n18\n1024/1\n19\n1/1024\n20\n1049601/1\n21\n1073741823/10\n22\n2048/1\n23\n1/2048\n24\n1073741823/2047\n25\n97612893/1\n26\n4096/1\n27\n1/4096\n28\n17043521/65\n29\n357913941/4\n30\n8192/1\n31\n1/8192\n32\n1073741823/8191\n33\n1073741823/13\n34\n16384/1\n35\n1/16384\n36\n357913941/5461\n37\n153391689/2\n38\n32768/1\n39\n1/32768\n40\n32769/1\n41\n357913941/5\n42\n65536/1\n43\n1/65536\n44\n357913941/21845\n45\n1073741823/16\n46\n131072/1\n47\n1/131072\n48\n1073741823/131071\n49\n1073741823/17\n50\n262144/1\n51\n1/262144\n52\n17043521/4161\n53\n119304647/2\n54\n524288/1\n55\n1/524288\n56\n1073741823/524287\n57\n1073741823/19\n58\n1048576/1\n59\n1/1048576\n60\n1049601/1025\n61\n1073741823/20\n62\n2097152/1\n63\n1/2097152\n64\n153391689/299593\n65\n51130563/1\n66\n4194304/1\n67\n1/4194304\n68\n357913941/1398101\n69\n97612893/2\n70\n8388608/1\n71\n1/8388608\n72\n1073741823/8388607\n73\n1073741823/23\n74\n16777216/1\n75\n1/16777216\n76\n17043521/266305\n77\n357913941/8\n78\n33554432/1\n79\n1/33554432\n80\n34636833/1082401\n81\n1073741823/25\n82\n67108864/1\n83\n1/67108864\n84\n357913941/22369621\n85\n1073741823/26\n86\n134217728/1\n87\n1/134217728\n88\n153391689/19173961\n89\n119304647/3\n90\n268435456/1\n91\n1/268435456\n92\n357913941/89478485\n93\n153391689/4\n94\n536870912/1\n95\n1/536870912\n96\n1073741823/536870911\n97\n1073741823/29\n98\n1073741824/1\n99\n1/1073741824\n100\n1/1\n101\n357913941/10\n102\n181714663/1288\n103\n67425286/2193\n104\n168659672/3983\n105\n1002173004/1441\n106\n572217231/2012\n107\n314245882/1637\n108\n368493692/1753\n109\n814610761/1306\n110\n1781144/5\n111\n303629609/458\n112\n574539455/529\n113\n485892023/983\n114\n401606659/3750\n115\n924515315/2001\n116\n34147756/1183\n117\n121204948/3547\n118\n952498813/2302\n119\n368586043/928\n120\n24500527/1414\n121\n685084457/3941\n122\n814761094/2469\n123\n967196699/100\n124\n130916507/95\n125\n90129549/964\n126\n21614249/194\n127\n469175833/1726\n128\n507020753/1339\n129\n255634713/2000\n130\n25849585/544\n131\n155906401/621\n132\n623254409/222\n133\n214757357/314\n134\n719707717/727\n135\n21144257/547\n136\n311483782/461\n137\n60448215/4087\n138\n1015310755/1631\n139\n101023143/1834\n140\n860355317/3267\n141\n40920201/3163\n142\n421462765/3403\n143\n1060248607/589\n144\n670096249/3811\n145\n748383997/2784\n146\n286975153/3883\n147\n139001411/1008\n148\n917579637/1783\n149\n961031629/1545\n150\n640590863/3792\n151\n416345725/1383\n152\n297142481/881\n153\n14721829/3989\n154\n36307390/527\n155\n832728667/1753\n156\n1007021571/1538\n157\n1018954433/135\n158\n583931110/2797\n159\n585202483/1665\n160\n81280266/461\n161\n19909543/389\n162\n42801517/1351\n163\n138420501/2983\n164\n53468073/113\n165\n458925949/220\n166\n798661035/2347\n167\n629455140/1901\n168\n220240495/249\n169\n122303479/555\n170\n546529167/424\n171\n1066063892/2611\n172\n248996402/185\n173\n869719325/16\n174\n1025865625/1296\n175\n471032359/922\n176\n113387331/3289\n177\n331148977/2760\n178\n500179159/1269\n179\n34891569/644\n180\n46158179/1723\n181\n442744541/1430\n182\n101841013/1811\n183\n961101462/1297\n184\n85588771/2817\n185\n928679142/3323\n186\n46313471/2230\n187\n88687524/1105\n188\n279877457/298\n189\n160940069/274\n190\n759126230/2037\n191\n1069945802/2521\n192\n69740246/3811\n193\n299349/5\n194\n168267824/669\n195\n299335960/587\n196\n213487051/1628\n197\n196358417/677\n198\n7502285/1282\n199\n17749519/509\n200\n679408854/3335\n201\n444244728/2881\n202\n911881172/2997\n203\n669493958/615\n204\n161444428/741\n205\n124642881/95\n206\n937821806/4059\n207\n585618156/2429\n208\n650424478/3573\n209\n77630312/481\n210\n106798889/86\n211\n32390371/541\n212\n444307832/859\n213\n563697436/3907\n214\n158068166/1153\n215\n349194382/1129\n216\n30527827/1819\n217\n79532193/223\n218\n2757744/883\n219\n745048416/1985\n220\n894910366/1079\n221\n405900593/1371\n222\n574863919/2306\n223\n88799353/142\n224\n330959977/3665\n225\n470510621/876\n226\n491047243/2021\n227\n418392332/1453\n228\n331940253/2227\n229\n520804320/2443\n230\n115796625/1889\n231\n110055092/1693\n232\n999963745/718\n233\n963672463/54\n234\n633003249/1672\n235\n757294565/2288\n236\n575483501/3924\n237\n173800481/621\n238\n827503083/4010\n239\n999386349/1525\n240\n401947908/539\n241\n521064581/2231\n242\n306295181/2135\n243\n5176216/5\n244\n82707031/454\n245\n668973169/1104\n246\n191111037/118\n247\n370966705/1387\n248\n894765529/3855\n249\n131640557/473\n250\n730368473/1755\n251\n1058437925/1588\n252\n152629430/149\n253\n386721672/2293\n254\n705509233/19\n255\n113603419/210\n256\n135925075/249\n257\n315506/31\n258\n170044814/3995\n259\n454431564/499\n260\n485422735/3438\n261\n410984656/1001\n262\n174104388/209\n263\n225824691/170\n264\n990174/5\n265\n451025450/1887\n266\n190559411/528\n267\n3894728/17\n268\n708284523/3577\n269\n340171731/2542\n270\n48556568/277\n271\n79041422/939\n272\n171278851/411\n273\n324220837/2750\n274\n55268959/848\n275\n1044789482/4047\n276\n459669374/681\n277\n265566569/1051\n278\n571703339/2376\n279\n331527113/1324\n280\n17832350/1991\n281\n276987105/1076\n282\n743555434/2709\n283\n239039410/511\n284\n255886138/2561\n285\n21712371/4\n286\n372172685/1941\n287\n232891688/1141\n288\n306486271/412\n289\n178005019/2917\n290\n380234761/919\n291\n29920787/664\n292\n272459553/1679\n293\n203464330/1287\n294\n70413158/1003\n295\n93665891/224\n296\n523569863/3147\n297\n324584869/351\n298\n207123693/415\n299\n778019687/2305\n300\n642707882/2435\n301\n320947896/887\n302\n183370/541\n303\n43789988/2723\n304\n3332115/14\n305\n468838633/378\n306\n446322962/1127\n307\n180901952/487\n308\n237333198/1381\n309\n544353529/2376\n310\n492282259/345\n311\n783775135/1262\n312\n303501647/434\n313\n554569619/3745\n314\n59866327/87\n315\n77622871/466\n316\n342171529/190\n317\n527917433/1604\n318\n48491506/353\n319\n772160255/779\n320\n288439043/2425\n321\n1014678241/1340\n322\n11046909/23\n323\n504812440/1699\n324\n363221459/1556\n325\n204757644/115\n326\n616463015/3737\n327\n161357968/897\n328\n1069058723/1026\n329\n5845713/79\n330\n248908589/1999\n331\n976496330/1673\n332\n524461652/505\n333\n192859517/177\n334\n626354516/309\n335\n15815514/1753\n336\n304300970/2517\n337\n184831558/1273\n338\n1010548004/1777\n339\n371975459/2260\n340\n195187713/3293\n341\n585252140/3379\n342\n166776053/2001\n343\n350264068/1613\n344\n220967571/1915\n345\n124777385/3087\n346\n125658923/684\n347\n746839932/397\n348\n54214045/629\n349\n469016707/64\n350\n16537509/3430\n351\n274445955/1613\n352\n5243254/203\n353\n1052681612/1735\n354\n780961193/2140\n355\n133552048/2235\n356\n356235558/3583\n357\n120445721/613\n358\n221439679/523\n359\n121935655/1528\n360\n175522213/31\n361\n247523467/1805\n362\n15077110/97\n363\n2381831/121\n364\n90343419/782\n365\n790807679/3049\n366\n692488306/2329\n367\n825467724/421\n368\n132972331/1109\n369\n175519711/1297\n370\n113845916/1625\n371\n141746705/1686\n372\n195714698/1757\n373\n515823443/2580\n374\n182340475/267\n375\n11838285/859\n376\n459279751/745\n377\n1010606211/691\n378\n6245976/49\n379\n157467257/170\n380\n388518310/4069\n381\n340577965/3566\n382\n147820898/35\n383\n948395140/2339\n384\n189897725/2001\n385\n48109499/26\n386\n167501261/3367\n387\n749815573/679\n388\n922723225/79\n389\n513505961/3200\n390\n845737055/3074\n391\n362269861/642\n392\n641056811/861\n393\n205214561/268\n394\n94116695/1816\n395\n818147157/1688\n396\n296975603/1727\n397\n474847329/3793\n398\n870172856/1\n399\n497717373/1667\n400\n1052637586/1699\n401\n5231249/1516\n402\n170731394/385\n403\n81240774/1687\n404\n46826511/284\n405\n1005190637/489\n406\n674375883/3088\n407\n154222586/955\n408\n616965291/1531\n409\n661003426/1163\n410\n336569809/920\n411\n279469276/891\n412\n205409319/1051\n413\n1008429673/1745\n414\n539973586/951\n415\n122526144/1735\n416\n377898871/247\n417\n113909125/767\n418\n310790933/795\n419\n292796098/547\n420\n83474420/549\n421\n364925687/328\n422\n504973572/1855\n423\n327132421/786\n424\n16015209/61\n425\n500255475/587\n426\n476975452/1953\n427\n726874493/3359\n428\n137655/52\n429\n136898027/726\n430\n54063189/145\n431\n123195109/2811\n432\n55613423/737\n433\n356899507/446\n434\n116331253/247\n435\n28515859/3738\n436\n478216813/466\n437\n578139005/1716\n438\n862215655/3982\n439\n143925403/391\n440\n290454143/691\n441\n41098989/46\n442\n758044077/3011\n443\n139816571/635\n444\n443250629/3745\n445\n390533818/3369\n446\n531725573/2278\n447\n983118329/1422\n448\n815669299/1631\n449\n936256999/3496\n450\n332944031/709\n451\n114650563/1536\n452\n14346208/3101\n453\n365912936/1685\n454\n104547859/981\n455\n116256353/581\n456\n155053939/1357\n457\n363051047/178\n458\n525061731/4054\n459\n450850194/4091\n460\n417111077/2719\n461\n1017211553/3073\n462\n1022795453/736\n463\n514249670/1731\n464\n264610747/2053\n465\n824961760/4033\n466\n104188267/23\n467\n413163047/3291\n468\n260600391/1624\n469\n81723104/223\n470\n522529996/3729\n471\n511605411/782\n472\n37479265/708\n473\n15170731/474\n474\n936328528/27\n475\n989724764/169\n476\n541853205/2263\n477\n115925775/379\n478\n166119328/539\n479\n610493038/803\n480\n155841095/3829\n481\n194724131/519\n482\n973739403/3364\n483\n68553903/292\n484\n955663027/2460\n485\n30619783/901\n486\n499692402/1285\n487\n104115549/1700\n488\n223987488/527\n489\n667940064/3919\n490\n1002659906/2257\n491\n109691651/50\n492\n365685092/3463\n493\n134073536/329\n494\n192689532/727\n495\n4071539/81\n496\n17213908/1975\n497\n1008888190/3259\n498\n899051311/2218\n499\n914951238/2545\n500\n861749793/1825\n501\n91805743/485\n502\n328637433/2842\n503\n326833916/3377\n504\n867621945/274\n505\n1061380503/337\n506\n807567627/1592\n507\n885218691/452\n508\n508465636/3313\n509\n26181995/523\n510\n112273955/341\n511\n875282271/2125\n512\n130318571/876\n513\n935831747/2075\n514\n33910984/1921\n515\n746803107/172\n516\n859315879/2431\n517\n82701713/18\n518\n8443257/304\n519\n968778994/2563\n520\n683740285/2512\n521\n337467018/11\n522\n434558329/1168\n523\n948347263/690\n524\n129338841/725\n525\n88990423/564\n526\n11528035/2516\n527\n56978823/1069\n528\n91898405/3579\n529\n864107457/3178\n530\n711043712/3179\n531\n55518962/2013\n532\n498669589/1271\n533\n511712995/1746\n534\n950707695/1831\n535\n17971398/263\n536\n483652751/860\n537\n167381987/511\n538\n520966575/13\n539\n41650930/359\n540\n1013258677/3312\n541\n378939922/631\n542\n173917997/366\n543\n74781139/451\n544\n437800673/1168\n545\n609574728/485\n546\n765791182/3365\n547\n263904517/4034\n548\n33043589/294\n549\n351854093/2658\n550\n13951825/24\n551\n622119202/1911\n552\n94821109/1541\n553\n994958047/1319\n554\n564667529/1301\n555\n7107160/13\n556\n470644901/1542\n557\n49022773/3\n558\n74692339/2517\n559\n118382375/198\n560\n16725209/727\n561\n1061834791/205\n562\n316621642/3441\n563\n217507214/735\n564\n51591285/1049\n565\n246186321/220\n566\n455713942/605\n567\n338975997/2201\n568\n45396659/3588\n569\n656118202/3039\n570\n162112202/4033\n571\n454939861/2554\n572\n582065157/2773\n573\n635450309/1306\n574\n408766690/2519\n575\n313490523/176\n576\n573494887/1429\n577\n961961776/355\n578\n518688451/2446\n579\n500882611/685\n580\n39750824/361\n581\n26603293/873\n582\n184482382/181\n583\n811194479/257\n584\n10478569/29\n585\n70330807/33\n586\n991515633/3166\n587\n14832247/343\n588\n895729573/3997\n589\n906602261/3036\n590\n1055498923/1243\n591\n200172481/1729\n592\n177117936/727\n593\n62905497/1523\n594\n383857675/3516\n595\n159098863/3634\n596\n174825871/361\n597\n168795846/449\n598\n884116530/1489\n599\n80467480/79\n600\n922696569/2293\n601\n182711462/935\n602\n987856334/1837\n603\n395769857/1301\n604\n478876075/1103\n605\n436934778/3259\n606\n512328463/912\n607\n382590492/2377\n608\n526884029/703\n609\n515681021/2199\n610\n1070428401/1595\n611\n351038906/975\n612\n1055432261/2952\n613\n437144406/521\n614\n950553768/79\n615\n58693976/2207\n616\n345140487/889\n617\n407563503/980\n618\n237788721/3181\n619\n430203471/3394\n620\n63478318/517\n621\n115003589/4087\n622\n401845515/3302\n623\n92487663/127\n624\n12032853/242\n625\n290879947/1340\n626\n57042013/435\n627\n45145353/388\n628\n832410931/1751\n629\n254246625/908\n630\n5409344/37\n631\n613176431/2134\n632\n1045003758/2443\n633\n339966839/416\n634\n484580213/1071\n635\n154927414/481\n636\n110849969/354\n637\n831458500/3537\n638\n171634337/311\n639\n118060287/100\n640\n485118001/1799\n641\n1014646062/2431\n642\n945795288/1325\n643\n63926892/439\n644\n49724575/384\n645\n1017139849/972\n646\n292658245/823\n647\n109576797/82\n648\n497559507/2707\n649\n107359421/378\n650\n15800131/619\n651\n243803757/1052\n652\n478493927/1914\n653\n253627720/3719\n654\n933483667/1014\n655\n812868838/3327\n656\n102267071/391\n657\n251471463/1213\n658\n37701359/132\n659\n180974919/1015\n660\n12707228/267\n661\n65700485/471\n662\n324857750/2703\n663\n1047583219/212\n664\n12942485/453\n665\n108689885/288\n666\n388621391/682\n667\n726335964/841\n668\n47047647/380\n669\n343806754/2651\n670\n10956411/352\n671\n286614431/841\n672\n425190361/2434\n673\n196518516/313\n674\n813911286/2149\n675\n425814663/1643\n676\n784905935/732\n677\n86669916/97\n678\n836880501/1298\n679\n561322495/2587\n680\n213107714/865\n681\n263835332/725\n682\n19925305/3801\n683\n54405835/271\n684\n977565736/2495\n685\n916806433/2445\n686\n8454651/257\n687\n731346611/1948\n688\n130529861/1013\n689\n19232692/105\n690\n69787611/607\n691\n979178501/4080\n692\n898804478/785\n693\n690432591/3964\n694\n60557557/566\n695\n72549714/3175\n696\n214723065/311\n697\n59083059/1909\n698\n2495609/5\n699\n308930957/2658\n700\n13309073/24\n701\n717890068/1115\n702\n198743207/568\n703\n777491256/1667\n704\n637754783/1819\n705\n19097278/111\n706\n274353101/481\n707\n587667559/3242\n708\n519421698/1423\n709\n168626827/3377\n710\n225833703/3643\n711\n337136191/680\n712\n854336032/1747\n713\n700453479/868\n714\n274828886/445\n715\n114456429/719\n716\n169695637/373\n717\n631418061/775\n718\n361184398/915\n719\n3372116/21\n720\n29741800/2901\n721\n151393906/215\n722\n463251653/3993\n723\n29536061/143\n724\n751137715/3909\n725\n185627837/185\n726\n344571932/1377\n727\n504684814/3343\n728\n389723249/298\n729\n162218719/472\n730\n406949840/2703\n731\n41860713/3793\n732\n338692251/1718\n733\n477445147/3536\n734\n444666656/3189\n735\n132056963/448\n736\n131666998/2265\n737\n470381454/1339\n738\n106998166/93\n739\n53052853/19\n740\n131318162/193\n741\n40754221/1130\n742\n71169550/143\n743\n1056264983/3050\n744\n314643173/590\n745\n263251734/995\n746\n985867683/3161\n747\n55287850/469\n748\n43833213/182\n749\n22895343/1106\n750\n246216477/1861\n751\n42186155/1074\n752\n489646423/998\n753\n421307332/1791\n754\n31616736/2621\n755\n164491860/733\n756\n101137603/1098\n757\n73434567/928\n758\n257427417/518\n759\n434386387/614\n760\n82706062/263\n761\n62736871/145\n762\n166105967/583\n763\n19808247/22\n764\n71797385/42\n765\n293693365/2234\n766\n209477349/982\n767\n52327473/329\n768\n650841629/188\n769\n123844574/1587\n770\n652891043/4009\n771\n461235589/595\n772\n6488783/79\n773\n755497310/1643\n774\n29612433/346\n775\n294415757/2034\n776\n40208663/723\n777\n917580321/1570\n778\n102597532/1601\n779\n850950687/2774\n780\n159123322/165\n781\n970424738/2395\n782\n59858369/527\n783\n946781826/2803\n784\n163463766/923\n785\n249964623/967\n786\n869830643/38\n787\n7063214/441\n788\n227898687/3548\n789\n324232526/1865\n790\n943262146/1607\n791\n761241499/1437\n792\n976152335/1826\n793\n536243930/3283\n794\n952812386/1759\n795\n490876327/1965\n796\n848882751/2335\n797\n838901604/1817\n798\n958318866/829\n799\n855562801/1529\n800\n180015221/49\n801\n96761057/361\n802\n382972113/1018\n803\n145186919/1330\n804\n672580966/3649\n805\n714326038/2039\n806\n1008212593/3284\n807\n234888272/1799\n808\n6661405/1288\n809\n684551045/1233\n810\n989182830/1261\n811\n939973722/2393\n812\n449529776/3017\n813\n788725195/2612\n814\n418063756/1865\n815\n186353216/997\n816\n794054757/3190\n817\n999685237/3425\n818\n425791103/851\n819\n1007437860/1171\n820\n121026325/1087\n821\n769989278/2777\n822\n227494561/1025\n823\n851215211/388\n824\n1013027879/918\n825\n26154300/407\n826\n147084488/1623\n827\n201483396/13\n828\n972905617/3628\n829\n211918989/932\n830\n20019352/463\n831\n363002237/1269\n832\n1008447963/2801\n833\n85048709/921\n834\n503834669/1858\n835\n378153182/1015\n836\n264733213/1047\n837\n20973935/132\n838\n439793669/1041\n839\n53565799/32\n840\n107063295/602\n841\n758740973/2485\n842\n8690312/885\n843\n305802881/3121\n844\n89348165/116\n845\n194808777/386\n846\n23404050/2497\n847\n666073785/2411\n848\n908304901/117\n849\n57861713/785\n850\n446556419/1478\n851\n6391223/16\n852\n654013004/519\n853\n27754117/901\n854\n1049280650/3393\n855\n92414515/336\n856\n699532398/943\n857\n158172325/909\n858\n133674923/1313\n859\n333563527/1183\n860\n831112676/797\n861\n50633033/227\n862\n286816595/269\n863\n124327319/130\n864\n41836723/323\n865\n199162047/979\n866\n97344673/137\n867\n782237115/862\n868\n832880499/593\n869\n32898785/1274\n870\n218427553/4051\n871\n951442073/134\n872\n207508932/1171\n873\n739724761/1741\n874\n14410061/1099\n875\n692350741/1374\n876\n332962293/3628\n877\n465768205/163\n878\n39977161/25\n879\n908630640/3463\n880\n102641077/410\n881\n915663859/1944\n882\n35097361/162\n883\n372536189/994\n884\n349546851/2357\n885\n412312447/2629\n886\n179276314/2053\n887\n21974177/657\n888\n707932774/2413\n889\n769952360/269\n890\n467734324/411\n891\n807782351/756\n892\n19934903/2548\n893\n667194347/2803\n894\n783594252/1423\n895\n96177077/700\n896\n637881563/1466\n897\n413005009/3639\n898\n26389861/370\n899\n1757421/181\n900\n898660330/2801\n901\n866676600/2137\n902\n1014287045/538\n903\n450603649/225\n904\n84168002/471\n905\n222885833/3611\n906\n595956468/401\n907\n156100133/440\n908\n512934904/2741\n909\n225501600/1471\n910\n305696575/1174\n911\n513599458/567\n912\n120977909/483\n913\n94388705/107\n914\n2172137/1\n915\n94873532/1993\n916\n954687194/3015\n917\n100904111/181\n918\n661581938/2639\n919\n443102983/2999\n920\n317328455/872\n921\n70861189/106\n922\n495946666/1209\n923\n495462453/353\n924\n285381002/1199\n925\n97777899/2854\n926\n183748589/1157\n927\n1946493/20\n928\n245527763/2646\n929\n970409225/124\n930\n206947142/1009\n931\n930279384/2989\n932\n62694913/4086\n933\n127367339/1171\n934\n277363953/3301\n935\n7012562/17\n936\n214331839/85\n937\n954230845/414\n938\n125607827/937\n939\n773174656/695\n940\n1031923515/3107\n941\n165357374/185\n942\n133318897/361\n943\n148005264/2429\n944\n560790853/850\n945\n589498882/3235\n946\n111906592/1087\n947\n147459739/334\n948\n991072561/3006\n949\n149675569/1413\n950\n1019934227/1565\n951\n526437193/2034\n952\n77184359/3543\n953\n791670001/2195\n954\n1021110073/1436\n955\n245333613/950\n956\n151188701/1359\n957\n389051007/2254\n958\n1069255569/3722\n959\n227580355/1628\n960\n611834651/279\n961\n596369573/118\n962\n51828001/360\n963\n471466765/1098\n964\n66803769/863\n965\n65338997/45\n966\n412657875/283\n967\n248992932/2519\n968\n631871709/409\n969\n385853878/853\n970\n739558833/3031\n971\n735098969/2787\n972\n411566655/1141\n973\n666316808/1869\n974\n35492236/3243\n975\n486214139/1368\n976\n1019560486/2021\n977\n805834176/1079\n978\n331676869/68\n979\n825646559/535\n980\n57229033/2842\n981\n230997022/549\n982\n27511556/111\n983\n472123379/1185\n984\n259809573/44\n985\n626382684/2597\n986\n141739800/401\n987\n51033990/569\n988\n287527729/3541\n989\n68941607/1514\n990\n168906840/1031\n991\n592326591/925\n992\n258439732/3069\n993\n1033751077/38\n994\n260274196/971\n995\n736595751/847\n996\n509510929/1838\n997\n61219206/139\n998\n110231395/1036\n999\n815870944/1649\n1000\n34557047/1900\n"
+            ],
+            "output": [
+                "1 1/2\n2 3/2\n3 2/5\n4 1346269/1860498\n5 10000000/9999999\n",
+				"1\n1/2\n2\n3/2\n3\n2/5\n4\n1346269/1860498\n5\n10000000/9999999\n6\n1/129\n7\n128/127\n8\n127/1073741944\n9\n1/153391690\n10\n1/257\n11\n256/255\n12\n85/357913984\n13\n8/1073741817\n14\n1/513\n15\n512/511\n16\n73/153391760\n17\n1/119304648\n18\n1/1025\n19\n1024/1023\n20\n1/1049602\n21\n10/1073741827\n22\n1/2049\n23\n2048/2047\n24\n2047/1073743360\n25\n1/97612894\n26\n1/4097\n27\n4096/4095\n28\n65/17043584\n29\n4/357913943\n30\n1/8193\n31\n8192/8191\n32\n8191/1073749984\n33\n13/1073741814\n34\n1/16385\n35\n16384/16383\n36\n5461/357919400\n37\n2/153391689\n38\n1/32769\n39\n32768/32767\n40\n1/32770\n41\n5/357913944\n42\n1/65537\n43\n65536/65535\n44\n21845/357924864\n45\n16/1073741809\n46\n1/131073\n47\n131072/131071\n48\n131071/1073856512\n49\n17/1073741816\n50\n1/262145\n51\n262144/262143\n52\n4161/17047552\n53\n2/119304647\n54\n1/524289\n55\n524288/524287\n56\n524287/1074262016\n57\n19/1073741822\n58\n1/1048577\n59\n1048576/1048575\n60\n1025/1050624\n61\n20/1073741837\n62\n1/2097153\n63\n2097152/2097151\n64\n299593/153691136\n65\n1/51130564\n66\n1/4194305\n67\n4194304/4194303\n68\n1398101/359311872\n69\n2/97612893\n70\n1/8388609\n71\n8388608/8388607\n72\n8388607/1082130176\n73\n23/1073741842\n74\n1/16777217\n75\n16777216/16777215\n76\n266305/17309824\n77\n8/357913939\n78\n1/33554433\n79\n33554432/33554431\n80\n1082401/35719232\n81\n25/1073741802\n82\n1/67108865\n83\n67108864/67108863\n84\n22369621/380283552\n85\n26/1073741827\n86\n1/134217729\n87\n134217728/134217727\n88\n19173961/172565648\n89\n3/119304646\n90\n1/268435457\n91\n268435456/268435455\n92\n89478485/447392424\n93\n4/153391691\n94\n1/536870913\n95\n536870912/536870911\n96\n536870911/1610612732\n97\n29/1073741846\n98\n1/1073741825\n99\n1073741824/1073741823\n100\n1/2\n101\n10/357913949\n102\n1288/181713857\n103\n2193/67424477\n104\n3983/168656615\n105\n1441/1002172977\n106\n2012/572218429\n107\n1637/314245891\n108\n1753/368493803\n109\n1306/814609873\n110\n5/1781141\n111\n458/303629385\n112\n529/574539004\n113\n983/485892930\n114\n3750/401609591\n115\n2001/924514738\n116\n1183/34148017\n117\n3547/121207673\n118\n2302/952500569\n119\n928/368586533\n120\n1414/24501643\n121\n3941/685086954\n122\n2469/814761623\n123\n100/967196601\n124\n95/130916508\n125\n964/90129775\n126\n194/21614189\n127\n1726/469176149\n128\n1339/507021354\n129\n2000/255635287\n130\n544/25849455\n131\n621/155907014\n132\n222/623254501\n133\n314/214757277\n134\n727/719707936\n135\n547/21143766\n136\n461/311483497\n137\n4087/60449332\n138\n1631/1015311972\n139\n1834/101023135\n140\n3267/860357248\n141\n3163/40922424\n142\n3403/421463738\n143\n589/1060248578\n144\n3811/670099066\n145\n2784/748386275\n146\n3883/286974960\n147\n1008/139001965\n148\n1783/917578462\n149\n1545/961030256\n150\n3792/640593217\n151\n1383/416346128\n152\n881/297142236\n153\n3989/14720980\n154\n527/36307413\n155\n1753/832728266\n156\n1538/1007021727\n157\n135/1018954402\n158\n2797/583931067\n159\n1665/585200942\n160\n461/81279859\n161\n389/19909664\n162\n1351/42801896\n163\n2983/138422780\n164\n113/53468008\n165\n220/458926151\n166\n2347/798662572\n167\n1901/629453595\n168\n249/220240256\n169\n555/122303336\n170\n424/546528841\n171\n2611/1066065653\n172\n185/248996403\n173\n16/869719315\n174\n1296/1025864375\n175\n922/471033127\n176\n3289/113385930\n177\n2760/331148903\n178\n1269/500179886\n179\n644/34891627\n180\n1723/46158438\n181\n1430/442744349\n182\n1811/101840346\n183\n1297/961100527\n184\n2817/85586234\n185\n3323/928681801\n186\n2230/46314039\n187\n1105/88688181\n188\n298/279877697\n189\n274/160940061\n190\n2037/759125239\n191\n2521/1069947065\n192\n3811/69738543\n193\n5/299346\n194\n669/168267943\n195\n587/299336535\n196\n1628/213486881\n197\n677/196357774\n198\n1282/7503525\n199\n509/17749668\n200\n3335/679406881\n201\n2881/444247029\n202\n2997/911880241\n203\n615/669494497\n204\n741/161444099\n205\n95/124642914\n206\n4059/937821799\n207\n2429/585618925\n208\n3573/650422643\n209\n481/77630235\n210\n86/106798881\n211\n541/32390592\n212\n859/444307911\n213\n3907/563694763\n214\n1153/158067139\n215\n1129/349194857\n216\n1819/30526908\n217\n223/79532146\n218\n883/2758357\n219\n1985/745049399\n220\n1079/894910017\n221\n1371/405900040\n222\n2306/574863867\n223\n142/88799337\n224\n3665/330957348\n225\n876/470510479\n226\n2021/491047602\n227\n1453/418391821\n228\n2227/331939582\n229\n2443/520805375\n230\n1889/115796664\n231\n1693/110053531\n232\n718/999964225\n233\n54/963672479\n234\n1672/633003383\n235\n2288/757295083\n236\n3924/575484559\n237\n621/173799922\n238\n4010/827500107\n239\n1525/999386926\n240\n539/401947415\n241\n2231/521064522\n242\n2135/306293964\n243\n5/5176219\n244\n454/82707415\n245\n1104/668972159\n246\n118/191111141\n247\n1387/370965948\n248\n3855/894767876\n249\n473/131640230\n250\n1755/730368922\n251\n1588/1058437535\n252\n149/152629403\n253\n2293/386723279\n254\n19/705509218\n255\n210/113603351\n256\n249/135924908\n257\n31/315499\n258\n3995/170045541\n259\n499/454431567\n260\n3438/485423771\n261\n1001/410985493\n262\n209/174104451\n263\n170/225824679\n264\n5/990171\n265\n1887/451026595\n266\n528/190558909\n267\n17/3894723\n268\n3577/708282594\n269\n2542/340171691\n270\n277/48556585\n271\n939/79042045\n272\n411/171278552\n273\n2750/324220913\n274\n848/55268689\n275\n4047/1044785887\n276\n681/459669049\n277\n1051/265565740\n278\n2376/571701517\n279\n1324/331528115\n280\n1991/17832433\n281\n1076/276986115\n282\n2709/743552825\n283\n511/239039415\n284\n2561/255886175\n285\n4/21712369\n286\n1941/372171700\n287\n1141/232890755\n288\n412/306486093\n289\n2917/178006080\n290\n919/380234982\n291\n664/29920885\n292\n1679/272458218\n293\n1287/203463191\n294\n1003/70413057\n295\n224/93665981\n296\n3147/523572358\n297\n351/324585068\n298\n415/207123912\n299\n2305/778018968\n300\n2435/642706703\n301\n887/320948281\n302\n541/182887\n303\n2723/43789861\n304\n14/3332123\n305\n378/468838373\n306\n1127/446323023\n307\n487/180901549\n308\n1381/237334455\n309\n2376/544355807\n310\n345/492282536\n311\n1262/783773995\n312\n434/303501603\n313\n3745/554568306\n314\n87/59866292\n315\n466/77622699\n316\n190/342171421\n317\n1604/527917171\n318\n353/48491361\n319\n779/772159726\n320\n2425/288436932\n321\n1340/1014678059\n322\n23/11046914\n323\n1699/504813213\n324\n1556/363220481\n325\n115/204757701\n326\n3737/616466710\n327\n897/161358413\n328\n1026/1069058587\n329\n79/5845734\n330\n1999/248908378\n331\n1673/976495277\n332\n505/524461223\n333\n177/192859414\n334\n309/626354659\n335\n1753/15813865\n336\n2517/304302079\n337\n1273/184831093\n338\n1777/1010549601\n339\n2260/371973601\n340\n3293/195187558\n341\n3379/585250355\n342\n2001/166776640\n343\n1613/350263445\n344\n1915/220966554\n345\n3087/124778782\n346\n684/125658409\n347\n397/746839617\n348\n629/54213604\n349\n64/469016765\n350\n3430/16537981\n351\n1613/274446654\n352\n203/5243117\n353\n1735/1052680163\n354\n2140/780962747\n355\n2235/133550567\n356\n3583/356233243\n357\n613/120445502\n358\n523/221439336\n359\n1528/121934673\n360\n31/175522190\n361\n1805/247524858\n362\n97/15077183\n363\n121/2381818\n364\n782/90343155\n365\n3049/790809238\n366\n2329/692486479\n367\n421/825467357\n368\n1109/132971414\n369\n1297/175519824\n370\n1625/113847459\n371\n1686/141745765\n372\n1757/195715033\n373\n2580/515823097\n374\n267/182340674\n375\n859/11838332\n376\n745/459279174\n377\n691/1010606794\n378\n49/6245937\n379\n170/157467093\n380\n4069/388518275\n381\n3566/340581525\n382\n35/147820917\n383\n2339/948395859\n384\n2001/189898078\n385\n26/48109507\n386\n3367/167498404\n387\n679/749815000\n388\n79/922723174\n389\n3200/513505239\n390\n3074/845734519\n391\n642/362270153\n392\n861/641057428\n393\n268/205214307\n394\n1816/94117153\n395\n1688/818147715\n396\n1727/296975964\n397\n3793/474847804\n398\n1/870172857\n399\n1667/497716674\n400\n1699/1052639187\n401\n1516/5230667\n402\n385/170731651\n403\n1687/81239257\n404\n284/46826749\n405\n489/1005190564\n406\n3088/674372965\n407\n955/154222359\n408\n1531/616964062\n409\n1163/661003097\n410\n920/336569351\n411\n891/279468389\n412\n1051/205408714\n413\n1745/1008429112\n414\n951/539973455\n415\n1735/122526991\n416\n247/377898652\n417\n767/113909050\n418\n795/310790152\n419\n547/292796393\n420\n549/83474833\n421\n328/364925809\n422\n1855/504971903\n423\n786/327133193\n424\n61/16015220\n425\n587/500254914\n426\n1953/476977163\n427\n3359/726877194\n428\n52/137685\n429\n726/136897627\n430\n145/54063166\n431\n2811/123197474\n432\n737/55613880\n433\n446/356899855\n434\n247/116331138\n435\n3738/28514807\n436\n466/478216965\n437\n1716/578137831\n438\n3982/862217319\n439\n391/143925278\n440\n691/290453664\n441\n46/41099009\n442\n3011/758045610\n443\n635/139816474\n444\n3745/443247046\n445\n3369/390531773\n446\n2278/531724557\n447\n1422/983119465\n448\n1631/815668318\n449\n3496/936260033\n450\n709/332943806\n451\n1536/114651197\n452\n3101/14347345\n453\n1685/365914579\n454\n981/104547386\n455\n581/116255780\n456\n1357/155054486\n457\n178/363051003\n458\n4054/525058051\n459\n4091/450851207\n460\n2719/417113470\n461\n3073/1017209710\n462\n736/1022795107\n463\n1731/514249945\n464\n2053/264609540\n465\n4033/824958705\n466\n23/104188260\n467\n3291/413164270\n468\n1624/260601297\n469\n223/81723185\n470\n3729/522533441\n471\n782/511604835\n472\n708/37478819\n473\n474/15170483\n474\n27/936328535\n475\n169/989724747\n476\n2263/541854498\n477\n379/115925580\n478\n539/166119733\n479\n803/610493355\n480\n3829/155843334\n481\n519/194724646\n482\n3364/973737385\n483\n292/68553821\n484\n2460/955661033\n485\n901/30620286\n486\n1285/499691933\n487\n1700/104115751\n488\n527/223987281\n489\n3919/667941223\n490\n2257/1002659767\n491\n50/109691699\n492\n3463/365683193\n493\n329/134073637\n494\n727/192689533\n495\n81/4071472\n496\n1975/17212317\n497\n3259/1008885811\n498\n2218/899052455\n499\n2545/914952117\n500\n1825/861749182\n501\n485/91806042\n502\n2842/328634749\n503\n3377/326835089\n504\n274/867621973\n505\n337/1061380812\n506\n1592/807568909\n507\n452/885218753\n508\n3313/508463027\n509\n523/26182334\n510\n341/112274204\n511\n2125/875282104\n512\n876/130318585\n513\n2075/935832778\n514\n1921/33909921\n515\n172/746803097\n516\n2431/859316036\n517\n18/82701709\n518\n304/8443031\n519\n2563/968779805\n520\n2512/683739763\n521\n11/337467011\n522\n1168/434558647\n523\n690/948347507\n524\n725/129338984\n525\n564/88990493\n526\n2516/11526073\n527\n1069/56979784\n528\n3579/91901140\n529\n3178/864104833\n530\n3179/711040611\n531\n2013/55520131\n532\n1271/498670130\n533\n1746/511713635\n534\n1831/950707072\n535\n263/17971497\n536\n860/483652029\n537\n511/167381778\n538\n13/520966564\n539\n359/41651071\n540\n3312/1013258075\n541\n631/378939665\n542\n366/173917789\n543\n451/74780834\n544\n1168/437801039\n545\n485/609575107\n546\n3365/765791933\n547\n4034/263908077\n548\n294/33043789\n549\n2658/351854065\n550\n24/13951847\n551\n1911/622119521\n552\n1541/94822056\n553\n1319/994957898\n554\n1301/564666822\n555\n13/7107157\n556\n1542/470645869\n557\n3/49022774\n558\n2517/74694128\n559\n198/118382263\n560\n727/16724788\n561\n205/1061834624\n562\n3441/316622147\n563\n735/217507681\n564\n1049/51591502\n565\n220/246186219\n566\n605/455714323\n567\n2201/338973822\n568\n3588/45397681\n569\n3039/656118959\n570\n4033/162112767\n571\n2554/454940517\n572\n2773/582065200\n573\n1306/635450941\n574\n2519/408767203\n575\n176/313490645\n576\n1429/573496250\n577\n355/961961789\n578\n2446/518687055\n579\n685/500882624\n580\n361/39751123\n581\n873/26603438\n582\n181/184482317\n583\n257/811194350\n584\n29/10478542\n585\n33/70330802\n586\n3166/991517965\n587\n343/14832108\n588\n3997/895729824\n589\n3036/906603199\n590\n1243/1055499164\n591\n1729/200172282\n592\n727/177117903\n593\n1523/62904964\n594\n3516/383857409\n595\n3634/159097811\n596\n361/174826094\n597\n449/168796029\n598\n1489/884117129\n599\n79/80467449\n600\n2293/922698366\n601\n935/182711783\n602\n1837/987857373\n603\n1301/395770252\n604\n1103/478875370\n605\n3259/436936741\n606\n912/512328161\n607\n2377/382591955\n608\n703/526884148\n609\n2199/515682964\n610\n1595/1070426854\n611\n975/351038119\n612\n2952/1055433715\n613\n521/437144131\n614\n79/950553819\n615\n2207/58694147\n616\n889/345140454\n617\n980/407564237\n618\n3181/237786684\n619\n3394/430206075\n620\n517/63478787\n621\n4087/115000510\n622\n3302/401844775\n623\n127/92487710\n624\n242/12032837\n625\n1340/290879713\n626\n435/57042392\n627\n388/45145739\n628\n1751/832410102\n629\n908/254246995\n630\n37/5409345\n631\n2134/613175751\n632\n2443/1045004729\n633\n416/339966441\n634\n1071/484579468\n635\n481/154927495\n636\n354/110849965\n637\n3537/831458513\n638\n311/171634090\n639\n100/118060213\n640\n1799/485116880\n641\n2431/1014648205\n642\n1325/945794587\n643\n439/63927029\n644\n384/49724897\n645\n972/1017140483\n646\n823/292658532\n647\n82/109576813\n648\n2707/497558056\n649\n378/107359321\n650\n619/15800438\n651\n1052/243803503\n652\n1914/478492675\n653\n3719/253625285\n654\n1014/933484007\n655\n3327/812866385\n656\n391/102266984\n657\n1213/251471088\n658\n132/37701397\n659\n1015/180975096\n660\n267/12707167\n661\n471/65700508\n662\n2703/324859657\n663\n212/1047583313\n664\n453/12942388\n665\n288/108689923\n666\n682/388621955\n667\n841/726335951\n668\n380/47047573\n669\n2651/343806975\n670\n352/10956645\n671\n841/286613692\n672\n2434/425188389\n673\n313/196518401\n674\n2149/813911085\n675\n1643/425813028\n676\n732/784905397\n677\n97/86669957\n678\n1298/836881413\n679\n2587/561324264\n680\n865/213108061\n681\n725/263834893\n682\n3801/19928180\n683\n271/54405814\n684\n2495/977563669\n685\n2445/916804202\n686\n257/8454664\n687\n1948/731346201\n688\n1013/130529356\n689\n105/19232693\n690\n607/69787790\n691\n4080/979176619\n692\n785/898803917\n693\n3964/690430773\n694\n566/60557953\n695\n3175/72550961\n696\n311/214722840\n697\n1909/59082132\n698\n5/2495606\n699\n2658/308929117\n700\n24/13309063\n701\n1115/717889857\n702\n568/198743761\n703\n1667/777491345\n704\n1819/637755302\n705\n111/19097267\n706\n481/274352940\n707\n3242/587664427\n708\n1423/519420953\n709\n3377/168624032\n710\n3643/225836366\n711\n680/337136169\n712\n1747/854336535\n713\n868/700454253\n714\n445/274829329\n715\n719/114456634\n716\n373/169695944\n717\n775/631417314\n718\n915/361185227\n719\n21/3372097\n720\n2901/29743205\n721\n215/151393819\n722\n3993/463248130\n723\n143/29535952\n724\n3909/751133984\n725\n185/185627758\n726\n1377/344571127\n727\n3343/504683891\n728\n298/389723465\n729\n472/162218505\n730\n2703/406947787\n731\n3793/41862176\n732\n1718/338692815\n733\n3536/477448117\n734\n3189/444665719\n735\n448/132057405\n736\n2265/131668697\n737\n1339/470382539\n738\n93/106998089\n739\n19/53052856\n740\n193/131317975\n741\n1130/40753809\n742\n143/71169647\n743\n3050/1056265667\n744\n590/314643157\n745\n995/263251521\n746\n3161/985866126\n747\n469/55287811\n748\n182/43833093\n749\n1106/22896375\n750\n1861/246217150\n751\n1074/42186211\n752\n998/489646067\n753\n1791/421306229\n754\n2621/31614889\n755\n733/164492467\n756\n1098/101137055\n757\n928/73435353\n758\n518/257427805\n759\n614/434386159\n760\n263/82705947\n761\n145/62736994\n762\n583/166105506\n763\n22/19808231\n764\n42/71797381\n765\n2234/293694489\n766\n982/209478221\n767\n329/52327756\n768\n188/650841607\n769\n1587/123843277\n770\n4009/652892374\n771\n595/461235156\n772\n79/6488784\n773\n1643/755495855\n774\n346/29612733\n775\n2034/294417073\n776\n723/40208458\n777\n1570/917581689\n778\n1601/102597835\n779\n2774/850951019\n780\n165/159123233\n781\n2395/970423387\n782\n527/59858640\n783\n2803/946782021\n784\n923/163463757\n785\n967/249963740\n786\n38/869830675\n787\n441/7063339\n788\n3548/227902229\n789\n1865/324233569\n790\n1607/943261041\n791\n1437/761241320\n792\n1826/976153911\n793\n3283/536243227\n794\n1759/952812577\n795\n1965/490875008\n796\n2335/848884074\n797\n1817/838899843\n798\n829/958318357\n799\n1529/855564034\n800\n49/180015268\n801\n361/96761296\n802\n1018/382972105\n803\n1330/145187991\n804\n3649/672582745\n805\n2039/714325819\n806\n3284/1008212667\n807\n1799/234889995\n808\n1288/6660379\n809\n1233/684551194\n810\n1261/989183677\n811\n2393/939974257\n812\n3017/449527173\n813\n2612/788726905\n814\n1865/418062369\n815\n997/186352303\n816\n3190/794051653\n817\n3425/999682488\n818\n851/425791832\n819\n1171/1007437435\n820\n1087/121025748\n821\n2777/769987741\n822\n1025/227493714\n823\n388/851215105\n824\n918/1013028415\n825\n407/26154561\n826\n1623/147085885\n827\n13/201483389\n828\n3628/972903251\n829\n932/211918263\n830\n463/20019499\n831\n1269/363001546\n832\n2801/1008448500\n833\n921/85048018\n834\n1858/503834909\n835\n1015/378152753\n836\n1047/264733640\n837\n132/20973949\n838\n1041/439794076\n839\n32/53565817\n840\n602/107063891\n841\n2485/758741672\n842\n885/8690203\n843\n3121/305803884\n844\n116/89348095\n845\n386/194808429\n846\n2497/23402215\n847\n2411/666073634\n848\n117/908304842\n849\n785/57862202\n850\n1478/446556119\n851\n16/6391225\n852\n519/654012835\n853\n901/27753790\n854\n3393/1049279671\n855\n336/92414717\n856\n943/699531635\n857\n909/158171492\n858\n1313/133674198\n859\n1183/333564480\n860\n797/831112915\n861\n227/50633256\n862\n269/286816490\n863\n130/124327191\n864\n323/41836750\n865\n979/199162704\n866\n137/97344794\n867\n862/782236855\n868\n593/832880814\n869\n1274/32899493\n870\n4051/218428236\n871\n134/951441945\n872\n1171/207508691\n873\n1741/739723068\n874\n1099/14409016\n875\n1374/692351345\n876\n3628/332960735\n877\n163/465768156\n878\n25/39977164\n879\n3463/908630555\n880\n410/102641413\n881\n1944/915663845\n882\n162/35097401\n883\n994/372535397\n884\n2357/349546420\n885\n2629/412312838\n886\n2053/179278083\n887\n657/21974524\n888\n2413/707931171\n889\n269/769952397\n890\n411/467734145\n891\n756/807782845\n892\n2548/19933653\n893\n2803/667193424\n894\n1423/783594069\n895\n700/96176623\n896\n1466/637882947\n897\n3639/413007962\n898\n370/26389529\n899\n181/1757418\n900\n2801/898660141\n901\n2137/866676155\n902\n538/1014286609\n903\n225/450603476\n904\n471/84167869\n905\n3611/222888506\n906\n401/595956283\n907\n440/156100547\n908\n2741/512936425\n909\n1471/225502587\n910\n1174/305695623\n911\n567/513599855\n912\n483/120977560\n913\n107/94388720\n914\n1/2172138\n915\n1993/94874019\n916\n3015/954685171\n917\n181/100904192\n918\n2639/661583633\n919\n2999/443104516\n920\n872/317327969\n921\n106/70861129\n922\n1209/495947159\n923\n353/495462556\n924\n1199/285380167\n925\n2854/97775327\n926\n1157/183748164\n927\n20/1946487\n928\n2646/245530147\n929\n124/970409139\n930\n1009/206947685\n931\n2989/930280457\n932\n4086/62692169\n933\n1171/127368488\n934\n3301/277365796\n935\n17/7012557\n936\n85/214331916\n937\n414/954230909\n938\n937/125608432\n939\n695/773174629\n940\n3107/1031922984\n941\n185/165357321\n942\n361/133318952\n943\n2429/148004821\n944\n850/560790097\n945\n3235/589500103\n946\n1087/111905621\n947\n334/147459923\n948\n3006/991074821\n949\n1413/149675546\n950\n1565/1019935288\n951\n2034/526436465\n952\n3543/77187694\n953\n2195/791669104\n954\n1436/1021110251\n955\n950/245332837\n956\n1359/151187440\n957\n2254/389050079\n958\n3722/1069253029\n959\n1628/227580769\n960\n279/611834518\n961\n118/596369589\n962\n360/51827879\n963\n1098/471465989\n964\n863/66803302\n965\n45/65338978\n966\n283/412658138\n967\n2519/248990697\n968\n409/631871624\n969\n853/385854369\n970\n3031/739560074\n971\n2787/735096484\n972\n1141/411565578\n973\n1869/666315703\n974\n3243/35493791\n975\n1368/486213613\n976\n2021/1019561821\n977\n1079/805834675\n978\n68/331676935\n979\n535/825646456\n980\n2842/57226833\n981\n549/230996909\n982\n111/27511477\n983\n1185/472123726\n984\n44/259809615\n985\n2597/626381549\n986\n401/141739531\n987\n569/51033799\n988\n3541/287527130\n989\n1514/68942915\n990\n1031/168907527\n991\n925/592327384\n992\n3069/258438179\n993\n38/1033751061\n994\n971/260274049\n995\n847/736595584\n996\n1838/509511193\n997\n139/61219083\n998\n1036/110230441\n999\n1649/815872271\n1000\n1900/34555453\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3410,7 +4120,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " rationalsequence2",
+            "problemID": "rationalsequence2",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.5"
@@ -3420,9 +4130,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4\n1 1/1\n2 1/3\n3 5/2\n4 2178309/1346269\n"
+            ],
+            "output": [
+                "1 1\n2 4\n3 11\n4 1431655765\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3444,7 +4160,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " rationalsequence3",
+            "problemID": "rationalsequence3",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.7"
@@ -3454,9 +4170,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "4\n1 1\n2 4\n3 11\n4 1431655765\n"
+            ],
+            "output": [
+                "1 1/1\n2 1/3\n3 5/2\n4 2178309/1346269\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3478,7 +4200,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " arbitrage",
+            "problemID": "arbitrage",
             "CPU": " 3 seconds",
             "memory": " 1024 MB",
             "difficulty": "3.7"
@@ -3488,9 +4210,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "2\nCZK EUR\n2\nCZK EUR 25:1\nEUR CZK 1:25\n2\nGBP USD\n2\nUSD GBP 8:5\nGBP USD 5:9\n3\nBON DEM CZK\n3\nDEM BON 1:6\nBON CZK 1:5\nDEM CZK 1:20\n3\nCZK EUR GBP\n3\nCZK EUR 24:1\nEUR GBP 5:4\nGBP CZK 1:30\n3\nCZK USD GBP\n4\nCZK USD 28:1\nCZK GBP 31:1\nGBP CZK 1:31\nUSD GBP 1:1\n0\n"
+            ],
+            "output": [
+                "Ok\nArbitrage\nOk\nOk\nArbitrage\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3514,7 +4242,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " arcade",
+            "problemID": "arcade",
             "CPU": " 3 seconds",
             "memory": " 1024 MB",
             "difficulty": "6.2"
@@ -3525,9 +4253,17 @@
             "license": "https://licensebuttons.net/l/by-sa/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "4\n40 30 30 40 20 40 50 30 30 50\n0.0 0.0 0.45 0.45 0.1\n0.0 0.3 0.3 0.3 0.1\n0.3 0.0 0.3 0.3 0.1\n0.0 0.3 0.3 0.3 0.1\n0.2 0.2 0.2 0.2 0.2\n0.3 0.0 0.3 0.3 0.1\n0.0 0.8 0.0 0.0 0.2\n0.4 0.4 0.0 0.0 0.2\n0.4 0.4 0.0 0.0 0.2\n0.8 0.0 0.0 0.0 0.2\n",
+                "2\n100 50 50\n0.0 0.0 0.45 0.45 0.1\n0.0 0.90 0.0 0.0 0.10\n0.90 0.0 0.0 0.0 0.10\n"
+            ],
+            "output": [
+                "32.6405451448\n",
+                "76.31578947368\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3549,7 +4285,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " arcticnetwork",
+            "problemID": "arcticnetwork",
             "CPU": " 2 seconds",
             "memory": " 1024 MB",
             "difficulty": "4.5"
@@ -3559,9 +4295,15 @@
             "source": ""
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "1",
+            "input": [
+                "1\n2 4\n0 100\n0 300\n0 600\n150 750\n"
+            ],
+            "output": [
+                "212.13\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""
@@ -3585,7 +4327,7 @@
             ]
         },
         "sidebar": {
-            "problemID": " areal",
+            "problemID": "areal",
             "CPU": " 1 second",
             "memory": " 1024 MB",
             "difficulty": "1.6"
@@ -3596,9 +4338,17 @@
             "license": "https://licensebuttons.net/l/by/3.0/80x15.png"
         },
         "testCases": {
-            "numTestCases": "",
-            "input": [],
-            "outut": []
+            "numTestCases": "2",
+            "input": [
+                "16\n",
+                "5\n"
+            ],
+            "output": [
+                "16\n",
+                "8.94427190999915878564\n"
+			],
+			"desc": [
+			]
         },
         "data": {
             "category": ""

@@ -78,6 +78,8 @@ Kattis Helper Changelog:
 	Added rendering of random questions in the index page
 	Added placeholder stuff for IDE
 	
+	Hooked test case context menu to use the internal test cases instead of only the sample test cases
+	
 To do:
 Problems list: add a next button, and show only 100 entries (atm we only have 100 so it's ok)
 
