@@ -135,11 +135,11 @@ function renderForum() {
 
 function renderSpecificTestCase(num) {
 	console.log("rendering specific test case");
-	if (document.getElementById('problemTestCase').childNodes.item(2) == ("testCase" + num).toString()) {
+	if (document.getElementById('problemTestCase').childNodes.item(4) == ("testCase" + num).toString()) {
 		console.log("already at test case" + num);
 		return;
 	} else if (document.getElementById('problemLeft').hasChildNodes()) {
-		document.getElementById('testCaseUnused').appendChild(document.getElementById('problemTestCase').childNodes.item(2));
+		document.getElementById('testCaseUnused').appendChild(document.getElementById('problemTestCase').childNodes.item(4));
 	}
 	document.getElementById('problemTestCase').appendChild(document.getElementById("testCase" + num));
 }

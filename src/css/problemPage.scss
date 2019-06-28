@@ -41,6 +41,12 @@
 	flex-direction: row;
 }
 
+.testCaseWrapperVert {
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+}
+
 .testCaseWrapper {
 	padding: 1em;
 	max-width: 800px;

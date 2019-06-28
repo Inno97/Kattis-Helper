@@ -227,6 +227,16 @@ function generateTestCase() {
 	problemLeft.id = "problemTestCase";
 	document.getElementById('menu').appendChild(problemLeft);
 	
+	const title = document.createElement("div");
+	title.classList.add("problemTitle");
+	title.innerText = userStorage.getItem('problemName');
+	problemLeft.appendChild(title);
+	
+	const testCaseTitle = document.createElement("div");
+	testCaseTitle.classList.add("testCaseHeader");
+	testCaseTitle.innerText = "Test Cases";
+	problemLeft.appendChild(testCaseTitle);
+	
 	//generate all test cases
 	const iconWrapper = document.createElement("div");
 	iconWrapper.id = "problemTestCaseIconWrapper";
@@ -295,12 +305,57 @@ function generateTestCase() {
 	problemLeft.appendChild(document.getElementById("testCase0"));
 }
 
+
 function generateIDE() {
 	console.log("generating IDE");
 	//left side / content
 	const problemLeft = document.createElement("div");
 	problemLeft.id = "problemIDE";
 	document.getElementById('menu').appendChild(problemLeft);
+	
+	//compiler box
+	const compilerBox = document.createElement("textarea");
+	compilerBox.classList.add("compilerBox");
+	compilerBox.id = "compilerTextBox";
+	problemLeft.appendChild(compilerBox);
+	
+	const testCaseWrapperHorz = document.createElement("div");
+	testCaseWrapperHorz.classList.add("testCaseWrapperHorz");
+	problemLeft.appendChild(testCaseWrapperHorz);
+	
+	//input
+	const inputWrapper = document.createElement("div");
+	inputWrapper.classList.add("testCaseWrapperVert");
+	testCaseWrapperHorz.appendChild(inputWrapper);
+	
+	const inputBoxTitle = document.createElement("div");
+	inputBoxTitle.classList.add("testCaseTitle");
+	inputBoxTitle.innerText = "Input";
+	inputWrapper.appendChild(inputBoxTitle);
+	
+	const inputBox = document.createElement("textarea");
+	inputBox.classList.add("testCaseBox");
+	inputBox.placeholder = "> Insert Input Here";
+	inputWrapper.appendChild(inputBox);
+	
+	//output
+	const outputWrapper = document.createElement("div");
+	outputWrapper.classList.add("testCaseWrapperVert");
+	testCaseWrapperHorz.appendChild(outputWrapper);
+	
+	const outputBoxTitle = document.createElement("div");
+	outputBoxTitle.innerText = "Output";
+	outputBoxTitle.classList.add("testCaseTitle");
+	outputWrapper.appendChild(outputBoxTitle);
+	
+	const outputBox = document.createElement("div");
+	outputBox.classList.add("testCaseBox");
+	outputWrapper.appendChild(outputBox);
+	
+	//compile button
+	const compileButton = document.createElement("button");
+	compileButton.innerText = "Compile";
+	problemLeft.appendChild(compileButton);
 	
 }
 
@@ -346,11 +401,11 @@ function renderTestCase() {
 
 function renderSpecificTestCase(num) {
 	console.log("rendering specific test case");
-	if (document.getElementById('problemTestCase').childNodes.item(2) == ("testCase" + num).toString()) {
+	if (document.getElementById('problemTestCase').childNodes.item(4) == ("testCase" + num).toString()) {
 		console.log("already at test case" + num);
 		return;
 	} else if (document.getElementById('problemLeft').hasChildNodes()) {
-		document.getElementById('testCaseUnused').appendChild(document.getElementById('problemTestCase').childNodes.item(2));
+		document.getElementById('testCaseUnused').appendChild(document.getElementById('problemTestCase').childNodes.item(4));
 	}
 	document.getElementById('problemTestCase').appendChild(document.getElementById("testCase" + num));
 }
