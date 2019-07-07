@@ -1,0 +1,158 @@
+.wrapper {
+  background-color: lightgrey;
+  max-width: 1200px;
+}
+.dashboard {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  padding: 1em;
+  border: 2px solid grey;
+  max-width: 1200px;
+  position: relative;
+}
+.dashboardLeft {
+  width: 700px;
+}
+.dashboardRight {
+  position: relative;
+}
+.icon {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  border: 4px solid orange;
+  width: 200px;
+  height: 100px;
+}
+.title {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  padding: 0.5em;
+  font-size: 2em;
+}
+.dashboardText {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  padding: 1em;
+}
+.dashboardTextElement {
+  border-spacing: 2em;
+  font-size: 1.5em;
+  width: 100px;
+  text-decoration: none;
+}
+.searchboxWrapper {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  max-width: 300px;
+  max-height: 30px;
+  position: relative;
+  top: 1em;
+  resize: none;
+  border: 2px solid grey;
+}
+.searchbox {
+  vertical-align: center;
+}
+.searchIcon {
+  max-width: 24px;
+  max-height: 24px;
+}
+.userIconAnchor {
+  padding: 0.5em;
+}
+.userIcon {
+  max-width: 48px;
+  max-height: 48px;
+  border: 1px solid black;
+  background-color: #f0efef;
+}
+.contentWrapper {
+  max-width: 1200px;
+  max-height: 2400px;
+  min-height: 100%;
+  padding: 1em;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  border: 2px solid black;
+  background: #f0efef;
+}
+.contentBoxWrapper {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  padding: 0.5em;
+}
+.contentBox {
+  border: 1px solid grey;
+  width: 500px;
+  height: 500px;
+  padding: 1em;
+  position: relative;
+  background-color: white;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid grey;
+}
+thead th:nth-child(1) {
+  width: 30%;
+}
+thead th:nth-child(2) {
+  width: 40%;
+}
+thead th:nth-child(3) {
+  width: 30%;
+}
+th, td {
+  padding: 0.5em;
+  border: 0.5px solid grey;
+  background: #f0efef;
+  height: 30px;
+}
+.filler {
+  visibility: hidden;
+}
+.compilerBox {
+  width: 500px;
+  height: 400px;
+  overflow: scroll;
+  vertical-align: text-top;
+}
+#app {
+  margin-top: 50px;
+  margin-left: 50px;
+  max-width: 1024px;
+  min-width: 300px;
+  border: 1px solid black;
+  resize: both;
+  min-height: 600px;
+  max-height: 1200px;
+  overflow: auto;
+}
+#sidebar {
+  border: 2px solid green;
+  min-height: 100px;
+}
+#header {
+  border: 2px solid red;
+}
+.messages {
+  border: 2px solid blue;
+}
+.chat-input {
+  border: 2px solid blueviolet;
+}
+#sidebar, #header, .messages, .chat-input {
+  padding-top: 0.5em;
+  padding-left: 2em;
+  font-size: 2em;
+  font-weight: bold;
+}

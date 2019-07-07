@@ -80,7 +80,20 @@ Kattis Helper Changelog:
 	
 	Hooked test case context menu to use the internal test cases instead of only the sample test cases
 	
+1/7/19 - 6/7/19:
+	Recreating entire project using express instead
+	Since we're not using webpack (atm), alot of functionalities are different:
+		Styling is now using css instead of scss (lack of webpack like loaders for sass)
+	
+7/7/19:
+	Settled sending of JSON data
+	Setup search function & redirection to problem page
+	Fixed error handling of wrong queries for questions
+
 To do:
+Working on authentication system at the moment
+Still migrating everything to express
+
 Problems list: add a next button, and show only 100 entries (atm we only have 100 so it's ok)
 
 userStorage item: problemStatus (shows which context menu is used (pending deletion if not used)
@@ -88,21 +101,3 @@ userStorage item: problemStatus (shows which context menu is used (pending delet
 ===================================================================================================
 Notes:
 ===================================================================================================
-milestone 1	
-1. figure out the general layout of the entire website
-2. figure out how to scrape data from kattis
-	look at https://github.com/Kattis
-	https://github.com/sijie123/kattisHint
-	
-	
-3. wait for the vue.js solutions and reverse engineer
-4. search bar function
-
-problems page:
-	add a filter
-
-other not so important stuff for now
-1. figure out how to do an online IDE (milestone 2)
-2. user accounts (passport.js)
-	2.1 forum for each questions
-	

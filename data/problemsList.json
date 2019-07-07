@@ -1,0 +1,602 @@
+[
+        {
+            "problem": "0-1 Sequences",
+            "problemID": "sequences",
+            "difficulty": "6.6",
+            "category": ""
+        },
+        {
+            "problem": "10 Kinds of People",
+            "problemID": "10kindsofpeople",
+            "difficulty": "5.0",
+            "category": ""
+        },
+        {
+            "problem": "2048",
+            "problemID": "2048",
+            "difficulty": "2.5",
+            "category": ""
+        },
+        {
+            "problem": "3D Printed Statues",
+            "problemID": "3dprinter",
+            "difficulty": "1.9",
+            "category": ""
+        },
+        {
+            "problem": "3D Printer",
+            "problemID": "threedprinter",
+            "difficulty": "8.3",
+            "category": ""
+        },
+        {
+            "problem": "3-Sided Dice",
+            "problemID": "3sideddice",
+            "difficulty": "8.5",
+            "category": ""
+        },
+        {
+            "problem": "4 thought",
+            "problemID": "4thought",
+            "difficulty": "2.9",
+            "category": ""
+        },
+        {
+            "problem": "A1 Paper",
+            "problemID": "a1paper",
+            "difficulty": "3.6",
+            "category": ""
+        },
+        {
+            "problem": "Aaah!",
+            "problemID": "aaah",
+            "difficulty": "1.5",
+            "category": ""
+        },
+        {
+            "problem": "Abandoned Animal",
+            "problemID": "abandonedanimal",
+            "difficulty": "5.1",
+            "category": ""
+        },
+        {
+            "problem": "ABC",
+            "problemID": "abc",
+            "difficulty": "1.7",
+            "category": ""
+        },
+        {
+            "problem": "Ab Initio",
+            "problemID": "abinitio",
+            "difficulty": "7.2",
+            "category": ""
+        },
+        {
+            "problem": "Above Average",
+            "problemID": "aboveaverage",
+            "difficulty": "1.9",
+            "category": ""
+        },
+        {
+            "problem": "A+B Problem",
+            "problemID": "aplusb",
+            "difficulty": "8.3",
+            "category": ""
+        },
+        {
+            "problem": "A Brief Gerrymander",
+            "problemID": "gerrymander",
+            "difficulty": "8.4",
+            "category": ""
+        },
+        {
+            "problem": "Abstract Art",
+            "problemID": "abstractart",
+            "difficulty": "6.2",
+            "category": ""
+        },
+        {
+            "problem": "Absurdistan Roads II",
+            "problemID": "absurdistan2",
+            "difficulty": "6.7",
+            "category": ""
+        },
+        {
+            "problem": "Absurdistan Roads III",
+            "problemID": "absurdistan3",
+            "difficulty": "5.5",
+            "category": ""
+        },
+        {
+            "problem": "Access Points",
+            "problemID": "accesspoints",
+            "difficulty": "5.8",
+            "category": ""
+        },
+        {
+            "problem": "A Classy Problem",
+            "problemID": "classy",
+            "difficulty": "4.5",
+            "category": ""
+        },
+        {
+            "problem": "ACM Contest Scoring",
+            "problemID": "acm",
+            "difficulty": "1.6",
+            "category": ""
+        },
+        {
+            "problem": "Adding Words",
+            "problemID": "addingwords",
+            "difficulty": "4.0",
+            "category": ""
+        },
+        {
+            "problem": "A Different List Game",
+            "problemID": "listgame2",
+            "difficulty": "9.1",
+            "category": ""
+        },
+        {
+            "problem": "A Different Problem",
+            "problemID": "different",
+            "difficulty": "2.1",
+            "category": ""
+        },
+        {
+            "problem": "Adjoin the Networks",
+            "problemID": "adjoin",
+            "difficulty": "5.6",
+            "category": ""
+        },
+        {
+            "problem": "Administrative Difficulties",
+            "problemID": "administrativeproblems",
+            "difficulty": "6.5",
+            "category": ""
+        },
+        {
+            "problem": "Advanced Causal Measurements",
+            "problemID": "causal",
+            "difficulty": "6.9",
+            "category": ""
+        },
+        {
+            "problem": "Adventure Begins",
+            "problemID": "adventurebegins",
+            "difficulty": "4.1",
+            "category": ""
+        },
+        {
+            "problem": "Adventures in Moving -- Part IV",
+            "problemID": "adventuremoving4",
+            "difficulty": "4.2",
+            "category": ""
+        },
+        {
+            "problem": "A Favourable Ending",
+            "problemID": "favourable",
+            "difficulty": "4.6",
+            "category": ""
+        },
+        {
+            "problem": "A Feast For Cats",
+            "problemID": "cats",
+            "difficulty": "4.3",
+            "category": ""
+        },
+        {
+            "problem": "Air Conditioned Minions",
+            "problemID": "airconditioned",
+            "difficulty": "3.2",
+            "category": ""
+        },
+        {
+            "problem": "Airline Hub",
+            "problemID": "airlinehub",
+            "difficulty": "6.9",
+            "category": ""
+        },
+        {
+            "problem": "Airport Coffee",
+            "problemID": "airportcoffee",
+            "difficulty": "6.5",
+            "category": ""
+        },
+        {
+            "problem": "Airport Construction",
+            "problemID": "airport",
+            "difficulty": "7.5",
+            "category": ""
+        },
+        {
+            "problem": "Airport Logistics",
+            "problemID": "airportlogistics",
+            "difficulty": "7.4",
+            "category": ""
+        },
+        {
+            "problem": "Airports",
+            "problemID": "airports",
+            "difficulty": "6.2",
+            "category": ""
+        },
+        {
+            "problem": "Akcija",
+            "problemID": "akcija",
+            "difficulty": "2.1",
+            "category": ""
+        },
+        {
+            "problem": "Aladin",
+            "problemID": "aladin",
+            "difficulty": "8.9",
+            "category": ""
+        },
+        {
+            "problem": "Alchemy",
+            "problemID": "alchemy",
+            "difficulty": "8.2",
+            "category": ""
+        },
+        {
+            "problem": "Alea iacta est",
+            "problemID": "alea",
+            "difficulty": "6.9",
+            "category": ""
+        },
+        {
+            "problem": "Alice in the Digital World",
+            "problemID": "alicedigital",
+            "difficulty": "4.1",
+            "category": ""
+        },
+        {
+            "problem": "Alien Codebreaking",
+            "problemID": "aliencodebreaking",
+            "difficulty": "8.9",
+            "category": ""
+        },
+        {
+            "problem": "Alien Numbers",
+            "problemID": "aliennumbers",
+            "difficulty": "2.0",
+            "category": ""
+        },
+        {
+            "problem": "A List Game",
+            "problemID": "listgame",
+            "difficulty": "2.9",
+            "category": ""
+        },
+        {
+            "problem": "All about that base",
+            "problemID": "allaboutthatbase",
+            "difficulty": "3.1",
+            "category": ""
+        },
+        {
+            "problem": "All Different Directions",
+            "problemID": "alldifferentdirections",
+            "difficulty": "2.7",
+            "category": ""
+        },
+        {
+            "problem": "Allergy Test",
+            "problemID": "allergy",
+            "difficulty": "7.5",
+            "category": ""
+        },
+        {
+            "problem": "All Friends",
+            "problemID": "friends",
+            "difficulty": "8.5",
+            "category": ""
+        },
+        {
+            "problem": "All Just A Dream",
+            "problemID": "dream",
+            "difficulty": "6.5",
+            "category": ""
+        },
+        {
+            "problem": "All Pairs Shortest Path",
+            "problemID": "allpairspath",
+            "difficulty": "5.7",
+            "category": ""
+        },
+        {
+            "problem": "Almost Perfect",
+            "problemID": "almostperfect",
+            "difficulty": "3.6",
+            "category": ""
+        },
+        {
+            "problem": "Almost Union-Find",
+            "problemID": "almostunionfind",
+            "difficulty": "6.6",
+            "category": ""
+        },
+        {
+            "problem": "Alphabet",
+            "problemID": "alphabet",
+            "difficulty": "3.0",
+            "category": ""
+        },
+        {
+            "problem": "Alphabet Spam",
+            "problemID": "alphabetspam",
+            "difficulty": "1.3",
+            "category": ""
+        },
+        {
+            "problem": "Alternative Bracket Notation",
+            "problemID": "bracketnotation",
+            "difficulty": "5.4",
+            "category": ""
+        },
+        {
+            "problem": "Altruistic Amphibians",
+            "problemID": "altruisticamphibians",
+            "difficulty": "5.1",
+            "category": ""
+        },
+        {
+            "problem": "Amalgamated Artichokes",
+            "problemID": "artichoke",
+            "difficulty": "2.8",
+            "category": ""
+        },
+        {
+            "problem": "Amanda Lounges",
+            "problemID": "amanda",
+            "difficulty": "5.4",
+            "category": ""
+        },
+        {
+            "problem": "A Mazing!",
+            "problemID": "amazing",
+            "difficulty": "5.3",
+            "category": ""
+        },
+        {
+            "problem": "Amazing Adventures",
+            "problemID": "amazingadventures",
+            "difficulty": "6.1",
+            "category": ""
+        },
+        {
+            "problem": "Amazing Race",
+            "problemID": "race",
+            "difficulty": "6.6",
+            "category": ""
+        },
+        {
+            "problem": "Ambiguous Result",
+            "problemID": "result",
+            "difficulty": "7.6",
+            "category": ""
+        },
+        {
+            "problem": "Amsterdam Distance",
+            "problemID": "amsterdamdistance",
+            "difficulty": "2.8",
+            "category": ""
+        },
+        {
+            "problem": "A Multiplication Game",
+            "problemID": "amultiplicationgame",
+            "difficulty": "4.8",
+            "category": ""
+        },
+        {
+            "problem": "Anagram Counting",
+            "problemID": "anagramcounting",
+            "difficulty": "3.0",
+            "category": ""
+        },
+        {
+            "problem": "Andrew the Ant",
+            "problemID": "andrewant",
+            "difficulty": "4.9",
+            "category": ""
+        },
+        {
+            "problem": "A New Alphabet",
+            "problemID": "anewalphabet",
+            "difficulty": "1.8",
+            "category": ""
+        },
+        {
+            "problem": "An I for an Eye",
+            "problemID": "iforaneye",
+            "difficulty": "4.4",
+            "category": ""
+        },
+        {
+            "problem": "Animal Classification",
+            "problemID": "animal",
+            "difficulty": "6.5",
+            "category": ""
+        },
+        {
+            "problem": "An Industrial Spy",
+            "problemID": "industrialspy",
+            "difficulty": "3.2",
+            "category": ""
+        },
+        {
+            "problem": "Another Brick in the Wall",
+            "problemID": "anotherbrick",
+            "difficulty": "1.9",
+            "category": ""
+        },
+        {
+            "problem": "Another Candies",
+            "problemID": "anothercandies",
+            "difficulty": "3.0",
+            "category": ""
+        },
+        {
+            "problem": "Another Dice Game",
+            "problemID": "anotherdice",
+            "difficulty": "3.4",
+            "category": ""
+        },
+        {
+            "problem": "Another Query on Array Problem",
+            "problemID": "queryonarray",
+            "difficulty": "7.8",
+            "category": ""
+        },
+        {
+            "problem": "Antenna Placement",
+            "problemID": "antennaplacement",
+            "difficulty": "6.9",
+            "category": ""
+        },
+        {
+            "problem": "Anthony and Cora",
+            "problemID": "anthony",
+            "difficulty": "5.5",
+            "category": ""
+        },
+        {
+            "problem": "Anthony and Diablo",
+            "problemID": "anthonyanddiablo",
+            "difficulty": "2.4",
+            "category": ""
+        },
+        {
+            "problem": "Antiarithmetic?",
+            "problemID": "antiarithmetic",
+            "difficulty": "7.2",
+            "category": ""
+        },
+        {
+            "problem": "Ants",
+            "problemID": "ants",
+            "difficulty": "2.4",
+            "category": ""
+        },
+        {
+            "problem": "Apaxiaaaaaaaaaaaans!",
+            "problemID": "apaxiaaans",
+            "difficulty": "1.4",
+            "category": ""
+        },
+        {
+            "problem": "Apostrophe Catastrophe",
+            "problemID": "apostrophecatastrophe",
+            "difficulty": "6.5",
+            "category": ""
+        },
+        {
+            "problem": "Appalling Architecture",
+            "problemID": "appallingarchitecture",
+            "difficulty": "4.0",
+            "category": ""
+        },
+        {
+            "problem": "Apparatus",
+            "problemID": "apparatus",
+            "difficulty": "5.2",
+            "category": ""
+        },
+        {
+            "problem": "Apple Market",
+            "problemID": "applemarket",
+            "difficulty": "8.1",
+            "category": ""
+        },
+        {
+            "problem": "Apples, Cherries, and Mangos",
+            "problemID": "applescherriesmangos",
+            "difficulty": "5.7",
+            "category": ""
+        },
+        {
+            "problem": "A Prize No One Can Win",
+            "problemID": "aprizenoonecanwin",
+            "difficulty": "2.5",
+            "category": ""
+        },
+        {
+            "problem": "Aquarium Tank",
+            "problemID": "tank",
+            "difficulty": "5.5",
+            "category": ""
+        },
+        {
+            "problem": "Aqueduct Construction",
+            "problemID": "aqueducts",
+            "difficulty": "5.7",
+            "category": ""
+        },
+        {
+            "problem": "A Question of Ingestion",
+            "problemID": "ingestion",
+            "difficulty": "5.8",
+            "category": ""
+        },
+        {
+            "problem": "Arable Area",
+            "problemID": "arable",
+            "difficulty": "7.5",
+            "category": ""
+        },
+        {
+            "problem": "Arachnophobia",
+            "problemID": "arachnophobia",
+            "difficulty": "4.7",
+            "category": ""
+        },
+        {
+            "problem": "A Random Problem",
+            "problemID": "randomproblem",
+            "difficulty": "8.1",
+            "category": ""
+        },
+        {
+            "problem": "A Rational Sequence",
+            "problemID": "rationalsequence",
+            "difficulty": "4.8",
+            "category": ""
+        },
+        {
+            "problem": "A Rational Sequence 2",
+            "problemID": "rationalsequence2",
+            "difficulty": "1.5",
+            "category": ""
+        },
+        {
+            "problem": "A Rational Sequence (Take 3)",
+            "problemID": "rationalsequence3",
+            "difficulty": "1.7",
+            "category": ""
+        },
+        {
+            "problem": "Arbitrage?",
+            "problemID": "arbitrage",
+            "difficulty": "3.7",
+            "category": ""
+        },
+        {
+            "problem": "Arcade!",
+            "problemID": "arcade",
+            "difficulty": "6.2",
+            "category": ""
+        },
+        {
+            "problem": "Arctic Network",
+            "problemID": "arcticnetwork",
+            "difficulty": "4.5",
+            "category": ""
+        },
+        {
+            "problem": "A Real Challenge",
+            "problemID": "areal",
+            "difficulty": "1.6",
+            "category": ""
+        }
+]

@@ -1,0 +1,27 @@
+:root {
+    --chat-width: 500px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.messages {
+    margin-top: 50px;
+    width: var(--chat-width);
+    min-height: 400px;
+    background-color: skyblue;
+    padding: 12px;
+}
+
+.chat-input textarea {
+    width: var(--chat-width);
+}
+
+.message {
+    margin-bottom: 24px;
+}
+
+.message .name {
+    font-weight: bold;
+}

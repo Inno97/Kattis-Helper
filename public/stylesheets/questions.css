@@ -1,0 +1,43 @@
+.question-card {
+  display: flex;
+  padding: 0.5em;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid grey;
+}
+.question-card .details {
+  padding-left: 1em;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+}
+.question-card .details .name {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  max-width: 8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.question-card .details .url {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: blue;
+}
+.question-card .details .category {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
+}
+.question-card .details .difficulty {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
+}
+.questions {
+  max-height: 50em;
+  overflow: hidden;
+}
