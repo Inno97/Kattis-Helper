@@ -65,6 +65,11 @@
 .userIconAnchor {
   padding: 0.5em;
 }
+.userIconWrapper {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+}
 .userIcon {
   max-width: 48px;
   max-height: 48px;
@@ -95,6 +100,42 @@
   padding: 1em;
   position: relative;
   background-color: white;
+  
+}
+.unusedObj {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+.errorBox{
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  border: 1px solid grey;
+  width: 500px;
+  height: 500px;
+  padding: 1em;
+  background-color: white;
+  align-self: center;
+}
+.errorPic{
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px solid black;
+  align-self: center;
+}
+
+.errorTitle {
+  font-size: 2em;
+  align-self: center;
+}
+
+.errorText {
+  font-size: 1em;	
+  align-self: center;
 }
 table {
   table-layout: fixed;

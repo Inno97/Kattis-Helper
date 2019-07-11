@@ -27,7 +27,6 @@ function renderQuestions() {
 		error: function(req, err){ console.log('error occured: ' + err); }
 		
 	});
-	
 }
 
 function renderAll(problems){
@@ -44,7 +43,6 @@ function render(targetDiv, problems){
 		const entry = document.createElement("tr");
 		const nameE = document.createElement("td");
 		const linkE = document.createElement("a");
-		//"queryProblem(sidebar.problemID)"
 		linkE.setAttribute("onClick", "fetchProblem('" + problemID + "')");
 		nameE.appendChild(linkE);
 		linkE.innerText = problem;
@@ -58,7 +56,6 @@ function render(targetDiv, problems){
 		detailsContainer.appendChild(urlE);
 		
 		//category
-		
 		const categoryE = document.createElement("td");
 		categoryE.innerText = category;
 		detailsContainer.appendChild(categoryE);

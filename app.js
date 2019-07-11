@@ -44,65 +44,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//mysql
-var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '272E88c4AC!',
-	database : 'kattis_helper'
-});
-
-//test mysql connection
-connection.connect(function(err) {
-  if (err) {
-    return console.error('error: ' + err.message);
-  }
- 
-  console.log('Connected to the MySQL server.');
-});
-
 app.use(session({
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true
 }));
+
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
-
-//user authentication
-app.post('/auth', function(request, response) {
-	var username = request.body.username;
-	var password = request.body.password;
-	if (username && password) {
-		connection.query('SELECT * FROM users WHERE name = ? AND password = ?', [username, password], function(error, results, fields) {
-			if (results.length > 0) {
-				request.session.loggedin = true;
-				request.session.username = username;
-				response.redirect('/home');
-			} else {
-				connection.query('SELECT * FROM users WHERE name = ?', [username], function(error, results, fields) {
-					if (results.length > 0) {
-						response.send('Incorrect password.');
-					} else {
-						response.send('User does not exist.');
-					}
-					response.end();
-				});
-			}	
-		});
-	} else {
-		response.send('Please enter Username and Password!');
-		response.end();
-	}
-});
-
-app.get('/home', function(request, response) {
-	if (request.session.loggedin) {
-		response.send('Welcome back, ' + request.session.username + '!');
-	} else {
-		response.send('Please login to view this page!');
-	}
-	response.end();
-});
 
 module.exports = app;

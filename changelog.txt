@@ -89,10 +89,38 @@ Kattis Helper Changelog:
 	Settled sending of JSON data
 	Setup search function & redirection to problem page
 	Fixed error handling of wrong queries for questions
+	
+8/7/19:
+	Setup authentication system
+	Hooked up login system, will add on hashing of passwords in the future
+
+9/7/19:
+	Tidied some minor things in authentication
+	Added 404 page
+	Added login / logout button in dashboard
+	
+10/7/19:
+	migrated to mongodb
+	
+11/7/19:
+	added user account creation
+	slowly changing console syntax to show better logging
+	added user account verification:
+		upon successful creation of account, send an email to the user, containing a verification code
+		* still need to setup the email system
+	added ability to remove unverified users
 
 To do:
-Working on authentication system at the moment
-Still migrating everything to express
+
+settle create_account and recover_password
+
+implementation of user account page:
+	possible items:
+	questions done
+	recent forum comments
+
+email system: https://sendgrid.com/
+Use for generating email for verification
 
 Problems list: add a next button, and show only 100 entries (atm we only have 100 so it's ok)
 
@@ -101,3 +129,10 @@ userStorage item: problemStatus (shows which context menu is used (pending delet
 ===================================================================================================
 Notes:
 ===================================================================================================
+
+Project is built on Express, using mysql as a database to handle data
+
+To run the server, type in the command:
+npm run test
+
+do note that the server will restart with any changes in code due to nodemon

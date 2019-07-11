@@ -97,9 +97,18 @@ function renderDashboard() {
 	searchIcon.classList.add("searchIcon");
 	searchIcon.setAttribute("onClick", "queryProblem(document.getElementById('searchText').value)");
 	
+	const userIconWrapper = document.createElement("div");
+	userIconWrapper.classList.add('userIconWrapper');
+	userIconWrapper.id = 'userIconWrapper';
+	
 	const userIconAnchor = document.createElement("a");
-	userIconAnchor.href = "/";
+	if (tempStorage.getItem('loginFlag') == 'TRUE') {
+		userIconAnchor.href = "/user";
+	} else {
+		userIconAnchor.href = "/login";
+	}
 	userIconAnchor.classList.add("userIconAnchor");
+	
 	const userIcon = document.createElement("img");
 	userIcon.classList.add("userIcon");
 	userIcon.src = "/static/user_icon.jpg";
@@ -107,12 +116,55 @@ function renderDashboard() {
 	userIcon.id = "iconUser";
 	userIcon.alt = "user's icon";
 	userIconAnchor.appendChild(userIcon);
+	userIconWrapper.appendChild(userIconAnchor);
 	
 	searchboxWrapper.appendChild(searchText);
 	searchboxWrapper.appendChild(searchIcon);
 	dashboardRight.appendChild(searchboxWrapper);
 	dashboard.appendChild(dashboardRight);
-	dashboard.appendChild(userIconAnchor);
+	dashboard.appendChild(userIconWrapper);
 	
 	dashboardLocation.appendChild(dashboard);
+	
+	//render login / logout button
+	console.log(tempStorage.getItem('loginFlag'));
+	if (tempStorage.getItem('loginFlag') == 'TRUE') {
+		console.log('rendering logout button');
+		const logoutButton = document.createElement('button');
+		logoutButton.innerText = 'Logout';
+		
+		logoutButton.setAttribute('onClick', 'handleLogout()');
+		userIconWrapper.appendChild(logoutButton);
+	} else {
+		console.log('rendering login button');
+		const loginButton = document.createElement('button');
+		loginButton.innerText = 'Login';
+		loginButton.setAttribute('onClick', 'location.href=\'/login\'');
+		userIconWrapper.appendChild(loginButton);
+	}
+}
+
+/**
+ * Error handling
+ */
+
+//404 not found redirect
+function redirect404() {
+	//perform ajax query
+	const requestURL = '/error';
+	$.ajax({
+		url: requestURL,
+		type: 'GET',
+		dataType: 'html',
+		success: (data) => {
+			console.log('redirecting');
+			location = '/error';
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			if(xhr.status==404) {
+				alert('Even the 404 cannot handle itself. This is embarassing...');
+				console.log('not found');
+			}
+		}
+	});	
 }

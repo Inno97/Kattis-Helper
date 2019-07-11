@@ -238,9 +238,10 @@ function generateIDE() {
 	document.getElementById('menu').appendChild(problemLeft);
 	
 	//compiler box
-	const compilerBox = document.createElement("textarea");
-	compilerBox.classList.add("compilerBox");
+	const compilerBox = document.createElement("div");
+	compilerBox.classList.add("sec-widget");
 	compilerBox.id = "compilerTextBox";
+	compilerBox.setAttribute('data-widget' , 'e00cbbec2520ac99bb3868c770dbc53b');
 	problemLeft.appendChild(compilerBox);
 	
 	const testCaseWrapperHorz = document.createElement("div");

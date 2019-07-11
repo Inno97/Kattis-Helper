@@ -1,18 +1,24 @@
 /**
  * Local Storage Handler
- * Call this when user loads in
+ * Script deals with local and session storage
  */
 
 function onload(){
-	console.log("local storage setting up...");
-	console.log("local storage setup done");
+	console.log('local storage setting up...');
 	initLocalStorage();
+	console.log('local storage setup done');
+	
+	console.log('session storage setting up...');
+	initSessionStorage();
+	console.log('session storage setup done');
 }
 window.addEventListener("load", onload);
 
 function initLocalStorage() {
+	console.log('> setting local storage');
 	userStorage = window.localStorage;
-	userStorage.setItem('myCat', 'Kattis');
+	
+	//handle problem status
 	if (userStorage.getItem('problem') == '') {
 		userStorage.setItem('problem', '');
 		console.log("reset problem");
@@ -32,8 +38,8 @@ function initLocalStorage() {
 		userStorage.setItem('problemNumSam', '');
 		userStorage.setItem('problemSamInJSON', '');
 		userStorage.setItem('problemSamOutJSON', '');
-		userStorage.setItem('problemTestCaseInputJSON', JSON.stringify(data.table.input));
-		userStorage.setItem('problemTestCaseOutputJSON', JSON.stringify(data.table.input));
+		//userStorage.setItem('problemTestCaseInputJSON', JSON.stringify(data.table.input));
+		//userStorage.setItem('problemTestCaseOutputJSON', JSON.stringify(data.table.input));
 		userStorage.setItem('problemAuthor', '');
 		userStorage.setItem('problemSource', '');
 		userStorage.setItem('problemStatus', '');
@@ -47,6 +53,20 @@ function initLocalStorage() {
 function flushLocalStorage() {
 	localStorage.clear();
 	initLocalStorage();
+}
+
+function initSessionStorage() {
+	tempStorage = window.sessionStorage;
+	
+	if (tempStorage.getItem('initFlag') === null) {
+		console.log('new session, init defaults');
+		tempStorage.setItem('username', '');
+		if (tempStorage.getItem('loginFlag') != 'TRUE') {
+			console.log('user is not logged in');
+			tempStorage.setItem('loginFlag', 'FALSE');
+		}
+		tempStorage.setItem('initFlag', 'TRUE');
+	}
 }
 
 function setProblemData(data) {
@@ -74,7 +94,6 @@ function setProblemData(data) {
 }
 
 function fetchProblemPage() {
-	//perform ajax query
 	const requestURL = '/problem/';
 	$.ajax({
 		url: requestURL,
@@ -94,7 +113,6 @@ function fetchProblemPage() {
 }
 
 function fetchNotFound() {
-	//perform ajax query
 	const requestURL = '/problemNotFound';
 	$.ajax({
 		url: requestURL,

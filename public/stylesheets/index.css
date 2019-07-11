@@ -16,6 +16,8 @@
   flex-direction: column;
   border: 2px solid black;
   background: #f0efef;
+  align-self: center;
+  
 }
 .indexContentBoxWrapper {
   display: flex;
