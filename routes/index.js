@@ -1,3 +1,7 @@
+/**
+ * routes/index.js
+ * handling of http requests for server
+ */
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -18,7 +22,7 @@ const ObjectId = require("mongodb").ObjectID;
 const CONNECTION_URL = "mongodb+srv://kattis:gSpXVFFx7WDdfzoN@kattishelper-3x5fa.mongodb.net/test?retryWrites=true&w=majority";
 const DATABASE_NAME = "kattishelper";
 const COLLECTION_NAME = 'kattisHelperDB';
-var db, userCollection;
+var db, userCollection, forumCollection;
 
 app.listen(3001, () => {
 	console.log('[SRV] [mongo] Connecting to MongoDB Atlas server: ' + DATABASE_NAME);
@@ -29,7 +33,45 @@ app.listen(3001, () => {
 		//set global objects
 		db = client.db(COLLECTION_NAME);
 		userCollection = db.collection('users');
+		
+		//testing code
+		//forums
+		forumCollection = db.collection('forums');
+		/*
+		forumCollection.findOne({"problem": "rationalsequence"}, (error, result) => {
+			if (error) {
+				console.log('[SRV] forums query failed');
+			} else {
+				console.log(result.posts[0][1]);
+			}
+		});
+		*/
 	});
+});
+
+/**
+ * nodemailer
+ */
+var nodemailer = require("nodemailer");
+var transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+        user: "kattisHelper@gmail.com",
+        pass: "thomasLovesSteven"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+var mailOptions, host, link;
+
+transporter.verify(function(error, success) {
+	console.log('[SRV] [nodemailer] checking SMTP transporter connection');
+	if (error) {
+		console.log('[SRV] [nodemailer] error: ' + error);
+	} else {
+		console.log("[SRV] [nodemailer] SMTP transporter connection verified");
+	}
 });
 
 /**
@@ -168,14 +210,14 @@ router.get('/create_account', function(req, res) {
 	console.log('[OUT] [GET] sent create_account.html');
 });
 
-//get forgot_password page
-router.get('/recover_password', function(req, res) {
+//get reset_password page
+router.get('/reset_password', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
-	console.log('[INC] [GET] /recover_password');
+	console.log('[INC] [GET] /reset_password');
 	requestNum++;
 	
-	res.sendFile(appDir + '/src/recover_password.html');
-	console.log('[OUT] [GET] sent recover_password.html');
+	res.sendFile(appDir + '/src/reset_password.html');
+	console.log('[OUT] [GET] sent reset_password.html');
 });
 
 //get verify user page
@@ -211,7 +253,6 @@ router.get('/error', function(req, res) {
 /**
  * HTTP requests for authentication
  */
-
 //authenticate user
 router.post('/auth', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
@@ -362,10 +403,29 @@ router.post('/createUser', function(req, res) {
 					}
 				});
 				
+				//send mail with verification code
+				console.log('[SRV] [nodemailer] preparing to send verification email...');
+				mailOptions = {
+					to : email,
+					subject : 'Please confirm your Kattis Helper Account',
+					html : 'Hello,<br> Please use this verification code to activate your Kattis Helper Account!<br>' + verification
+				}
+				console.log('[SRV] [nodemailer] mail options:');
+				console.log(mailOptions);
+				
+				transporter.sendMail(mailOptions, function(error, response){
+					if (error) {
+						console.log('[SRV] [nodemailer] error: ' + error);
+					} else{
+						console.log('[SRV] [nodemailer] verification mail successfully sent to: ' + email);
+					}
+				});
+				
 				console.log('[SRV] created unverified user: ' + username);
 				response = JSON.stringify('1');
 				res.send(response);
 				console.log('[OUT] [POST] sent res: ' + response);
+				
 			} else { //duplicate user
 				console.log('[SRV] duplicate username: ' + username);
 				response = JSON.stringify('2');
@@ -380,13 +440,154 @@ router.post('/createUser', function(req, res) {
 	}
 });
 
+//reset password
+router.post('/resetPassword', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /resetPassword');
+	requestNum++;
+	
+	var username = req.body.username;
+	var verification = req.body.verification;
+	var password = req.body.password;
+	var email = req.body.email;
+	
+	if (username && verification && password && email) {
+		userCollection.findOne({"username": username}, (error, result) => {
+			if (error) {
+				res.status(404);
+				console.log('[OUT] [POST] sent 404');
+				res.send();
+			} else {
+				console.log('[SRV] /resetPassword query successful');
+				if (result === null) {
+					console.log('[SRV] user is not found: ' + username);
+					response = JSON.stringify('3');
+					res.send(response);
+					console.log('[OUT] [POST] sent res: ' + response);
+				} else if (email != result.email) {
+					console.log('[SRV] email is wrong for user: ' + username);
+					response = JSON.stringify('4');
+					res.send(response);
+					console.log('[OUT] [POST] sent res: ' + response);
+				} else if (verification == result.verificationCode) {
+					//query and change in mongo
+					userCollection.findOneAndUpdate({"username": username}, {$set: {password: password}}, (error, result) => {
+						if (error){
+							console.log('[SRV] query error');
+							console.log('[SRV] password reset failed');
+							response = JSON.stringify('5');
+							res.send(response);
+							console.log('[OUT] [POST] sent res: ' + response);
+						} else {
+							console.log('[SRV] updated document: ' + username);
+							console.log('[SRV] password reset success');
+							response = JSON.stringify('1');
+							res.send(response);
+							console.log('[OUT] [POST] sent res: ' + response);
+						}
+					});
+				} else if (verification != result.verificationCode) {
+					console.log('[SRV] user verification failed');
+					response = JSON.stringify('2');
+					res.send(response);
+					console.log('[OUT] [POST] sent res: ' + response);
+				}
+			}
+		});
+	} else { //empty credentials
+		console.log('[SRV] empty credentials for /verifyUser');
+		res.send(JSON.stringify('-1'));
+		console.log('[OUT] [POST] sent req');
+	}
+});
+
+//send recovery email
+router.post('/sendPasswordCode', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /sendPasswordCode');
+	requestNum++;
+	
+	var username = req.body.username;
+	var email = req.body.email;
+	
+	if (!email.includes('@') || !email.includes('.')) { //check valid email
+		console.log('[SRV] user email is invalid: ' + email + ' (' + username + ')');
+		response = JSON.stringify('3');
+		res.send(response);
+		console.log('[OUT] [POST] sent res: ' + response);
+	} else if (username && email) {
+		//query user
+		userCollection.findOne({"username": username}, (error, result) => {
+			if (result === null) { //user does not exist
+				console.log('[SRV] user is not found: ' + username);
+				response = JSON.stringify('2');
+				res.send(response);
+				console.log('[OUT] [POST] sent res: ' + response);
+			} else {
+				if (email == result.email) {
+					//generate verification code
+					var verification = Math.floor((Math.random() / Math.random() * 100000000));
+					
+					//query and change in mongo
+					userCollection.findOneAndUpdate({"username": username}, {$set: {verificationCode: verification}}, (error, result) => {
+						if (error){
+							console.log('[SRV] query error');
+							console.log('[SRV] password recovery failed');
+							response = JSON.stringify('2');
+							res.send(response);
+							console.log('[OUT] [POST] sent res: ' + response);
+						} else {
+							//send mail with verification code
+							console.log('[SRV] [nodemailer] preparing to send password recovery email...');
+							mailOptions = {
+								to : email,
+								subject : 'Kattis Helper Account Recovery',
+								html : 'Hello,<br> Please use this recovery code to change the password for your Kattis Helper Account!<br>' + verification
+							}
+							console.log('[SRV] [nodemailer] mail options:');
+							console.log(mailOptions);
+							
+							transporter.sendMail(mailOptions, function(error, response){
+								if (error) {
+									console.log('[SRV] [nodemailer] error: ' + error);
+									response = JSON.stringify('5');
+									res.send(response);
+									console.log('[OUT] [POST] sent res: ' + response);
+									res.end();
+								} else{
+									console.log('[SRV] [nodemailer] verification mail successfully sent to: ' + email);
+								}
+							});
+							
+							console.log('[SRV] updated document: ' + username);
+							console.log('[SRV] password recovery success');
+							response = JSON.stringify('1');
+							res.send(response);
+							console.log('[OUT] [POST] sent res: ' + response);
+						}
+					});
+				} else { //wrong email
+					console.log('[SRV] wrong email for user: ' + username);
+					response = JSON.stringify('3');
+					res.send(response);
+					console.log('[OUT] [POST] sent res: ' + response);
+				}
+			}
+		});
+	} else { //empty credentials
+		console.log('[SRV] empty credentials for /createUser');
+		res.send(JSON.stringify('-1'));
+		console.log('[OUT] [POST] sent req');
+	}
+});
+
 /**
- * HTTP queries for problems
+ * HTTP requests for problems
  */
 //query specific problem
 router.get('/problemQuery/', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
-	console.log('[INC] [GET] /problemQuery/' + req.query.q);
+	console.log('[INC] [GET] /problemQuery/?problem=' + req.query.problem);
 	requestNum++;
 	
 	if (problemsQueryJSON.indexOf(req.query.q) > -1) {
@@ -414,5 +615,303 @@ router.get('/problemsListAll', function(req, res) {
 	res.send(problemsListJSON);
 	console.log('[OUT] [GET] sent problemsList.json');
 });
+
+/**
+ * HTTP requests for forum
+ */
+//get forum posts for a problem
+router.get('/forum/', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [GET] /forum/' + req.query.problem);
+	requestNum++;
+	
+	console.log('[SRV] fetching forum query: ' + req.query.problem);
+	if (problemsIDQueryJSON.indexOf(req.query.problem) > -1) {
+		console.log('[SRV] problem found: ' + req.query.problem);
+		forumCollection.findOne({"problem": req.query.problem}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] forums query failed');
+			} else if (result === null) { //not found
+				console.log('[SRV] forum posts does not exist for problem: ' + req.query.problem);
+				//create default post
+				var forumPost = {
+					"problem": req.query.problem,
+					"posts": []
+				};
+				//query database and insert user
+				forumCollection.insertOne( forumPost, (error, result) => {
+					if (error) {
+						console.log('[INC] [mongo] item failed to add to database: ' + COLLECTION_NAME);
+						console.log('[SRV] failed to add forum post obj to problem: ' + req.query.problem);
+						response = JSON.stringify('-1');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					} else {
+						console.log('[INC] [mongo] item added successfully to database: ' + COLLECTION_NAME);
+					}
+				});
+				
+				//re-query
+				forumCollection.findOne({"problem": req.query.problem}, (error, result) => {
+					if (error) {
+						console.log('[SRV] [mongo] forums query failed');
+						response = JSON.stringify('-1');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					} else { //query successful
+						console.log('[SRV] [mongo] forums query successful');
+						res.send(result);
+						console.log('[OUT] [GET] sent over forum posts for problem: ' + req.query.problem);
+					}
+				});
+			} else { //query successful
+				console.log('[SRV] [mongo] forums query successful');
+				res.send(result);
+				console.log('[OUT] [GET] sent over forum posts for problem: ' + req.query.problem);
+			}
+		});
+		
+		
+		console.log('[OUT] [GET] sent over problem: ' + req.query.problem);
+	} else {
+		console.log('[SRV] problem not found: ' + req.query.problem);
+		response = JSON.stringify('-1');
+		res.send(response);
+		console.log('[OUT] [GET] sent res: ' + response);
+		res.end();
+	}
+});
+
+//POST request sends JSON data to server
+//create forum post (using thread as a term to avoid confusion with POST)
+router.post('/forumPost/thread', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /forumPost/');
+	requestNum++;
+	
+	var problem = req.body.problem;
+	var postUsername = req.body.username;
+	var postText = req.body.text;
+	var postDate = req.body.date;
+	
+	var newPost = [postUsername, postText, postDate];
+	console.log(newPost);
+	
+	//fetch forum post from mongo
+	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problem);
+	if (problemsIDQueryJSON.indexOf(problem) > -1) {
+		console.log('[SRV] problem found: ' + problem);
+		forumCollection.findOne({"problem": problem}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] forums query failed');
+			} else if (result === null) { //not found
+				console.log('[SRV] problem not found: ' + req.query.problem);
+				response = JSON.stringify('-1');
+				res.send(response);
+				console.log('[OUT] [GET] sent res: ' + response);
+				res.end();
+			} else { //query successful
+				console.log('[SRV] [mongo] forums query successful');
+				var newThread = [];
+				newThread.push(newPost);
+				var updatedPosts = result.posts;
+				updatedPosts.push(newThread);
+				
+				//update
+				forumCollection.findOneAndUpdate({"problem": problem}, {$set: {posts: updatedPosts}}, (error, result) => {
+					if (error){
+						console.log('[SRV] query error');
+						console.log('[SRV] forum post reply creation failed');
+						response = JSON.stringify('2');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					} else {
+						console.log('[SRV] query successful');
+						console.log('[SRV] forum post reply creation success');
+						response = JSON.stringify('1');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					}
+				});
+			}
+		});
+	} else {
+		console.log('[SRV] problem not found: ' + req.query.problem);
+		response = JSON.stringify('-1');
+		res.send(response);
+		console.log('[OUT] [GET] sent res: ' + response);
+		res.end();
+	}
+});
+
+//create forum reply
+router.post('/forumPost/reply', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /forumPost/reply');
+	requestNum++;
+	
+	var problem = req.body.problem;
+	var postNum = req.body.postNum;
+	var postUsername = req.body.username;
+	var postText = req.body.text;
+	var postDate = req.body.date;
+	
+	var newPost = [postUsername, postText, postDate];
+	console.log(newPost);
+	
+	//fetch forum post from mongo
+	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problem);
+	if (problemsIDQueryJSON.indexOf(problem) > -1) {
+		console.log('[SRV] problem found: ' + problem);
+		forumCollection.findOne({"problem": problem}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] forums query failed');
+			} else if (result === null) { //not found
+				console.log('[SRV] problem not found: ' + req.query.problem);
+				response = JSON.stringify('-1');
+				res.send(response);
+				console.log('[OUT] [GET] sent res: ' + response);
+				res.end();
+			} else { //query successful
+				console.log('[SRV] [mongo] forums query successful');
+				var updatedPosts = result.posts;
+				updatedPosts[postNum].push(newPost);
+				
+				//update
+				forumCollection.findOneAndUpdate({"problem": problem}, {$set: {posts: updatedPosts}}, (error, result) => {
+					if (error){
+						console.log('[SRV] query error');
+						console.log('[SRV] forum post reply creation failed');
+						response = JSON.stringify('2');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					} else {
+						console.log('[SRV] query successful');
+						console.log('[SRV] forum post reply creation success');
+						response = JSON.stringify('1');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					}
+				});
+			}
+		});
+	} else {
+		console.log('[SRV] problem not found: ' + req.query.problem);
+		response = JSON.stringify('-1');
+		res.send(response);
+		console.log('[OUT] [GET] sent res: ' + response);
+		res.end();
+	}
+});
+
+//delete forum thread
+router.post('/forumPost/deleteReply', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /forumPost/deleteReply');
+	requestNum++;
+	
+	var problem = req.body.problem;
+	var postNum = req.body.postNum;
+	var itemNum = req.body.itemNum;
+	
+	//fetch forum post from mongo
+	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problem);
+	if (problemsIDQueryJSON.indexOf(problem) > -1) {
+		console.log('[SRV] problem found: ' + problem);
+		forumCollection.findOne({"problem": problem}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] forums query failed');
+			} else if (result === null) { //not found
+				console.log('[SRV] problem not found: ' + req.query.problem);
+				response = JSON.stringify('-1');
+				res.send(response);
+				console.log('[OUT] [GET] sent res: ' + response);
+				res.end();
+			} else { //query successful
+				console.log('[SRV] [mongo] forums query successful');
+				var updatedPosts = result.posts;
+				updatedPosts[postNum].splice(itemNum, 1);
+				
+				//update
+				forumCollection.findOneAndUpdate({"problem": problem}, {$set: {posts: updatedPosts}}, (error, result) => {
+					if (error){
+						console.log('[SRV] query error');
+						console.log('[SRV] forum post reply deletion failed');
+						response = JSON.stringify('2');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					} else {
+						console.log('[SRV] query successful');
+						console.log('[SRV] forum post reply deletion success');
+						response = JSON.stringify('1');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					}
+				});
+			}
+		});
+	} else {
+		console.log('[SRV] problem not found: ' + req.query.problem);
+		response = JSON.stringify('-1');
+		res.send(response);
+		console.log('[OUT] [GET] sent res: ' + response);
+		res.end();
+	}
+});
+
+//delete forum reply
+router.post('/forumPost/deleteThread', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /forumPost/deleteThread');
+	requestNum++;
+	
+	var problem = req.body.problem;
+	var postNum = req.body.postNum;
+	
+	//fetch forum post from mongo
+	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problem);
+	if (problemsIDQueryJSON.indexOf(problem) > -1) {
+		console.log('[SRV] problem found: ' + problem);
+		forumCollection.findOne({"problem": problem}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] forums query failed');
+			} else if (result === null) { //not found
+				console.log('[SRV] problem not found: ' + req.query.problem);
+				response = JSON.stringify('-1');
+				res.send(response);
+				console.log('[OUT] [GET] sent res: ' + response);
+				res.end();
+			} else { //query successful
+				console.log('[SRV] [mongo] forums query successful');
+				var updatedPosts = result.posts;
+				updatedPosts.splice(postNum, 1);
+				
+				//update
+				forumCollection.findOneAndUpdate({"problem": problem}, {$set: {posts: updatedPosts}}, (error, result) => {
+					if (error){
+						console.log('[SRV] query error');
+						console.log('[SRV] forum post thread deletion failed');
+						response = JSON.stringify('2');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					} else {
+						console.log('[SRV] query successful');
+						console.log('[SRV] forum post thread deletion success');
+						response = JSON.stringify('1');
+						res.send(response);
+						console.log('[OUT] [POST] sent res: ' + response);
+					}
+				});
+			}
+		});
+	} else {
+		console.log('[SRV] problem not found: ' + req.query.problem);
+		response = JSON.stringify('-1');
+		res.send(response);
+		console.log('[OUT] [GET] sent res: ' + response);
+		res.end();
+	}
+});
+
 
 module.exports = router;

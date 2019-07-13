@@ -1,8 +1,8 @@
 /**
  * problem.js
- * script to call when creating a html page for displaying a problem
+ * for use in problem.html
+ * renders specific problem
  */
-
 //global variable declaration
 var problemSampleInput = {};
 var problemSampleOutput = {};
@@ -24,10 +24,15 @@ function onload(){
 	generateTestCase();
 	generateIDE();
 	generateForum();
+	generateForumPostBox();
 	
 	//render initial menu
 	renderDetails();
 	renderSidebar();
+	
+	//fetch forum data
+	fetchForum(userStorage.getItem('problemID'));
+	
 }
 window.addEventListener("load", onload);
 
@@ -485,4 +490,325 @@ function renderSidebar() {
 	source.appendChild(sourceHeader);
 	const sourceContent = document.createTextNode(userStorage.getItem('problemSource')); //fetch data
 	source.appendChild(sourceContent);
+}
+
+function generateForumPostBox() {
+	if (tempStorage.getItem('loginFlag') == 'TRUE') {
+		//generate forum post text box (for logged in users)
+		const forumInputBoxWrapper = document.createElement('div');
+		forumInputBoxWrapper.classList.add('forumInputWrapper');
+		document.getElementById('problemForum').appendChild(forumInputBoxWrapper);
+		
+		const forumInputBox = document.createElement('div');
+		forumInputBox.classList.add('forumInputBox');
+		forumInputBox.id = 'forumInputBox';
+		forumInputBoxWrapper.appendChild(forumInputBox);
+		
+		const forumInputBoxHeader = document.createElement('div');
+		forumInputBoxHeader.classList.add('forumTextHeader');
+		forumInputBoxHeader.id = 'forumInputBoxHeader';
+		forumInputBox.appendChild(forumInputBoxHeader);
+		forumInputBoxHeader.innerText = 'Create New Forum Post';
+		
+		const forumInputBoxText = document.createElement('textarea');
+		forumInputBoxText.classList.add('forumInputTextArea');
+		forumInputBoxText.id = 'forumPostText';
+		forumInputBox.appendChild(forumInputBoxText);
+		
+		const forumInputBoxHorzWrapper = document.createElement('div');
+		forumInputBoxHorzWrapper.classList.add('forumInputBoxHorzWrapper');
+		forumInputBoxHorzWrapper.id = 'forumInputBoxHorzWrapper';
+		forumInputBox.appendChild(forumInputBoxHorzWrapper);
+		
+		const forumInputMakePost = document.createElement('button');
+		forumInputMakePost.innerText = 'Submit';
+		forumInputMakePost.id = 'postButton';
+		forumInputBoxHorzWrapper.appendChild(forumInputMakePost);
+		forumInputMakePost.setAttribute('onclick', 'createPost()');
+		
+		//create reply button and append to unused
+		const forumInputMakeReply = document.createElement('button');
+		forumInputMakeReply.innerText = 'Submit';
+		forumInputMakeReply.id = 'replyButton';
+		document.getElementById('menu').appendChild(forumInputMakeReply);
+		
+		const forumInputRerenderPost = document.createElement('button');
+		forumInputRerenderPost.innerText = 'Make New Post';
+		forumInputRerenderPost.id = 'makeNewPostButton';
+		forumInputRerenderPost.setAttribute('onclick', 'handlePost()');
+		document.getElementById('menu').appendChild(forumInputRerenderPost);
+	}
+}
+
+function generateForumPosts(data) {
+	console.log('generating forum posts');
+	console.log(data.posts.length);
+	
+	//generate forum post
+	const forumWrapper = document.createElement('div');
+	forumWrapper.classList.add('forumWrapper');
+	forumWrapper.id = 'forumWrapper';
+	document.getElementById('problemForum').appendChild(forumWrapper);
+	
+	for (let i = 0; i < data.posts.length; i++) {
+		console.log('generating post: ' + (i + 1));
+		//actual post
+		const forumThreadWrapper = document.createElement('div');
+		forumThreadWrapper.classList.add('forumPostWrapper');
+		forumWrapper.appendChild(forumThreadWrapper);
+		
+		const forumThread = document.createElement('div');
+		forumThread.classList.add('forumPost');
+		forumThreadWrapper.appendChild(forumThread);
+		
+		const forumThreadHeader = document.createElement('div');
+		forumThreadHeader.classList.add('forumTextHeader');
+		forumThread.appendChild(forumThreadHeader);
+		forumThreadHeader.innerText = data.posts[i][0][0] + ' (' + data.posts[i][0][2] + ')';
+		
+		const forumThreadText = document.createElement('div');
+		forumThreadText.classList.add('forumTextContent');
+		forumThread.appendChild(forumThreadText);
+		forumThreadText.innerText = data.posts[i][0][1];
+		
+		const replyButton = document.createElement('button');
+		replyButton.id = 'post' + i;
+		forumThread.appendChild(replyButton);
+		replyButton.innerText = 'Reply';
+		replyButton.setAttribute('onclick', 'handleReply(' + i + ')');
+		
+		//add delete button if post belongs to user
+		if (tempStorage.getItem('username') == data.posts[i][0][0]) {
+			const deleteThreadButton = document.createElement('button');
+			deleteThreadButton.innerText = 'Delete';
+			forumThread.appendChild(deleteThreadButton);
+			deleteThreadButton.setAttribute('onclick', 'deletePost(' + i + ')');
+		}
+		
+		//replies
+		console.log(data.posts[i].length);
+		if (data.posts[i].length > 1) {
+			const forumReplyWrapper = document.createElement('div');
+			forumReplyWrapper.classList.add('forumReplyWrapper');
+			forumThreadWrapper.appendChild(forumReplyWrapper);
+			
+			for (let j = 1; j < data.posts[i].length; j++) {
+				const forumReply = document.createElement('div');
+				forumReply.classList.add('forumReply');
+				forumReplyWrapper.appendChild(forumReply);
+				
+				const forumReplyHeader = document.createElement('div');
+				forumReplyHeader.classList.add('forumTextHeader');
+				forumReplyHeader.id = 'forumReplyHeader';
+				forumReply.appendChild(forumReplyHeader);
+				forumReplyHeader.innerText = data.posts[i][j][0] + ' (' + data.posts[i][j][2] + ')';
+				
+				const forumReplyText = document.createElement('div');
+				forumReplyText.classList.add('forumTextContent');
+				forumReply.appendChild(forumReplyText);
+				forumReplyText.innerText = data.posts[i][j][1];
+				
+				//add delete button if post belongs to user
+				if (tempStorage.getItem('username') == data.posts[i][j][0]) {
+					const deleteReplyButton = document.createElement('button');
+					deleteReplyButton.innerText = 'Delete';
+					forumReply.appendChild(deleteReplyButton);
+					deleteReplyButton.setAttribute('onclick', 'deleteReply(' + i + ', ' + j + ')');
+				}
+			}
+		}
+	}
+}
+
+function removeForumPosts() {
+	document.getElementById('forumWrapper').parentNode.removeChild(document.getElementById('forumWrapper'));
+}
+
+function clearForumPostBox() {
+	document.getElementById('forumPostText').value = "";
+}
+
+//handle switching of forum input text box
+function handleReply(postNum) {
+	document.getElementById('forumInputBoxHorzWrapper').appendChild(document.getElementById('replyButton'));
+	document.getElementById('forumInputBoxHorzWrapper').appendChild(document.getElementById('makeNewPostButton'));
+	document.getElementById('menu').appendChild(document.getElementById('postButton'));
+	document.getElementById('replyButton').setAttribute('onclick', 'createReply(' + postNum + ')');
+	document.getElementById('forumInputBoxHeader').innerText = 'Create Reply';
+}
+
+function handlePost() {
+	document.getElementById('forumInputBoxHorzWrapper').appendChild(document.getElementById('postButton'));
+	document.getElementById('menu').appendChild(document.getElementById('replyButton'));
+	document.getElementById('menu').appendChild(document.getElementById('makeNewPostButton'));
+	document.getElementById('forumInputBoxHeader').innerText = 'Create New Forum Post';
+}	
+
+/**
+ * http requests related function
+ */
+function fetchForum(problem) {
+	console.log('fetching forum for problem: ' + problem);
+	
+	const requestURL = '/forum/?problem=' + problem;
+	$.ajax({
+		url: requestURL,
+		type: 'GET',
+		dataType: 'JSON',
+		success: (data) => {
+			console.log(data);
+			generateForumPosts(data);
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			if(xhr.status==404) {
+				alert(thrownError);
+				console.log('not found');
+			}
+		}
+	});
+}
+
+//create new reply to a post
+function createReply(postNum) {
+	console.log('sending request to make new reply');
+	console.log('replying to post ' + postNum);
+	var newPost = document.getElementById('forumPostText').value;
+	console.log(newPost);
+	
+	//grab current date and time
+	var today = new Date();
+	var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + Math.floor((today.getFullYear() % 100));
+	var period = (today.getHours() > 12 ?  'PM' : 'AM');
+	var hours = today.getHours() == 0 ? 12 : today.getHours() % 12;
+	var minutes = today.getMinutes() < 10 ? '0'.toString() + today.getMinutes().toString() : today.getMinutes().toString();
+	var time = hours + ":" + minutes + " " + period;
+	var dateTime = date + ' ' + time;
+
+	if (newPost != '') { //check for non-empty post
+		const requestURL = '/forumPost/reply';
+		$.ajax({
+			url: requestURL,
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				"problem": userStorage.getItem('problemID'),
+				"postNum": postNum,
+				"username": tempStorage.getItem('username'),
+				"text": newPost,
+				"date": dateTime
+			},
+			success: (data) => {
+				//reload forum posts
+				console.log(data);
+				removeForumPosts();
+				fetchForum(userStorage.getItem('problemID'));
+				clearForumPostBox();
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				if(xhr.status==404) {
+					alert(thrownError);
+					console.log('not found');
+				}
+			}
+		});
+	}
+}
+
+function createPost() {
+	console.log('sending request to make new post');
+	var newPost = document.getElementById('forumPostText').value;
+	console.log(newPost);
+	
+	//grab current date and time
+	var today = new Date();
+	var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + Math.floor((today.getFullYear() % 100));
+	var period = (today.getHours() > 12 ?  'PM' : 'AM');
+	var hours = today.getHours() == 0 ? 12 : today.getHours() % 12;
+	var minutes = today.getMinutes() < 10 ? '0'.toString() + today.getMinutes().toString() : today.getMinutes().toString();
+	var time = hours + ":" + minutes + " " + period;
+	var dateTime = date + ' ' + time;
+
+	if (newPost != '') { //check for non-empty post
+		const requestURL = '/forumPost/thread';
+		$.ajax({
+			url: requestURL,
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				"problem": userStorage.getItem('problemID'),
+				"username": tempStorage.getItem('username'),
+				"text": newPost,
+				"date": dateTime
+			},
+			success: (data) => {
+				//reload forum posts
+				console.log(data);
+				removeForumPosts();
+				fetchForum(userStorage.getItem('problemID'));
+				clearForumPostBox();
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				if(xhr.status==404) {
+					alert(thrownError);
+					console.log('not found');
+				}
+			}
+		});
+	}
+}
+
+function deleteReply(postNum, itemNum) {
+	console.log('sending request to delete reply');
+	const requestURL = '/forumPost/deleteReply';
+	$.ajax({
+		url: requestURL,
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			"problem": userStorage.getItem('problemID'),
+			"postNum": postNum,
+			"itemNum": itemNum
+		},
+		success: (data) => {
+			//reload forum posts
+			console.log(data);
+			removeForumPosts();
+			fetchForum(userStorage.getItem('problemID'));
+			clearForumPostBox();
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			if(xhr.status==404) {
+				alert(thrownError);
+				console.log('not found');
+			}
+		}
+	});
+}
+
+function deletePost(postNum) {
+	console.log('sending request to delete thread');
+
+	const requestURL = '/forumPost/deleteThread';
+	$.ajax({
+		url: requestURL,
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			"problem": userStorage.getItem('problemID'),
+			"postNum": postNum
+		},
+		success: (data) => {
+			//reload forum posts
+			console.log(data);
+			removeForumPosts();
+			fetchForum(userStorage.getItem('problemID'));
+			clearForumPostBox();
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			if(xhr.status==404) {
+				alert(thrownError);
+				console.log('not found');
+			}
+		}
+	});
 }

@@ -2,10 +2,8 @@
  * verifyUser.js
  * rendering of html elements in verifyUser.html
  */
- 
-
 function onload() {
-	console.log('rendering login page');
+	console.log('rendering page');
 	handleLoginStatus();
 	generateErrorMsg();
 }
@@ -26,7 +24,7 @@ function handleLoginStatus() {
 /**
  * generation and dynamic rendering of html elements
  */
-//render login page details
+//render page details
 function renderDetails() {
 	const wrapper = document.createElement('div');
 	wrapper.classList.add('contentBoxWrapper');

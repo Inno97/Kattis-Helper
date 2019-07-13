@@ -1,8 +1,7 @@
 /**
  * auth.js
- * HTTP handling of user authentication
+ * handling of user authentication
  */
-
 //successful auth, redirect to user page
 function handleLoginSuccess(username) {
 	console.log('login successful')
@@ -87,14 +86,14 @@ function handleCreateAccount() {
 function handleLostPass() {
 	console.log('redirecting to recover_password.html');
 	//perform ajax query
-	const requestURL = '/recover_password';
+	const requestURL = '/reset_password';
 	$.ajax({
 		url: requestURL,
 		type: 'GET',
 		dataType: 'html',
 		success: (data) => {
 			console.log('redirecting');
-			location = '/recover_password';
+			location = '/reset_password';
 		},
 		error:function (xhr, ajaxOptions, thrownError){
 			if(xhr.status==404) {
@@ -110,7 +109,7 @@ function createAccount() {
 	if (document.getElementById('username').value && document.getElementById('password').value && document.getElementById('email').value) {
 		var username = document.getElementById('username').value;
 		var password = document.getElementById('password').value;
-		var email = document.getElementById('email').value
+		var email = document.getElementById('email').value;
 		var credentials = '{\"username": \"' + username + '\", \"password\": \"' + password + '\", \"email\": \"' + email + '\"';
 		//perform ajax query
 		const requestURL = '/createUser';
@@ -216,6 +215,105 @@ function verify() {
 		});
 	} else {
 		renderLoginError('Please fill in all fields!');
+	}
+}
+
+//password recovery
+function resetPassword() {
+	if (document.getElementById('username').value && document.getElementById('verification').value
+	&& document.getElementById('password').value && document.getElementById('email').value) {
+		var username = document.getElementById('username').value;
+		var email = document.getElementById('email').value;
+		var password = document.getElementById('password').value;
+		var verification = document.getElementById('verification').value;
+		
+		//perform ajax query
+		const requestURL = '/resetPassword';
+		$.ajax({
+			url: requestURL,
+			type: 'POST',			
+			data: {
+				"username": username,
+				"password": password,
+				"verification": verification,
+				"email": email
+			},
+			dataType: 'json',
+			success: (data) => {
+				console.log(data);
+				switch(data) {
+					case '-1': //no credentials
+						renderLoginError('Please fill in all 4 fields.');
+						break;
+					case '1': //reset successful 
+						removeLoginError();
+						redirectLoginPage();
+						//handleLoginSuccess(username);
+						break;
+					case '2': //wrong verification code
+						renderLoginError('Recovery code failed.');
+						break;
+					case '3': //user not found
+						renderLoginError('User not found.');
+						break;
+					case '4': //wrong email
+						renderLoginError('Wrong email.');
+						break;
+					case '5': //server error
+						renderLoginError('User verification failed, please try again');
+						break;
+				}
+			},
+			error: function(req, err){ console.log('[SRV] error occured: ' + err); }
+		});
+	} else {
+		renderLoginError('Please fill in all fields!');
+	}
+}
+
+//send recovery code
+function sendPasswordCode() {
+	if (document.getElementById('username').value && document.getElementById('email').value) {
+		var username = document.getElementById('username').value;
+		var email = document.getElementById('email').value;
+		var credentials = '{\"username": \"' + username + '\", \"password\": \"' + password + '\", \"email\": \"' + email + '\"';
+		//perform ajax query
+		const requestURL = '/sendPasswordCode';
+		$.ajax({
+			url: requestURL,
+			type: 'POST',			
+			data: {
+				"username": username,
+				"email": email
+			},
+			dataType: 'json',
+			success: (data) => {
+				console.log(data);
+				switch(data) {
+					case '-1': //no credentials
+						renderLoginError('Please fill in all 3 fields.');
+						break;
+					case '1': //recovery code sent successful 
+						removeLoginError();
+						//handleLoginSuccess(username);
+						break;
+					case '2': //user does not exist
+						renderLoginError('User does not exist.');
+						break;
+					case '3': //email parse error
+						renderLoginError('Please enter a valid email.');
+						break;
+					case '5': //server-side error
+						renderLoginError('User creation failed, please try again.');
+						break;
+				}
+			},
+			error: function(req, err){ console.log('[SRV] error occured: ' + err); }
+			
+		});
+		
+	} else {
+		renderLoginError('Please fill in all fields.');
 	}
 }
 

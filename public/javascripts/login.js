@@ -2,9 +2,8 @@
  * login.js
  * rendering of html elements in login.html
  */
-
 function onload() {
-	console.log('rendering login page');
+	console.log('rendering page');
 	handleLoginStatus();
 	generateErrorMsg();
 }

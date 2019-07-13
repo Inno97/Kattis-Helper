@@ -15,7 +15,6 @@ From the searchbar
 4. Problem Page
 	- Displays the appropriate problem
 	
-	
 ===================================================================================================
 Kattis Helper Changelog:
 ===================================================================================================
@@ -103,36 +102,115 @@ Kattis Helper Changelog:
 	migrated to mongodb
 	
 11/7/19:
+	User system is up and running (finally)
 	added user account creation
 	slowly changing console syntax to show better logging
 	added user account verification:
 		upon successful creation of account, send an email to the user, containing a verification code
-		* still need to setup the email system
 	added ability to remove unverified users
+	added password recovery
+
+12/7/19:
+	added database quering for forum
+
+13/7/19:
+	added forum system to each question
+	CSS is not polished
 
 To do:
 
-settle create_account and recover_password
-
 implementation of user account page:
 	possible items:
-	questions done
-	recent forum comments
+		questions done
+		recent forum comments
 
-email system: https://sendgrid.com/
-Use for generating email for verification
-
-Problems list: add a next button, and show only 100 entries (atm we only have 100 so it's ok)
-
-userStorage item: problemStatus (shows which context menu is used (pending deletion if not used)
+Problems list:
+	most importantly, start fetching fixed number of items
+	add filters
+	add a next button, and show only 100 entries (atm we only have 100 so it's ok)
+	*** change targets const in problemsList
 	
 ===================================================================================================
 Notes:
 ===================================================================================================
 
-Project is built on Express, using mysql as a database to handle data
+Project is built on Express, using mongoDB Atlas to store user data in a cloud server.
 
 To run the server, type in the command:
-npm run test
+	npm run test
 
-do note that the server will restart with any changes in code due to nodemon
+and connect to http://localhost:3000/
+
+Do note that the server will restart with any changes in code due to nodemon
+
+For user accounts, emails will be sent for verification and resetting of passwords, however, at
+the moment we do not support links to verify users (it's alot more work to do)
+
+CLI will show tags for console outputs for verbose output
+
+
+
+===================================================================================================
+Project Folder Contents:
+===================================================================================================
+Folders:
+---------------------------------------------------------------------------------------------------
+bin:
+	default file
+
+data:
+	JSON data storage
+
+node_modules:
+	npm
+
+public:
+	for express to serve
+	images:
+		img assets
+	javascripts:
+		client-side js
+	stylesheets:
+		css
+
+routes:
+	index.js:
+		default js file for server-side requests
+	users.js:
+		temp file
+		
+src:
+	all html files
+	
+utilities:
+	C++ scripts to manipulate JSON data
+
+views:
+	default file
+	
+---------------------------------------------------------------------------------------------------
+Files:
+---------------------------------------------------------------------------------------------------
+app.js:
+	for server-side setup
+	
+package.json & package-lock.json:
+	npm modules list & miscellaneous info
+	
+===================================================================================================
+CLI Output:
+===================================================================================================
+[SRV] - SeRVer
+
+HTTP requests:
+[REQ] - (HTTP) Request
+[IN] - INcoming request
+[OUT] - OUTgoing request
+[GET] [POST] - Request types
+
+
+Modules:
+[FS] - File System (used to read JSON)
+[nodemailer] - npm nodemailer
+[mongo] - npm mongodb
+

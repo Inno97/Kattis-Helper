@@ -2,14 +2,8 @@
  * createAccount.js
  * rendering of html elements in createAccount.html
  */
-
-/*
-	stuff to render:
-		credentials: username / password / email
- */
-
 function onload() {
-	console.log('rendering create account page');
+	console.log('rendering page');
 	renderDetails();
 	generateErrorMsg();
 }

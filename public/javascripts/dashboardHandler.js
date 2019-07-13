@@ -1,29 +1,7 @@
 /**
- * Dashboard HTML output
- 
-	<div class="dashboard">
-		<a href="/">
-			<img class="icon" src="./static/royalty_free_kattis_icon.jpg" type="image" id="iconHome" alt="well there should've been a crudely drawn Kattis the cat here"> 
-		</a>
-		<div class="dashboardLeft">
-			<div class="title">Kattis Helper</div>
-			<div class="dashboardText">
-				<a class="dashboardTextElement" href="./problems.html">Problems</a>
-				<a class="dashboardTextElement">Rankings</a>
-				<a class="dashboardTextElement" href="./help.html">Help</a>
-			</div>
-	</div>
-	<div class="dashboardRight">
-		<div class="searchboxWrapper">
-			<textarea id="searchText" class="searchbox" placeholder="Search bootleg Kattis" style="border: none"></textarea>
-			<input class="searchIcon" type="image" id="image" alt="search" src="./static/search_icon.jpg">
-			</img>
-		</div>
-	</div>
-	</div>
-	
+ * dashboardHandler.js
+ * renders dashboard in any page
  */
-
 function onload(){
 	console.log("dashboard loading...");
 	renderDashboard();
@@ -147,7 +125,6 @@ function renderDashboard() {
 /**
  * Error handling
  */
-
 //404 not found redirect
 function redirect404() {
 	//perform ajax query

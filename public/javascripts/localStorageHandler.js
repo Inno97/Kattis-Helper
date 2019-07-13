@@ -1,8 +1,9 @@
 /**
  * Local Storage Handler
  * Script deals with local and session storage
+ * Note: localStorage will only get wiped when the cache is cleared
+ * sessionStorage will get wiped on every new session
  */
-
 function onload(){
 	console.log('local storage setting up...');
 	initLocalStorage();
@@ -15,13 +16,13 @@ function onload(){
 window.addEventListener("load", onload);
 
 function initLocalStorage() {
-	console.log('> setting local storage');
+	console.log('setting local storage');
 	userStorage = window.localStorage;
 	
 	//handle problem status
 	if (userStorage.getItem('problem') == '') {
-		userStorage.setItem('problem', '');
 		console.log("reset problem");
+		userStorage.setItem('problem', '');
 		
 		//init local storage values for questions here
 		userStorage.setItem('problemName', '');
@@ -38,8 +39,6 @@ function initLocalStorage() {
 		userStorage.setItem('problemNumSam', '');
 		userStorage.setItem('problemSamInJSON', '');
 		userStorage.setItem('problemSamOutJSON', '');
-		//userStorage.setItem('problemTestCaseInputJSON', JSON.stringify(data.table.input));
-		//userStorage.setItem('problemTestCaseOutputJSON', JSON.stringify(data.table.input));
 		userStorage.setItem('problemAuthor', '');
 		userStorage.setItem('problemSource', '');
 		userStorage.setItem('problemStatus', '');
@@ -74,7 +73,6 @@ function setProblemData(data) {
 	console.log(data.problem);
 	userStorage.setItem('problemName', data.problem);
 	userStorage.setItem('problemID', data.sidebar.problemID);
-	//userStorage.setItem('problemUrl', '');
 	userStorage.setItem('problemCat', data.data.category);
 	userStorage.setItem('problemDiff', data.sidebar.difficulty);
 	userStorage.setItem('problemDesc', data.body.question);

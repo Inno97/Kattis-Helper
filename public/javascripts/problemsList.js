@@ -1,8 +1,11 @@
+/**
+ * problemList.js
+ * for use in problemsList.html
+ */
 const targets = ["problemTableBody"];
 var numProblems = 0;
 
 //render all the problems from problems.json in a table
-
 function onload(){
 	console.log('fetching problem data...');
 	renderQuestions();
