@@ -542,7 +542,6 @@ function generateForumPostBox() {
 
 function generateForumPosts(data) {
 	console.log('generating forum posts');
-	console.log(data.posts.length);
 	
 	//generate forum post
 	const forumWrapper = document.createElement('div');
@@ -550,73 +549,98 @@ function generateForumPosts(data) {
 	forumWrapper.id = 'forumWrapper';
 	document.getElementById('problemForum').appendChild(forumWrapper);
 	
-	for (let i = 0; i < data.posts.length; i++) {
-		console.log('generating post: ' + (i + 1));
-		//actual post
-		const forumThreadWrapper = document.createElement('div');
-		forumThreadWrapper.classList.add('forumPostWrapper');
-		forumWrapper.appendChild(forumThreadWrapper);
-		
-		const forumThread = document.createElement('div');
-		forumThread.classList.add('forumPost');
-		forumThreadWrapper.appendChild(forumThread);
-		
-		const forumThreadHeader = document.createElement('div');
-		forumThreadHeader.classList.add('forumTextHeader');
-		forumThread.appendChild(forumThreadHeader);
-		forumThreadHeader.innerText = data.posts[i][0][0] + ' (' + data.posts[i][0][2] + ')';
-		
-		const forumThreadText = document.createElement('div');
-		forumThreadText.classList.add('forumTextContent');
-		forumThread.appendChild(forumThreadText);
-		forumThreadText.innerText = data.posts[i][0][1];
-		
-		const replyButton = document.createElement('button');
-		replyButton.id = 'post' + i;
-		forumThread.appendChild(replyButton);
-		replyButton.innerText = 'Reply';
-		replyButton.setAttribute('onclick', 'handleReply(' + i + ')');
-		
-		//add delete button if post belongs to user
-		if (tempStorage.getItem('username') == data.posts[i][0][0]) {
-			const deleteThreadButton = document.createElement('button');
-			deleteThreadButton.innerText = 'Delete';
-			forumThread.appendChild(deleteThreadButton);
-			deleteThreadButton.setAttribute('onclick', 'deletePost(' + i + ')');
-		}
-		
-		//replies
-		console.log(data.posts[i].length);
-		if (data.posts[i].length > 1) {
-			const forumReplyWrapper = document.createElement('div');
-			forumReplyWrapper.classList.add('forumReplyWrapper');
-			forumThreadWrapper.appendChild(forumReplyWrapper);
-			
-			for (let j = 1; j < data.posts[i].length; j++) {
-				const forumReply = document.createElement('div');
-				forumReply.classList.add('forumReply');
-				forumReplyWrapper.appendChild(forumReply);
+	if (data) { //check if forum posts have loaded properly
+		if (data.posts.length > 0) {
+			console.log(data.posts.length);
+			for (let i = 0; i < data.posts.length; i++) {
+				console.log('generating post: ' + (i + 1));
+				//actual post
+				const forumThreadWrapper = document.createElement('div');
+				forumThreadWrapper.classList.add('forumPostWrapper');
+				forumWrapper.appendChild(forumThreadWrapper);
 				
-				const forumReplyHeader = document.createElement('div');
-				forumReplyHeader.classList.add('forumTextHeader');
-				forumReplyHeader.id = 'forumReplyHeader';
-				forumReply.appendChild(forumReplyHeader);
-				forumReplyHeader.innerText = data.posts[i][j][0] + ' (' + data.posts[i][j][2] + ')';
+				const forumThread = document.createElement('div');
+				forumThread.classList.add('forumPost');
+				forumThreadWrapper.appendChild(forumThread);
 				
-				const forumReplyText = document.createElement('div');
-				forumReplyText.classList.add('forumTextContent');
-				forumReply.appendChild(forumReplyText);
-				forumReplyText.innerText = data.posts[i][j][1];
+				const forumThreadHeader = document.createElement('div');
+				forumThreadHeader.classList.add('forumTextHeader');
+				forumThread.appendChild(forumThreadHeader);
+				forumThreadHeader.innerText = data.posts[i][0][0] + ' (' + data.posts[i][0][2] + ')';
+				
+				const forumThreadText = document.createElement('div');
+				forumThreadText.classList.add('forumTextContent');
+				forumThread.appendChild(forumThreadText);
+				forumThreadText.innerText = data.posts[i][0][1];
+				
+				const replyButton = document.createElement('button');
+				replyButton.id = 'post' + i;
+				forumThread.appendChild(replyButton);
+				replyButton.innerText = 'Reply';
+				replyButton.setAttribute('onclick', 'handleReply(' + i + ')');
 				
 				//add delete button if post belongs to user
-				if (tempStorage.getItem('username') == data.posts[i][j][0]) {
-					const deleteReplyButton = document.createElement('button');
-					deleteReplyButton.innerText = 'Delete';
-					forumReply.appendChild(deleteReplyButton);
-					deleteReplyButton.setAttribute('onclick', 'deleteReply(' + i + ', ' + j + ')');
+				if (tempStorage.getItem('username') == data.posts[i][0][0]) {
+					const deleteThreadButton = document.createElement('button');
+					deleteThreadButton.innerText = 'Delete';
+					forumThread.appendChild(deleteThreadButton);
+					deleteThreadButton.setAttribute('onclick', 'deletePost(' + i + ')');
+				}
+				
+				//replies
+				console.log(data.posts[i].length);
+				if (data.posts[i].length > 1) {
+					const forumReplyWrapper = document.createElement('div');
+					forumReplyWrapper.classList.add('forumReplyWrapper');
+					forumThreadWrapper.appendChild(forumReplyWrapper);
+					
+					for (let j = 1; j < data.posts[i].length; j++) {
+						const forumReply = document.createElement('div');
+						forumReply.classList.add('forumReply');
+						forumReplyWrapper.appendChild(forumReply);
+						
+						const forumReplyHeader = document.createElement('div');
+						forumReplyHeader.classList.add('forumTextHeader');
+						forumReplyHeader.id = 'forumReplyHeader';
+						forumReply.appendChild(forumReplyHeader);
+						forumReplyHeader.innerText = data.posts[i][j][0] + ' (' + data.posts[i][j][2] + ')';
+						
+						const forumReplyText = document.createElement('div');
+						forumReplyText.classList.add('forumTextContent');
+						forumReply.appendChild(forumReplyText);
+						forumReplyText.innerText = data.posts[i][j][1];
+						
+						//add delete button if post belongs to user
+						if (tempStorage.getItem('username') == data.posts[i][j][0]) {
+							const deleteReplyButton = document.createElement('button');
+							deleteReplyButton.innerText = 'Delete';
+							forumReply.appendChild(deleteReplyButton);
+							deleteReplyButton.setAttribute('onclick', 'deleteReply(' + i + ', ' + j + ')');
+						}
+					}
 				}
 			}
+			return;
+		} else { //render placeholder forum page
+			const placeholderElementBox = document.createElement('div');
+			placeholderElementBox.classList.add('forumPlaceholderBox');
+			document.getElementById('forumWrapper').appendChild(placeholderElementBox);
+			
+			const placeholderElementText = document.createElement('div');
+			placeholderElementText.classList.add('forumPlaceholderText');
+			placeholderElementText.innerText = 'There\'s no posts here yet!\nLogin to start some discussion on this problem.';
+			placeholderElementBox.appendChild(placeholderElementText);
 		}
+	} else { //render placeholder element
+		console.log('error in reading forum data');
+		const placeholderElementBox = document.createElement('div');
+		placeholderElementBox.classList.add('forumPlaceholderBox');
+		document.getElementById('forumWrapper').appendChild(placeholderElementBox);
+		
+		const placeholderElementText = document.createElement('div');
+		placeholderElementText.classList.add('forumPlaceholderText');
+		placeholderElementText.innerText = 'There seems to be something wrong with loading the forum posts...\nPlease refresh the page and try again!';
+		placeholderElementBox.appendChild(placeholderElementText);
 	}
 }
 

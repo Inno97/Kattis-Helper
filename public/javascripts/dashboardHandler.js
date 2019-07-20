@@ -67,7 +67,7 @@ function renderDashboard() {
 	const searchText = document.createElement("textarea");
 	searchText.id = "searchText";
 	searchText.classList.add("searchbox");
-	searchText.placeholder = "Search bootleg Kattis";
+	searchText.placeholder = "Search Kattis Helper";
 	searchText.style = "border:none";
 	
 	const searchIcon = document.createElement("button");

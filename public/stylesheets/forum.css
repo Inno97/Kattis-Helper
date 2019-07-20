@@ -74,5 +74,12 @@
 	display: flex;
 	flex: auto;
 	flex-direction: row;
-	
+}
+.forumPlaceholderText{
+	font-size: 1.5em;
+	text-align: center;
+}
+.forumPlaceholderBox{
+	background-color: #f0efef;
+	border: 0.5px solid grey;
 }

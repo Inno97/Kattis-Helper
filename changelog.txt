@@ -117,6 +117,13 @@ Kattis Helper Changelog:
 	added forum system to each question
 	CSS is not polished
 
+20/7/19:
+	added next / previous buttons to problem list
+	added filtering of problems in problem list
+	added placeholder text for problems with no forum posts
+	fixed loading error in forum posts (cannot read property of null object because it didn't load)
+		will display proper error message in client-side and prompt for refresh
+
 To do:
 
 implementation of user account page:
@@ -124,11 +131,6 @@ implementation of user account page:
 		questions done
 		recent forum comments
 
-Problems list:
-	most importantly, start fetching fixed number of items
-	add filters
-	add a next button, and show only 100 entries (atm we only have 100 so it's ok)
-	*** change targets const in problemsList
 	
 ===================================================================================================
 Notes:

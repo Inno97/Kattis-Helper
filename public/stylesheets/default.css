@@ -83,7 +83,7 @@
   padding: 1em;
   display: flex;
   flex: auto;
-  flex-direction: row;
+  flex-direction: column;
   border: 2px solid black;
   background: #f0efef;
 }
@@ -101,6 +101,9 @@
   position: relative;
   background-color: white;
   
+}
+.nextPageButton{
+	width: 60px;
 }
 .unusedObj {
   visibility: hidden;

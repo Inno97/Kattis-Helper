@@ -1,100 +1,133 @@
 .question-card {
-  display: flex;
-  padding: 0.5em;
-  align-items: center;
-  justify-content: center;
-  background: #f0efef;
-  border: 2px solid grey;
+	display: flex;
+	padding: 0.5em;
+	align-items: center;
+	justify-content: center;
+	background: #f0efef;
+	border: 2px solid grey;
 }
 .question-card .details {
-  padding-left: 1em;
-  position: relative;
-  flex: auto;
-  min-width: 0;
-  background: #f0efef;
+	padding-left: 1em;
+	position: relative;
+	flex: auto;
+	min-width: 0;
+	background: #f0efef;
 }
 .question-card .details .name {
-  margin-bottom: 0.5em;
-  font-weight: bold;
-  max-width: 8em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+	max-width: 8em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .question-card .details .url {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  color: blue;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	color: blue;
 }
 .question-card .details .category {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.8em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 0.8em;
 }
 .question-card .details .difficulty {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.8em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 0.8em;
 }
 .question-card .details .wrapper {
-  background: #f0efef;
+	background: #f0efef;
 }
 .questions {
-  max-height: 50em;
-  overflow: hidden;
+	max-height: 50em;
+	overflow: hidden;
 }
 .questionBoxWrapper {
-  display: flex;
-  flex: auto;
-  flex-direction: column;
-  padding: 0.5em;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	padding: 0.5em;
 }
 .questionBox {
-  border: 1px solid grey;
-  width: 1200px;
-  max-height: 1200px;
-  padding: 1em;
-  position: relative;
-  background-color: white;
-  overflow: scroll;
+	border: 1px solid grey;
+	max-width: 1200px;
+	max-height: 1200px;
+	padding: 1em;
+	position: relative;
+	background-color: white;
+	overflow: scroll;
+}
+.filterBox {
+	border: 1px solid grey;
+	max-width: 1200px;
+	max-height: 150px;
+	padding: 1em;
+	position: relative;
+	background-color: white;
+	
+}
+.filterTextArea {
+	width: 200px;
+	height: 20px;
+	resize: none;
+}
+.filterTextAreaDifficulty {
+	width: 50px;
+	height: 20px;
+	resize: none;
+}
+.filterTextHeader {
+	font-size: 1.5em;
+}
+.filterTextElement {
+	font-size: 1em;
+}
+.filterHorzWrapper {
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+}
+.filterButton {
+	max-width: 100px;
 }
 table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid grey;
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid grey;
 }
 thead th:nth-child(1) {
-  width: 40%;
+	width: 40%;
 }
 thead th:nth-child(2) {
-  width: 20%;
+	width: 20%;
 }
 thead th:nth-child(3) {
-  width: 25%;
+	width: 25%;
 }
 thead th:nth-child(4) {
-  width: 15%;
+	width: 15%;
 }
 th, td {
-  padding: 0.5em;
-  border: 0.5px solid grey;
-  background: #f0efef;
-  height: 30px;
-  overflow: hidden;
+	padding: 0.5em;
+	border: 0.5px solid grey;
+	background: #f0efef;
+	height: 30px;
+	overflow: hidden;
 }
 tbody td:nth-child(1) {
-  width: 40%;
+	width: 40%;
 }
 tbody td:nth-child(2) {
-  width: 20%;
+	width: 20%;
 }
 tbody td:nth-child(3) {
-  width: 25%;
+	width: 25%;
 }
 tbody td:nth-child(4) {
-  width: 15%;
+	swidth: 15%;
 }

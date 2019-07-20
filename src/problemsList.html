@@ -18,15 +18,17 @@
 	  <div id="dashboardLocation">
 	  </div>
 	  
-	  <div id="questions" class="contentWrapper">	  
-		<div class="questionBox">
+	  <div id="questions" class="contentWrapper">
+		<div id="filterBox" class="filterBox"> 
+		</div>
+		<div id="questionBox" class="questionBox">
 		<table>
 			<thead> 
 				<tr>
-				<th>Name</th>
-				<th>Kattis Link</th>
-				<th>Category</th>
-				<th>Difficulty</th>
+				<th><a id="filterName" onclick="filterProblems(0, 0)">Name</a></th>
+				<th><a id="filterLink" onclick="filterProblems(1, 0)">Kattis Link</a></th>
+				<th><a id="filterCategory" onclick="filterProblems(2, 0)">Category</a></th>
+				<th><a id="filterDifficulty" onclick="filterProblems(3, 0)">Difficulty</a></th>
 				</tr>
 			</thead>
 			<tbody id="problemTableBody">
