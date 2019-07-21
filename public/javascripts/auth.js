@@ -195,6 +195,7 @@ function verify() {
 						break;
 					case '1': //auth successful 
 						removeLoginError();
+						renderLoginError('Verification successful.');
 						//handleLoginSuccess(username);
 						break;
 					case '2': //wrong password

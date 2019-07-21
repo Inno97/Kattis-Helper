@@ -124,6 +124,12 @@ Kattis Helper Changelog:
 	fixed loading error in forum posts (cannot read property of null object because it didn't load)
 		will display proper error message in client-side and prompt for refresh
 
+21/7/19:
+	added user profile page
+		now shows problems that the user has completed and forum posts (recent 50)
+	added extra fields to user schema in mongo
+	added http request on serverside to handle update of problems solved by user
+
 To do:
 
 implementation of user account page:
@@ -131,6 +137,9 @@ implementation of user account page:
 		questions done
 		recent forum comments
 
+fix http error 500 (server error)
+add buttons to search for users or search for problems instead
+	add public user profile - same as user page, except remove email
 	
 ===================================================================================================
 Notes:

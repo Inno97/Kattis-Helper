@@ -33,19 +33,7 @@ app.listen(3001, () => {
 		//set global objects
 		db = client.db(COLLECTION_NAME);
 		userCollection = db.collection('users');
-		
-		//testing code
-		//forums
 		forumCollection = db.collection('forums');
-		/*
-		forumCollection.findOne({"problem": "rationalsequence"}, (error, result) => {
-			if (error) {
-				console.log('[SRV] forums query failed');
-			} else {
-				console.log(result.posts[0][1]);
-			}
-		});
-		*/
 	});
 });
 
@@ -388,7 +376,10 @@ router.post('/createUser', function(req, res) {
 					"password": password,
 					"email": email,
 					"isVerified": "false",
-					"verificationCode": verification
+					"verificationCode": verification,
+					"forumPosts": [],
+					"problemsSolved": []
+					
 				};
 				//query database and insert user
 				userCollection.insertOne( user, (error, result) => {
@@ -686,10 +677,11 @@ router.get('/forum/', function(req, res) {
 //create forum post (using thread as a term to avoid confusion with POST)
 router.post('/forumPost/thread', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
-	console.log('[INC] [POST] /forumPost/');
+	console.log('[INC] [POST] /forumPost/thread');
 	requestNum++;
 	
 	var problem = req.body.problem;
+	var problemID = req.body.problemID;
 	var postUsername = req.body.username;
 	var postText = req.body.text;
 	var postDate = req.body.date;
@@ -698,14 +690,14 @@ router.post('/forumPost/thread', function(req, res) {
 	console.log(newPost);
 	
 	//fetch forum post from mongo
-	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problem);
-	if (problemsIDQueryJSON.indexOf(problem) > -1) {
-		console.log('[SRV] problem found: ' + problem);
-		forumCollection.findOne({"problem": problem}, (error, result) => {
+	console.log('[SRV] [mongo] sent query for forum posts for problemID: ' + problemID);
+	if (problemsIDQueryJSON.indexOf(problemID) > -1) {
+		console.log('[SRV] problemID found: ' + problemID);
+		forumCollection.findOne({"problem": problemID}, (error, result) => {
 			if (error) {
 				console.log('[SRV] [mongo] forums query failed');
 			} else if (result === null) { //not found
-				console.log('[SRV] problem not found: ' + req.query.problem);
+				console.log('[SRV] problemID not found: ' + req.query.problemID);
 				response = JSON.stringify('-1');
 				res.send(response);
 				console.log('[OUT] [GET] sent res: ' + response);
@@ -717,8 +709,28 @@ router.post('/forumPost/thread', function(req, res) {
 				var updatedPosts = result.posts;
 				updatedPosts.push(newThread);
 				
+				//query and update user
+				console.log('[SRV] [mongo] fetching user forum posts to update');
+				userCollection.findOne({"username": postUsername}, (error, result) => {
+					if (error) {
+						console.log('[SRV] query error');
+						console.log('[SRV] user forum post update failed');
+					} else {
+						var forumPosts = result.forumPosts;
+						var userNewPost = [problem, problemID, postDate, postText];
+						forumPosts.push(userNewPost);
+						userCollection.findOneAndUpdate({"username": postUsername}, {$set: {forumPosts: forumPosts}}, (error, result) => {
+						if (error){
+							console.log('[SRV] [mongo] user forum posts update failed');
+						} else {
+							console.log('[SRV] [mongo] user forum posts update successful');
+						}
+					});
+					}
+				});
+				
 				//update
-				forumCollection.findOneAndUpdate({"problem": problem}, {$set: {posts: updatedPosts}}, (error, result) => {
+				forumCollection.findOneAndUpdate({"problem": problemID}, {$set: {posts: updatedPosts}}, (error, result) => {
 					if (error){
 						console.log('[SRV] query error');
 						console.log('[SRV] forum post reply creation failed');
@@ -736,7 +748,7 @@ router.post('/forumPost/thread', function(req, res) {
 			}
 		});
 	} else {
-		console.log('[SRV] problem not found: ' + req.query.problem);
+		console.log('[SRV] problemID not found: ' + req.query.problemID);
 		response = JSON.stringify('-1');
 		res.send(response);
 		console.log('[OUT] [GET] sent res: ' + response);
@@ -751,6 +763,7 @@ router.post('/forumPost/reply', function(req, res) {
 	requestNum++;
 	
 	var problem = req.body.problem;
+	var problemID = req.body.problemID;
 	var postNum = req.body.postNum;
 	var postUsername = req.body.username;
 	var postText = req.body.text;
@@ -760,14 +773,14 @@ router.post('/forumPost/reply', function(req, res) {
 	console.log(newPost);
 	
 	//fetch forum post from mongo
-	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problem);
-	if (problemsIDQueryJSON.indexOf(problem) > -1) {
-		console.log('[SRV] problem found: ' + problem);
-		forumCollection.findOne({"problem": problem}, (error, result) => {
+	console.log('[SRV] [mongo] sent query for forum posts for problem: ' + problemID);
+	if (problemsIDQueryJSON.indexOf(problemID) > -1) {
+		console.log('[SRV] problem found: ' + problemID);
+		forumCollection.findOne({"problem": problemID}, (error, result) => {
 			if (error) {
 				console.log('[SRV] [mongo] forums query failed');
 			} else if (result === null) { //not found
-				console.log('[SRV] problem not found: ' + req.query.problem);
+				console.log('[SRV] problemID not found: ' + req.query.problemID);
 				response = JSON.stringify('-1');
 				res.send(response);
 				console.log('[OUT] [GET] sent res: ' + response);
@@ -777,8 +790,28 @@ router.post('/forumPost/reply', function(req, res) {
 				var updatedPosts = result.posts;
 				updatedPosts[postNum].push(newPost);
 				
+				//query and update user
+				console.log('[SRV] [mongo] fetching user forum posts to update');
+				userCollection.findOne({"username": postUsername}, (error, result) => {
+					if (error) {
+						console.log('[SRV] query error');
+						console.log('[SRV] user forum post update failed');
+					} else {
+						var forumPosts = result.forumPosts;
+						var userNewPost = [problem, problemID, postDate, postText];
+						forumPosts.push(userNewPost);
+						userCollection.findOneAndUpdate({"username": postUsername}, {$set: {forumPosts: forumPosts}}, (error, result) => {
+						if (error){
+							console.log('[SRV] [mongo] user forum posts update failed');
+						} else {
+							console.log('[SRV] [mongo] user forum posts update successful');
+						}
+					});
+					}
+				});
+				
 				//update
-				forumCollection.findOneAndUpdate({"problem": problem}, {$set: {posts: updatedPosts}}, (error, result) => {
+				forumCollection.findOneAndUpdate({"problem": problemID}, {$set: {posts: updatedPosts}}, (error, result) => {
 					if (error){
 						console.log('[SRV] query error');
 						console.log('[SRV] forum post reply creation failed');
@@ -796,7 +829,7 @@ router.post('/forumPost/reply', function(req, res) {
 			}
 		});
 	} else {
-		console.log('[SRV] problem not found: ' + req.query.problem);
+		console.log('[SRV] problemID not found: ' + req.query.problemID);
 		response = JSON.stringify('-1');
 		res.send(response);
 		console.log('[OUT] [GET] sent res: ' + response);
@@ -913,5 +946,85 @@ router.post('/forumPost/deleteThread', function(req, res) {
 	}
 });
 
+/**
+ * HTTP requests for user profile
+ */
+router.get('/fetchProfile/', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /fetchProfile/?username=' + req.query.username);
+	requestNum++;
+	
+	var username = req.query.username;
+	
+	//fetch user data from mongo
+	console.log('[SRV] [mongo] sent query for user: ' + username);
+	if (username) {
+		userCollection.findOne({"username": username}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] user query failed');
+				
+			} else {
+				console.log('[SRV] [mongo] user query successful for user: ' + username);
+				console.log('[SRV] creating user profile to send');
+				
+				var userProfile = {
+					"username": result.username,
+					"email": result.email,
+					"forumPosts": result.forumPosts,
+					"problemsSolved": result.problemsSolved
+				};
+				
+				res.send(userProfile);
+				console.log('[OUT] [GET] sent over user profile for user: ' + username);
+			}
+		});
+	} else {
+		console.log('[SRV] empty user');
+		response = JSON.stringify('-1');
+		res.send(response);
+		console.log('[OUT] [GET] sent res: ' + response);
+		res.end();	
+	}
+});
+
+//update user problemsSolved in userCollection
+router.post('/updateProblemSolved', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [POST] /updateProblemSolved');
+	requestNum++;
+	
+	var problem = req.body.problem;
+	var problemID = req.body.problemID;
+	var username = req.body.username;
+	var date = req.body.date;
+	
+	//query and update user
+	console.log('[SRV] [mongo] fetching user forum posts to update');
+	userCollection.findOne({"username": username}, (error, result) => {
+		if (error) {
+			console.log('[SRV] query error');
+			console.log('[SRV] user forum post update failed');
+		} else {
+			var problemsSolved = result.forumPosts;
+			var userNewProblem = [problem, problemID, date];
+			problemsSolved.push(userNewProblem);
+			userCollection.findOneAndUpdate({"username": postUsername}, {$set: {problemsSolved: problemsSolved}}, (error, result) => {
+				if (error) {
+					console.log('[SRV] [mongo] user problemsSolved update failed');
+					response = JSON.stringify('-1');
+					res.send(response);
+					console.log('[OUT] [GET] sent res: ' + response);
+					res.end();
+				} else {
+					console.log('[SRV] [mongo] user problemsSolved update successful');
+					response = JSON.stringify('1');
+					res.send(response);
+					console.log('[OUT] [GET] sent res: ' + response);
+					res.end();
+				}
+			});
+		}
+	});
+});
 
 module.exports = router;
