@@ -304,14 +304,13 @@ function startcompling(){
 	executing.value = "Compiling";
 	compiler(code , inputvalue);
 }
-function getdata(re){
+function getdata(sub_result){
     $.ajax({
         url: '/output',
         type: 'GET',
-        data: {url: re.result.streams.output.uri},
+        data: {url: sub_result.result.streams.output.uri},
         datatype: 'text',
         success: (res) => {
-            console.log(res);
             //if(document.getElementById("output").value === "" || res === document.getElementById("output").value) {
 				const text = document.querySelector("#outputvalue");
 				text.value = res;
@@ -323,6 +322,20 @@ function getdata(re){
         error: (req,err) => {console.log('result error:' + err); }
     });
 }
+function compile_err(sub_result){
+	console.log(sub_result.result.streams.cmpinfo.uri);
+	$.ajax({
+		url: '/compile_error',
+		type: 'GET',
+		data: {url : sub_result.result.streams.cmpinfo.uri},
+		dataType: 'text',
+		success: (res) => {
+			const text = document.querySelector("#outputvalue");
+				text.value = "compilation error\n" + res;
+		},
+		error: (req,err) => {console.log('result error:' + err); }
+	});
+}
 function getresult(submission){
     $.ajax({
         url: '/result',
@@ -331,16 +344,17 @@ function getresult(submission){
         data: submission,
         success: (response2) => {
             console.log("loading");
-            var re = JSON.parse(response2);
-            console.log(re);
-            if(re.executing){
+            var sub_result = JSON.parse(response2);
+            if(sub_result.executing){
                     getresult(submission);
             }else{
-                if(re.result.status.name === "accepted"){
-                    getdata(re);
+                if(sub_result.result.status.name === "accepted"){
+                    getdata(sub_result);
+                }else if(sub_result.result.status.name === "compilation error"){
+					compile_err(sub_result);
                 }else{
-					document.querySelector("#outputcases textarea").value = re.result.status.name;
-                }
+					document.querySelector("#outputcases textarea").value = sub_result.result.status.name;
+				}
             }
 
         },
