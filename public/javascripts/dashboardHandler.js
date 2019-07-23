@@ -40,11 +40,13 @@ function renderDashboard() {
 	problems.innerText = "Problems";
 	dashboardLeftText.appendChild(problems);
 	
+	/*
 	const rankings = document.createElement("a");
 	rankings.classList.add("dashboardTextElement");
 	//rankings.href = "./problems.html";
 	rankings.innerText = "rankings";
 	dashboardLeftText.appendChild(rankings);
+	*/
 	
 	const help = document.createElement("a");
 	help.classList.add("dashboardTextElement");

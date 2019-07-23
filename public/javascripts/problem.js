@@ -792,7 +792,8 @@ function createReply(postNum) {
 			type: 'POST',
 			dataType: 'JSON',
 			data: {
-				"problem": userStorage.getItem('problemID'),
+				"problem": userStorage.getItem('problemName'),
+				"problemID": userStorage.getItem('problemID'),
 				"postNum": postNum,
 				"username": tempStorage.getItem('username'),
 				"text": newPost,
@@ -836,7 +837,8 @@ function createPost() {
 			type: 'POST',
 			dataType: 'JSON',
 			data: {
-				"problem": userStorage.getItem('problemID'),
+				"problem": userStorage.getItem('problemName'),
+				"problemID": userStorage.getItem('problemID'),
 				"username": tempStorage.getItem('username'),
 				"text": newPost,
 				"date": dateTime

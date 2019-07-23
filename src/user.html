@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kattis Helper</title>
+  <link rel="stylesheet" type="text/css" href="/static/default.css">
+  <link rel="stylesheet" type="text/css" href="/static/login.css">
+  <link rel="stylesheet" type="text/css" href="/static/userPage.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="/static/auth.js"></script>
+  <script src="/static/localStorageHandler.js"></script>
+  <script src="/static/dashboardHandler.js"></script>
+  <script src="/static/userPage.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+	  <div id="dashboardLocation">
+	  </div>
+	  
+	  <div id="content" class="contentWrapper">
+	  </div>
+	  <div id="unused" class="unusedObj">
+		<table id="problemSolvedTable">
+			<thead> 
+				<tr>
+				<th><a id="filterName" onclick="filterProblems(0, 0)">Name</a></th>
+				<th><a id="filterLink" onclick="filterProblems(1, 0)">Date Completed</a></th>
+				</tr>
+			</thead>
+			<tbody id="problemSolvedBody">
+			</tbody>
+		</table>
+		
+		<table id="forumTable" class="forumTable">
+			<thead> 
+				<tr>
+				<th><a id="filterName" onclick="filterProblems(0, 0)">Problem</a></th>
+				<th><a id="filterLink" onclick="filterProblems(1, 0)">Post</a></th>
+				<th><a id="filterLink" onclick="filterProblems(1, 0)">Date</a></th>
+				</tr>
+			</thead>
+			<tbody id="problemSolvedBody">
+			</tbody>
+		</table>
+	  </div>
+  </div>
+  
+</body>
+</html>
