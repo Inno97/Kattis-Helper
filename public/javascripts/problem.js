@@ -243,10 +243,9 @@ function generateIDE() {
 	document.getElementById('menu').appendChild(problemLeft);
 	
 	//compiler box
-	const compilerBox = document.createElement("div");
-	compilerBox.classList.add("sec-widget");
+	const compilerBox = document.createElement("textarea");
+	compilerBox.classList.add("compilerBox");
 	compilerBox.id = "compilerTextBox";
-	compilerBox.setAttribute('data-widget' , 'e00cbbec2520ac99bb3868c770dbc53b');
 	problemLeft.appendChild(compilerBox);
 	
 	const testCaseWrapperHorz = document.createElement("div");
@@ -255,6 +254,7 @@ function generateIDE() {
 	
 	//input
 	const inputWrapper = document.createElement("div");
+	inputWrapper.setAttribute("id", "inputcases");
 	inputWrapper.classList.add("testCaseWrapperVert");
 	testCaseWrapperHorz.appendChild(inputWrapper);
 	
@@ -270,6 +270,7 @@ function generateIDE() {
 	
 	//output
 	const outputWrapper = document.createElement("div");
+	outputWrapper.setAttribute("id", "outputcases");
 	outputWrapper.classList.add("testCaseWrapperVert");
 	testCaseWrapperHorz.appendChild(outputWrapper);
 	
@@ -278,17 +279,93 @@ function generateIDE() {
 	outputBoxTitle.classList.add("testCaseTitle");
 	outputWrapper.appendChild(outputBoxTitle);
 	
-	const outputBox = document.createElement("div");
+	const outputBox = document.createElement("textarea");
+	outputBox.readOnly = true;
+	outputBox.setAttribute("id", "outputvalue");
 	outputBox.classList.add("testCaseBox");
 	outputWrapper.appendChild(outputBox);
 	
 	//compile button
 	const compileButton = document.createElement("button");
 	compileButton.innerText = "Compile";
+	compileButton.setAttribute("onClick", "startcompling()");
 	problemLeft.appendChild(compileButton);
 	
 }
+function startcompling(){
+	const source = document.querySelector(".compilerBox");
+	const code = source.value;
 
+	const input = document.querySelector("#inputcases textarea");
+	const inputvalue = input.value;
+
+	const executing = document.querySelector("#outputvalue");
+	executing.value = "";
+	executing.value = "Compiling";
+	compiler(code , inputvalue);
+}
+function getdata(re){
+    $.ajax({
+        url: '/output',
+        type: 'GET',
+        data: {url: re.result.streams.output.uri},
+        datatype: 'text',
+        success: (res) => {
+            console.log(res);
+            //if(document.getElementById("output").value === "" || res === document.getElementById("output").value) {
+				const text = document.querySelector("#outputvalue");
+				text.value = res;
+
+        //   }else{
+		// 	document.querySelector("#outputcases textarea").value = "Wrong Ans: \n" + res;
+        //   }
+        },
+        error: (req,err) => {console.log('result error:' + err); }
+    });
+}
+function getresult(submission){
+    $.ajax({
+        url: '/result',
+        type: 'GET',
+        datatype: 'JSON',
+        data: submission,
+        success: (response2) => {
+            console.log("loading");
+            var re = JSON.parse(response2);
+            console.log(re);
+            if(re.executing){
+                    getresult(submission);
+            }else{
+                if(re.result.status.name === "accepted"){
+                    getdata(re);
+                }else{
+					document.querySelector("#outputcases textarea").value = re.result.status.name;
+                }
+            }
+
+        },
+        error: (req,err) => {console.log('result error:' + err); }
+    });
+}
+function compiler(code , input){
+    $.ajax({
+        url: '/compile',
+        type: 'GET',
+        datatype: 'JSON',
+        data: {
+             source : code,
+             input : input
+        },
+        success: (response) => {
+        // process response
+        console.log("success");
+        const submission = JSON.parse(response); // id of submission
+        console.log(submission);
+        getresult(submission);
+        },
+        error: (req,err) => {console.log('error: ' + err); }
+    });
+}
 function generateForum() {
 	console.log("generating forum");
 	//left side / content

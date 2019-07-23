@@ -9,8 +9,15 @@ var fs = require('fs');
 var path = require('path');
 var appDir = path.join(path.dirname(require.main.filename), '..');
 var app = express();
+let request2 = require('request');
+app.use(express.json());
 
 var requestNum = 0;
+/**
+ * Api Token
+ */
+var accessToken = 'ec65428e23e670ad88e08516964956f5';
+var endpoint = '9ecff548.compilers.sphere-engine.com';
 
 /**
  * MongoDB Setup
@@ -913,5 +920,92 @@ router.post('/forumPost/deleteThread', function(req, res) {
 	}
 });
 
+//api call to submit code for compiling
+router.get('/compile', (req, res) => {
+
+    var submissionData = {
+        compilerId: 1,
+        source: req.query.source,
+        input: req.query.input
+    };
+    request2({
+        url: 'https://' + endpoint + '/api/v4/submissions?access_token=' + accessToken,
+        method: 'POST',
+        form: submissionData
+    }, function (error, response, body) {
+        
+        if (error) {
+            console.log('Connection problem');
+        }
+        
+        // process response
+        if (response) {
+            if (response.statusCode === 201) {
+                res.send(response.body); // submission data in JSON
+            } else {
+                if (response.statusCode === 401) {
+                    console.log('Invalid access token');
+                } else if (response.statusCode === 402) {
+                    console.log('Unable to create submission');
+                } else if (response.statusCode === 400) {
+                    var body = JSON.parse(response.body);
+                    console.log('Error code: ' + body.error_code + ', details available in the message: ' + body.message)
+                }
+            }
+        }
+    });
+
+    
+    
+});
+
+//request for output data
+router.get('/output', (req,res) => {
+    request2({
+        url: req.query.url,
+        method: 'GET'
+    }, function (error, response, body){
+        if(error){
+            console.log('Connection problem');
+        }
+
+        if(response){
+            if(response.statusCode ===200){
+                res.send(response.body);
+            }
+        }
+    })
+})
+
+//api call for information of submission
+router.get('/result' , (req , res) => {
+    var submissionId = req.query.id;
+    request2({
+        url: 'https://' + endpoint + '/api/v4/submissions/' + submissionId + '?access_token=' + accessToken,
+        method: 'GET'
+    }, function (error, response, body) {
+       
+        if (error) {
+            console.log('Connection problem');
+        }
+        
+        // process response
+        if (response) {
+            if (response.statusCode === 200) {
+                res.send(response.body); // submission data in JSON
+            } else {
+                if (response.statusCode === 401) {
+                    console.log('Invalid access token');
+                }
+                if (response.statusCode === 403) {
+                    console.log('Access denied');
+                }
+                if (response.statusCode === 404) {
+                    console.log('Submision not found');
+                }
+            }
+        }
+    });
+});
 
 module.exports = router;
