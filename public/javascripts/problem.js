@@ -196,6 +196,7 @@ function generateTestCase() {
 		//input
 		var inputName = "input" + (i - 1);
 		const testCaseInput = document.createElement("div");
+		testCaseInput.setAttribute("id", "Testinput");
 		testCaseWrapperHorz.appendChild(testCaseInput);
 		
 		const testCaseInputHeader = document.createElement("div");
@@ -217,6 +218,7 @@ function generateTestCase() {
 		//output
 		var outputName = "output" + (i - 1);
 		const testCaseOutput = document.createElement("div");
+		testCaseOutput.setAttribute("id", "Testoutput");
 		testCaseWrapperHorz.appendChild(testCaseOutput);
 		
 		const testCaseOutputHeader = document.createElement("div");
@@ -290,7 +292,21 @@ function generateIDE() {
 	compileButton.innerText = "Compile";
 	compileButton.setAttribute("onClick", "startcompling()");
 	problemLeft.appendChild(compileButton);
+
+	const TestButton = document.createElement("button");
+	TestButton.innerText = "Testing";
+	TestButton.setAttribute("onClick", "changeinput()");
+	problemLeft.appendChild(TestButton);
 	
+}
+function changeinput(){
+	const input = document.querySelector("#inputcases textarea");
+	const Testinput = document.getElementById("testCaseUnused").nextSibling.firstChild.firstChild.lastChild;
+	input.value = Testinput.innerHTML.replace(/<br>/g,'\n');
+
+	const output = document.querySelector("#outputcases textarea");
+	const Testoutput = document.getElementById("testCaseUnused").nextSibling.firstChild.lastChild.lastChild;
+	output.value = Testoutput.innerHTML.replace(/<br>/g,'\n');
 }
 function startcompling(){
 	const source = document.querySelector(".compilerBox");
