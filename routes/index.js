@@ -29,7 +29,9 @@ const ObjectId = require("mongodb").ObjectID;
 const CONNECTION_URL = "mongodb+srv://kattis:gSpXVFFx7WDdfzoN@kattishelper-3x5fa.mongodb.net/test?retryWrites=true&w=majority";
 const DATABASE_NAME = "kattishelper";
 const COLLECTION_NAME = 'kattisHelperDB';
-var db, userCollection, forumCollection;
+var db, userCollection, forumCollection, queriedCollection;
+
+const frontPageUpdateTiming = 60000; //update once a minute
 
 app.listen(3001, () => {
 	console.log('[SRV] [mongo] Connecting to MongoDB Atlas server: ' + DATABASE_NAME);
@@ -41,6 +43,11 @@ app.listen(3001, () => {
 		db = client.db(COLLECTION_NAME);
 		userCollection = db.collection('users');
 		forumCollection = db.collection('forums');
+		queriedCollection = db.collection('problemsQueried');
+		
+		//setup frontpage
+		createSuggestedProblems();
+		fetchPopularProblems();
 	});
 });
 
@@ -585,17 +592,93 @@ router.post('/sendPasswordCode', function(req, res) {
 //query specific problem
 router.get('/problemQuery/', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
-	console.log('[INC] [GET] /problemQuery/?problem=' + req.query.problem);
+	console.log('[INC] [GET] /problemQuery/?problem=' + req.query.q);
 	requestNum++;
 	
 	if (problemsQueryJSON.indexOf(req.query.q) > -1) {
 		console.log('[SRV] problem found: ' + req.query.q);
 		res.send(problemsJSON[problemsQueryJSON.indexOf(req.query.q)]);
+		console.log(problemsJSON[problemsQueryJSON.indexOf(req.query.q)]);
 		console.log('[OUT] [GET] sent over problem: ' + req.query.q);
+		
+		//update number of times problem has been queried in mongo
+		//turned off atm, will only track queries via ID instead
+		/*
+		queriedCollection.findOne({"problem": req.query.q}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] server error: ' + error);
+			} else if (result === null) {
+				console.log('[SRV] [mongo] item not found, attempting to add');
+				
+				newProblem = {
+					"problem": req.query.q,
+					"problemID": problemsJSON[problemsQueryJSON.indexOf(req.query.q)].problem,
+					"numQueried": 1
+				};
+				
+				queriedCollection.insertOne( newProblem, (error, result) => {
+					if (error) {
+						console.log('[INC] [mongo] item failed to add to database: problemsQueried');
+						console.log('[SRV] failed to add queried problem obj: ' + req.query.problem);
+					} else {
+						console.log('[INC] [mongo] item added successfully to database: problemsQueried');
+					}
+				});
+				
+			} else {
+				var updatedQueries = result.numQueried;
+				updatedQueries++;
+				queriedCollection.findOneAndUpdate({"problem": req.query.q}, {$set: {numQueried: updatedQueries}}, (error, result) => {
+					if (error){
+						console.log('[SRV] [mongo] problem queried update failed for problem: ' + req.query.q);
+					} else {
+						console.log('[SRV] [mongo] problem queried update successful for problem: ' + req.query.q);
+					}
+				});
+				
+			}
+		});
+		*/
 	} else if (problemsIDQueryJSON.indexOf(req.query.q) > -1) {
 		console.log('[SRV] problemID found: ' + req.query.q);
 		res.send(problemsJSON[problemsIDQueryJSON.indexOf(req.query.q)]);
 		console.log('[OUT] [GET] sent over problem: ' + req.query.q);
+		
+		//update number of times problem has been queried in mongo
+		queriedCollection.findOne({"problemID": req.query.q}, (error, result) => {
+			if (error) {
+				console.log('[SRV] [mongo] server error: ' + error);
+			} else if (result === null) {
+				console.log('[SRV] [mongo] item not found, attempting to add');
+				
+				newProblem = {
+					"problem": problemsJSON[problemsIDQueryJSON.indexOf(req.query.q)].problem,
+					"problemID": req.query.q,
+					"numQueried": 1
+				};
+				
+				queriedCollection.insertOne( newProblem, (error, result) => {
+					if (error) {
+						console.log('[INC] [mongo] item failed to add to database: problemsQueried');
+						console.log('[SRV] failed to add queried problem obj: ' + req.query.problem);
+					} else {
+						console.log('[INC] [mongo] item added successfully to database: problemsQueried');
+					}
+				});
+				
+			} else {
+				var updatedQueries = result.numQueried;
+				updatedQueries++;
+				queriedCollection.findOneAndUpdate({"problemID": req.query.q}, {$set: {numQueried: updatedQueries}}, (error, result) => {
+					if (error){
+						console.log('[SRV] [mongo] problem queried update failed for problem: ' + req.query.q);
+					} else {
+						console.log('[SRV] [mongo] problem queried update successful for problem: ' + req.query.q);
+					}
+				});
+				
+			}
+		});
 	} else {
 		console.log('[SRV] problem not found: ' + req.query.q);
 		res.status(404);
@@ -953,6 +1036,9 @@ router.post('/forumPost/deleteThread', function(req, res) {
 	}
 });
 
+/**
+ * HTTP requests for IDE compilation
+ */
 //api call to submit code for compiling
 router.get('/compile', (req, res) => {
 
@@ -1134,6 +1220,107 @@ router.post('/updateProblemSolved', function(req, res) {
 			});
 		}
 	});
+});
+
+/**
+ * HTTP requests for front page
+ */
+//setup code
+var suggestedQuery = [];
+var popularProblems = [];
+
+//random int generator 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function createSuggestedProblems() {
+	var query = [];
+	var numFound = 0;
+	var problem = [];
+	console.log('[SRV] preparing suggested problems');
+	//throw random questions of specific difficulty
+	while (numFound < 8) {
+		var seed = getRandomInt(2300);
+		//parse specific difficulty ranges
+		if (numFound >= 0 && numFound <= 1) { //trivial
+			if (problemsJSON[seed].sidebar.difficulty < 2) {
+				problem = [problemsJSON[seed].problem, problemsJSON[seed].sidebar.problemID, problemsJSON[seed].sidebar.difficulty];
+				query.push(problem);
+				//console.log(problemsJSON[seed].problem);
+				numFound++;
+			}
+		} else if (numFound >= 2 && numFound <= 3) { //easy
+			if (problemsJSON[seed].sidebar.difficulty >= 2 && problemsJSON[seed].sidebar.difficulty < 4) {
+				problem = [problemsJSON[seed].problem, problemsJSON[seed].sidebar.problemID, problemsJSON[seed].sidebar.difficulty];
+				query.push(problem);
+				//console.log(problemsJSON[seed].problem);
+				numFound++;
+			}
+		} else if (numFound >= 4 && numFound <= 5) { //medium
+			if (problemsJSON[seed].sidebar.difficulty >= 4 && problemsJSON[seed].sidebar.difficulty < 6) {
+				problem = [problemsJSON[seed].problem, problemsJSON[seed].sidebar.problemID, problemsJSON[seed].sidebar.difficulty];
+				query.push(problem);
+				//console.log(problemsJSON[seed].problem);
+				numFound++;
+			}
+		} else if (numFound >= 6 && numFound <= 7) { //hard
+			if (problemsJSON[seed].sidebar.difficulty >= 6) {
+				problem = [problemsJSON[seed].problem, problemsJSON[seed].sidebar.problemID, problemsJSON[seed].sidebar.difficulty];
+				query.push(problem);
+				//console.log(problemsJSON[seed].problem);
+				numFound++;
+			}
+		}
+	}
+	suggestedQuery = query;
+	console.log('[SRV] generated suggested problems');
+}
+setInterval(createSuggestedProblems, frontPageUpdateTiming);
+
+router.get('/frontPageSuggested', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [GET] /frontPageSuggested');
+	requestNum++;
+	
+	res.send(suggestedQuery);
+	console.log('[OUT] [GET] sent suggested problems:');
+});
+
+function fetchPopularProblems() {
+	console.log('[SRV] [mongo] fetching problemsQueried collection');
+	var query = [];
+		var options = {
+		"limit": 8,
+		"sort": ['numQueried','desc']
+	}
+
+	queriedCollection.find({}, options, (error, result) => { 
+		if (error) {
+			console.log(error);
+		} else {
+			result.toArray((err, docs) => {
+				for (let i = 0; i < docs.length; i++) {
+					var problem = [docs[i].problem, docs[i].problemID, problemsJSON[problemsIDQueryJSON.indexOf(docs[i].problemID)].sidebar.difficulty];
+					query.push(problem);
+				}
+			});
+		}
+	});
+	popularProblems = query;
+	
+	console.log('[SRV] [mongo] problemsQueried collection fetch successful');
+}
+setInterval(fetchPopularProblems, frontPageUpdateTiming);
+
+
+router.get('/frontPagePopular', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [GET] /frontPagePopular');
+	requestNum++;
+	
+	res.send(popularProblems);
+	console.log('[OUT] [GET] sent popular problems:');
 });
 
 module.exports = router;

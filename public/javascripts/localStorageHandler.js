@@ -80,7 +80,7 @@ function setProblemData(data) {
 	userStorage.setItem('problemOut', data.body.output);
 	userStorage.setItem('problemCpuLim', data.sidebar.CPU);
 	userStorage.setItem('problemMemLim', data.sidebar.memory);
-	userStorage.setItem('problemNumTest', data.testCases.numTestCases);
+	userStorage.setItem('problemNumTest', data.testCases.input.length);
 	userStorage.setItem('problemNumSam', data.table.input.length);
 	userStorage.setItem('problemSamInJSON', JSON.stringify(data.table.input));
 	userStorage.setItem('problemSamOutJSON', JSON.stringify(data.table.output));

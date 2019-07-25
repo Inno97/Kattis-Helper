@@ -129,6 +129,12 @@ Kattis Helper Changelog:
 		now shows problems that the user has completed and forum posts (recent 50)
 	added extra fields to user schema in mongo
 	added http request on serverside to handle update of problems solved by user
+	
+24/7/19:
+	added suggested problems to the frontpage
+		it is a glorified random problem generator
+	added popular problems to the frontpage
+		tracks based on problemID queried and stored in mongo
 
 To do:
 
@@ -152,7 +158,8 @@ To run the server, type in the command:
 
 and connect to http://localhost:3000/
 
-Do note that the server will restart with any changes in code due to nodemon
+Do note that the server will restart with any changes in code due to nodemon, and requires the
+addition of user IP to the whitelist of the mongodb cluster
 
 For user accounts, emails will be sent for verification and resetting of passwords, however, at
 the moment we do not support links to verify users (it's alot more work to do)
