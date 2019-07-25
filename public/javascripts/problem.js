@@ -16,7 +16,11 @@ function onload(){
 	problemSampleInput = JSON.parse(userStorage.getItem('problemSamInJSON'));
 	problemSampleOutput = JSON.parse(userStorage.getItem('problemSamOutJSON'));
 	problemAllInput = JSON.parse(userStorage.getItem('problemTestCaseInputJSON'));
+	
+	//console.log('test');
+	//console.log(userStorage.getItem('problemTestCaseOutputJSON'));
 	problemAllOutput = JSON.parse(userStorage.getItem('problemTestCaseOutputJSON'));
+	//console.log(problemAllOutput);
 	
 	//generate html components from local storage
 	generateWrapper();
