@@ -266,18 +266,17 @@ function generateIDE() {
         type: 'GET',
         datatype: 'JSON',
         success: (response) => {
-        // process response
-        const c_list = JSON.parse(response);
-        for(var k in c_list){
-			//console.log(c_list[k]);
-			for( var i in c_list[k]){
-				const opt2 = document.createElement("option");
-				opt2.innerText = c_list[k][i].name;
-				opt2.setAttribute("value" , c_list[k][i].id);
-				drop.appendChild(opt2);
+			// process response
+			const c_list = JSON.parse(response);
+			for (var k in c_list) {
+				//console.log(c_list[k]);
+				for( var i in c_list[k]){
+					const opt2 = document.createElement("option");
+					opt2.innerText = c_list[k][i].name;
+					opt2.setAttribute("value" , c_list[k][i].id);
+					drop.appendChild(opt2);
+				}
 			}
-
-		}
         },
         error: (req,err) => {console.log('error: ' + err); }
     });
@@ -420,6 +419,7 @@ function compiler(code , input , id){
         type: 'GET',
         datatype: 'JSON',
         data: {
+			 id : id,
              source : code,
              input : input
         },
