@@ -33,7 +33,6 @@ const COLLECTION_NAME = 'kattisHelperDB';
 var db, userCollection, forumCollection, queriedCollection;
 
 const frontPageUpdateTiming = 1800000; //update once every 30 minutes
-const cleanupSessionTiming = 60000; //clean up every minute
 
 app.listen(3001, () => {
 	console.log('[SRV] [mongo] Connecting to MongoDB Atlas server: ' + DATABASE_NAME);
@@ -91,19 +90,6 @@ function clearUnverifiedUsers() {
 		}
 	});
 }
-
-//
-function sessionCleanup() {
-	console.log('[SRV] cleaning up expired express sessions');
-    sessionStore.all(function(err, sessions) {
-        for (var i = 0; i < sessions.length; i++) {
-            sessionStore.get(sessions[i], function() {} );
-        }
-    });
-	console.log('[SRV] clean up expired express sessions successful');
-}
-setInterval(sessionCleanup, frontPageUpdateTiming);
-
 
 /**
  * static files

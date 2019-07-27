@@ -140,6 +140,12 @@ Kattis Helper Changelog:
 	fixed error in data that was rendering the wrong questions
 	added some questions that we have test cases for
 	added help page
+	
+27/7/19:
+	merged code
+	setup heroku for deployment
+	fixed memoryStore memory leak
+		will clear all expired express sessions every minute
 
 To do:
 

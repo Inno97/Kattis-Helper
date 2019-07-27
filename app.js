@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
+var MemoryStore = require('memorystore')(session);
 var path = require('path');
 
 var logger = require('morgan');
@@ -45,7 +46,11 @@ app.use(function(err, req, res, next) {
 });
 
 app.use(session({
-	secret: 'secret',
+	cookie: { maxAge: 3600000 },
+    store: new MemoryStore({
+      checkPeriod: 900000 // prune expired entries every 15 minutes
+    }),
+	secret: 'catthekattis',
 	resave: true,
 	saveUninitialized: true
 }));
