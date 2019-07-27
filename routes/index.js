@@ -1043,7 +1043,7 @@ router.post('/forumPost/deleteThread', function(req, res) {
 router.get('/compile', (req, res) => {
 
     var submissionData = {
-        compilerId: 1,
+        compilerId: req.query.id,
         source: req.query.source,
         input: req.query.input
     };
@@ -1140,7 +1140,30 @@ router.get('/result' , (req , res) => {
             }
         }
 	});
-    })
+	})
+
+router.get('/compile_list', (req, res) => {
+	request2({
+		url: 'https://' + endpoint + '/api/v4/compilers?access_token=' + accessToken,
+		method: 'GET'
+	}, function (error, response, body) {
+		
+		if (error) {
+			console.log('Connection problem');
+		}
+		
+		// process response
+		if (response) {
+			if (response.statusCode === 200) {
+				res.send(response.body); // list of compilers in JSON
+			} else {
+				if (response.statusCode === 401) {
+					console.log('Invalid access token');
+				}
+			}
+		}
+	});
+});
 /**
  * HTTP requests for user profile
  */
