@@ -91,15 +91,15 @@ function setProblemData(data) {
 	console.log('finished setting problem data');
 }
 
-function fetchProblemPage() {
-	const requestURL = '/problem/';
+function fetchProblem(query) {
+	const requestURL = '/problem/?q=' + query;
 	$.ajax({
 		url: requestURL,
 		type: 'GET',
 		dataType: 'html',
 		success: (data) => {
 			console.log('redirecting');
-			location = '/problem/';
+			location = '/problem/?q=' + query;
 		},
 		error:function (xhr, ajaxOptions, thrownError){
 			if(xhr.status==404) {
@@ -129,69 +129,30 @@ function fetchNotFound() {
 	});
 }
 
-//query search and load problem.html
-function queryProblem(query) {
-	if (query = '') return;
-	console.log("fetching query: problem: ");
+function queryProblem() {
+	var query = document.getElementById('searchText').value.toLowerCase();
+	if (query == '') return;
+	console.log("fetching query: " + query);
 	console.log(query);
-	userStorage.setItem('problem', (document.getElementById('searchText').value).toLowerCase());
+	userStorage.setItem('problem', query);
 	console.log(userStorage.getItem('problem'));
 	
-	//perform ajax query
-	const requestURL = '/problemQuery/?q=' + document.getElementById("searchText").value;
-	
-	//flush search box
-	document.getElementById("searchText").value = "";
-	userStorage.setItem('problemStatus', '');
-	
+	const requestURL = '/problem/?q=' + query;
 	$.ajax({
 		url: requestURL,
 		type: 'GET',
-		dataType: 'JSON',
+		dataType: 'html',
 		success: (data) => {
-			console.log('fetched problem data');
-			console.log(data);
-			setProblemData(data);
-			fetchProblemPage()
+			console.log('redirecting');
+			location = '/problem/?q=' + query;
 		},
-		statusCode: {
-			404: function() {
+		error:function (xhr, ajaxOptions, thrownError){
+			if(xhr.status==404) {
+				alert(thrownError);
 				console.log('not found');
-				fetchNotFound();
 			}
 		}
 	});
-}
-
-//fetch problem with designated query
-function fetchProblem(query) {
-	//flushLocalStorage();
-	console.log("fetching query (direct): problem: ");
-	console.log(query);
-	userStorage.setItem('problem', query.toLowerCase());
-	console.log(userStorage.getItem('problem'));
-	document.getElementById("searchText").value = "";
-	userStorage.setItem('problemStatus', '');
-	
-	//perform ajax query
-	const requestURL = '/problemQuery/?q=' + query;
-	$.ajax({
-		url: requestURL,
-		type: 'GET',
-		dataType: 'JSON',
-		success: (data) => {
-			console.log('fetched problem data');
-			console.log(data);
-			setProblemData(data);
-			fetchProblemPage();
-		},
-		statusCode: {
-			404: function() {
-				console.log('not found');
-				fetchNotFound();
-			}
-		}
-	});	
 }
 
 //rendering of context menus in problemPage.html

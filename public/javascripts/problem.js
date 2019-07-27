@@ -11,7 +11,43 @@ var problemAllOutput = {};
 
 function onload(){
 	console.log("problem.js loaded");
+	console.log(userStorage.getItem('problemID'));
 	
+	if((window.location.href).includes('problem/?q=')) {
+		var query = window.location.href.split('problem/?q=')[1];
+		console.log('fetching problem from server: ' + query);
+		fetchProblemData(query);
+	}
+}
+window.addEventListener("load", onload);
+
+function fetchProblemData(query) {
+	console.log("fetching query: " + query);
+	console.log(query);
+	
+	//perform ajax query
+	const requestURL = '/problemQuery/?q=' + query;
+	$.ajax({
+		url: requestURL,
+		type: 'GET',
+		dataType: 'JSON',
+		success: (data) => {
+			console.log('fetched problem data');
+			console.log(data);
+			setProblemData(data);
+			generateProblem();
+			//fetchProblemPage();
+		},
+		statusCode: {
+			404: function() {
+				console.log('not found');
+				fetchNotFound();
+			}
+		}
+	});
+}
+
+function generateProblem() {
 	console.log('parsing local storage test cases into JSON');
 	problemSampleInput = JSON.parse(userStorage.getItem('problemSamInJSON'));
 	problemSampleOutput = JSON.parse(userStorage.getItem('problemSamOutJSON'));
@@ -36,11 +72,10 @@ function onload(){
 	
 	//fetch forum data
 	fetchForum(userStorage.getItem('problemID'));
-	
 }
-window.addEventListener("load", onload);
 
 function generateWrapper() {
+	console.log('generating wrapper for problem ' + userStorage.getItem('problemID'));
 	//overall wrapper
 	const problemWrapper = document.createElement("div");
 	problemWrapper.classList.add("problemWrapper");

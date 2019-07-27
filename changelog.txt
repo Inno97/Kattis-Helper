@@ -146,7 +146,9 @@ Kattis Helper Changelog:
 	setup heroku for deployment
 	fixed memoryStore memory leak
 		will clear all expired express sessions every minute
-
+	added actual querying of problems via URL
+		re-structured fetching of data to do so
+	
 To do:
 
 fix http error 500 (server error)

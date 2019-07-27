@@ -173,14 +173,75 @@ router.get('/problemsList', function(req, res) {
 });
 
 //get specific problem
+/*
 router.get('/problem/', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
 	console.log('[INC] [GET] /problem/');
 	requestNum++;
 	
-	res.sendFile(appDir + '/src/problem.html');
+	console.log(req.query.q);
+	console.log(req.query.q === undefined);
+	
+	if (req.query.q === undefined) {
+		res.sendFile(appDir + '/src/problemsList.html');
+	} else {
+		res.sendFile(appDir + '/src/problem.html');
+	}
+	
 	console.log('[OUT] [GET] sent problem.html');
 });
+*/
+
+router.get('/problem/', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	if (req.query.q === undefined) {
+		console.log('[INC] [GET] /problem/');
+	} else {
+		console.log('[INC] [GET] /problem/?q=' + req.query.q);
+	}
+	requestNum++;
+	
+	//console.log(req.query.q);
+	//console.log(req.query.q === undefined);
+	
+	if (req.query.q === undefined) { //no query
+		res.sendFile(appDir + '/src/problemsList.html');
+		console.log('[OUT] [GET] sent over problemsList.html');
+	} else if (problemsIDQueryJSON.indexOf(req.query.q) > -1) { //check against ID
+		console.log('[SRV] problemID query successful: ' + req.query.q);
+		res.sendFile(appDir + '/src/problem.html');
+	} else if (problemsQueryJSON.indexOf(req.query.q) > -1) { //check against name
+		console.log('[SRV] problem query successful: ' + req.query.q);
+		res.sendFile(appDir + '/src/problem.html');
+		
+	} else {
+		console.log('[SRV] problem not found: ' + req.query.q);
+		res.status(404);
+		res.send();
+		console.log('[OUT] [GET] sent over 404');
+	}
+	
+	console.log('[OUT] [GET] sent problem.html');
+});
+
+router.get('/problem', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [GET] /problem/');
+	requestNum++;
+	
+	console.log(req.query.q);
+	console.log(req.query.q === undefined);
+	
+	if (req.query.q === undefined) {
+		res.sendFile(appDir + '/src/problemsList.html');
+	} else {
+		res.sendFile(appDir + '/src/problem.html');
+	}
+	
+	console.log('[OUT] [GET] sent problem.html');
+});
+
+
 
 //get problem not found page
 router.get('/problemNotFound', function(req, res) {
