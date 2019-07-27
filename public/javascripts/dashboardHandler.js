@@ -50,7 +50,7 @@ function renderDashboard() {
 	
 	const help = document.createElement("a");
 	help.classList.add("dashboardTextElement");
-	help.href = "./help.html";
+	help.href = "./help";
 	help.innerText = "Help";
 	dashboardLeftText.appendChild(help);
 	

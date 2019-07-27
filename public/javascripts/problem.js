@@ -184,6 +184,7 @@ function generateTestCase() {
 	
 	console.log("generating all test cases");
 	for (var i = 1; i <= userStorage.getItem('problemNumTest'); i++) {
+		console.log('generating test case ' + (i - 1));
 		const testCaseIconButton = document.createElement("input");
 		testCaseIconButton.setAttribute('type', 'image');
 		testCaseIconButton.setAttribute('src', '/static/test_case_icon_medium.png');
@@ -254,6 +255,34 @@ function generateIDE() {
 	compilerBox.id = "compilerTextBox";
 	problemLeft.appendChild(compilerBox);
 	
+	//dropdown
+	const drop = document.createElement("select");
+	drop.setAttribute("id" , "Language")
+	// const opt = document.createElement("option");
+	// opt.innerText = "Select Language";
+	// drop.appendChild(opt);
+	$.ajax({
+        url: '/compile_list',
+        type: 'GET',
+        datatype: 'JSON',
+        success: (response) => {
+        // process response
+        const c_list = JSON.parse(response);
+        for(var k in c_list){
+			//console.log(c_list[k]);
+			for( var i in c_list[k]){
+				const opt2 = document.createElement("option");
+				opt2.innerText = c_list[k][i].name;
+				opt2.setAttribute("value" , c_list[k][i].id);
+				drop.appendChild(opt2);
+			}
+
+		}
+        },
+        error: (req,err) => {console.log('error: ' + err); }
+    });
+	problemLeft.appendChild(drop);
+	
 	const testCaseWrapperHorz = document.createElement("div");
 	testCaseWrapperHorz.classList.add("testCaseWrapperHorz");
 	problemLeft.appendChild(testCaseWrapperHorz);
@@ -318,11 +347,15 @@ function startcompling(){
 
 	const input = document.querySelector("#inputcases textarea");
 	const inputvalue = input.value;
+	
+	var e = document.getElementById("Language");
+	var strUser = e.value;
+	console.log(strUser);
 
 	const executing = document.querySelector("#outputvalue");
 	executing.value = "";
 	executing.value = "Compiling";
-	compiler(code , inputvalue);
+	compiler(code , inputvalue ,strUser);
 }
 function getdata(sub_result){
     $.ajax({
@@ -381,7 +414,7 @@ function getresult(submission){
         error: (req,err) => {console.log('result error:' + err); }
     });
 }
-function compiler(code , input){
+function compiler(code , input , id){
     $.ajax({
         url: '/compile',
         type: 'GET',

@@ -1,0 +1,28 @@
+.helpBox {
+	display: flex;
+    flex: auto;
+    flex-direction: column;
+	border: 1px solid grey;
+    width: 600px;
+    height: 600px;
+    padding: 1em;
+	align-self: center;
+    background-color: white;
+}
+
+.helpIcon {
+    border: 1px solid grey;
+    width: 200px;
+    height: 200px;
+	align-self: center;
+}
+
+.helpTextHeader {
+	font-size: 2em;
+	text-align: center;
+}
+
+.helpTextElement {
+	font-size: 1.5em;
+	text-align: center;
+}

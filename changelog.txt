@@ -135,13 +135,13 @@ Kattis Helper Changelog:
 		it is a glorified random problem generator
 	added popular problems to the frontpage
 		tracks based on problemID queried and stored in mongo
+		
+26/7/19:
+	fixed error in data that was rendering the wrong questions
+	added some questions that we have test cases for
+	added help page
 
 To do:
-
-implementation of user account page:
-	possible items:
-		questions done
-		recent forum comments
 
 fix http error 500 (server error)
 add buttons to search for users or search for problems instead
@@ -152,6 +152,9 @@ Notes:
 ===================================================================================================
 
 Project is built on Express, using mongoDB Atlas to store user data in a cloud server.
+
+kattisHelper
+Aq#TG5Ia#YtHhmmQMBxl
 
 To run the server, type in the command:
 	npm run test

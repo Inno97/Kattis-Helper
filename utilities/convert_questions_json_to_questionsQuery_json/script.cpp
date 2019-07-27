@@ -23,9 +23,9 @@ int main(){
 	vector<string> vect;
 	while (1) {
 		getline(cin, inputString);
-		if (inputString.find("\"problem\"") != string::npos) {
+		if (inputString.find("\"problemID\"") != string::npos) {
 			//put to lowercase
-			inputString = inputString.substr(23);
+			inputString = inputString.substr(25);
 			for (int i = 0; i < inputString.size(); i++) {
 				if (inputString.at(i) >= 65 && inputString.at(i) <= 90) {
 					inputString.at(i) += 32;

@@ -12,7 +12,8 @@ var app = express();
 let request2 = require('request');
 app.use(express.json());
 
-var requestNum = 0;
+var requestNum = 0; //keep track of the number of requests
+
 /**
  * Api Token
  */
@@ -200,6 +201,16 @@ router.get('/login', function(req, res) {
 	
 	res.sendFile(appDir + '/src/login.html');
 	console.log('[OUT] [GET] sent login.html');
+});
+
+//get help page 
+router.get('/help', function(req, res) {
+	console.log('[REQ] [' + requestNum + ']');
+	console.log('[INC] [GET] /help');
+	requestNum++;
+	
+	res.sendFile(appDir + '/src/help.html');
+	console.log('[OUT] [GET] sent help.html');
 });
 
 //get create_account page
@@ -598,7 +609,7 @@ router.get('/problemQuery/', function(req, res) {
 	if (problemsQueryJSON.indexOf(req.query.q) > -1) {
 		console.log('[SRV] problem found: ' + req.query.q);
 		res.send(problemsJSON[problemsQueryJSON.indexOf(req.query.q)]);
-		console.log(problemsJSON[problemsQueryJSON.indexOf(req.query.q)]);
+		//console.log(problemsJSON[problemsQueryJSON.indexOf(req.query.q)]);
 		console.log('[OUT] [GET] sent over problem: ' + req.query.q);
 		
 		//update number of times problem has been queried in mongo
@@ -642,7 +653,7 @@ router.get('/problemQuery/', function(req, res) {
 	} else if (problemsIDQueryJSON.indexOf(req.query.q) > -1) {
 		console.log('[SRV] problemID found: ' + req.query.q);
 		res.send(problemsJSON[problemsIDQueryJSON.indexOf(req.query.q)]);
-		console.log('[OUT] [GET] sent over problem: ' + req.query.q);
+		console.log('[OUT] [GET] sent over problem ID: ' + req.query.q);
 		
 		//update number of times problem has been queried in mongo
 		queriedCollection.findOne({"problemID": req.query.q}, (error, result) => {
