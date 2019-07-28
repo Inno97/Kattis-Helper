@@ -9,6 +9,8 @@ var problemSampleOutput = {};
 var problemAllInput = {};
 var problemAllOutput = {};
 
+var autoTestCase;
+
 function onload(){
 	console.log("problem.js loaded");
 	console.log(userStorage.getItem('problemID'));
@@ -290,7 +292,7 @@ function generateIDE() {
 	compilerBox.id = "compilerTextBox";
 	problemLeft.appendChild(compilerBox);
 	
-	//dropdown
+	//language dropdown
 	const drop = document.createElement("select");
 	drop.setAttribute("id" , "Language")
 	// const opt = document.createElement("option");
@@ -315,17 +317,18 @@ function generateIDE() {
         },
         error: (req,err) => {console.log('error: ' + err); }
     });
-	problemLeft.appendChild(drop);
+	//problemLeft.appendChild(drop);
 	
-	const testCaseWrapperHorz = document.createElement("div");
-	testCaseWrapperHorz.classList.add("testCaseWrapperHorz");
-	problemLeft.appendChild(testCaseWrapperHorz);
+	//input row
+	const testCaseWrapperHorz1 = document.createElement("div");
+	testCaseWrapperHorz1.classList.add("testCaseWrapperHorz");
+	problemLeft.appendChild(testCaseWrapperHorz1);
 	
 	//input
 	const inputWrapper = document.createElement("div");
 	inputWrapper.setAttribute("id", "inputcases");
 	inputWrapper.classList.add("testCaseWrapperVert");
-	testCaseWrapperHorz.appendChild(inputWrapper);
+	testCaseWrapperHorz1.appendChild(inputWrapper);
 	
 	const inputBoxTitle = document.createElement("div");
 	inputBoxTitle.classList.add("testCaseTitle");
@@ -333,15 +336,97 @@ function generateIDE() {
 	inputWrapper.appendChild(inputBoxTitle);
 	
 	const inputBox = document.createElement("textarea");
+	inputBox.id = 'inputBoxValue';
 	inputBox.classList.add("testCaseBox");
 	inputBox.placeholder = "> Insert Input Here";
 	inputWrapper.appendChild(inputBox);
+	
+	//input box
+	const inputWrapperBox = document.createElement("div");
+	inputWrapperBox.setAttribute("id", "inputcasesbox");
+	inputWrapperBox.classList.add("testCaseWrapperVert");
+	testCaseWrapperHorz1.appendChild(inputWrapperBox);
+	
+	const inputBoxOptionsTitle = document.createElement("div");
+	inputBoxOptionsTitle.classList.add("testCaseTitle");
+	inputBoxOptionsTitle.innerText = "Options";
+	inputWrapperBox.appendChild(inputBoxOptionsTitle);
+	
+	const inputBoxOptions = document.createElement('div');
+	inputBoxOptions.id = 'inputBoxOptions';
+	inputBoxOptions.classList.add('inputBox');
+	inputWrapperBox.appendChild(inputBoxOptions);
+	
+	//options
+	const compilerTitle = document.createElement("div"); 
+	compilerTitle.classList.add("testCaseTitle");
+	compilerTitle.innerText = 'Compiler';
+	inputBoxOptions.appendChild(compilerTitle);
+	inputBoxOptions.appendChild(drop);
+	
+	//compile button
+	const compileButton = document.createElement("button");
+	compileButton.innerText = "Compile";
+	compileButton.setAttribute("onClick", "startcompling()");
+	//problemLeft.appendChild(compileButton);
+	inputBoxOptions.appendChild(compileButton);
+
+	const TestButton = document.createElement("button");
+	TestButton.innerText = "Set Input / Output: ";
+	TestButton.setAttribute("onClick", "changeInput()");
+	//problemLeft.appendChild(TestButton);
+	inputBoxOptions.appendChild(TestButton);
+	
+	//dropdown menu for test cases
+	const compilerTestCase = document.createElement('select');
+	compilerTestCase.id = 'compilerTestCase';
+	for (let i = 0; i < userStorage.getItem('problemNumTest'); i++) {
+		const newTestCase = document.createElement('option');
+		newTestCase.value = i;
+		newTestCase.innerText = (i + 1);
+		compilerTestCase.appendChild(newTestCase);
+	}
+	inputBoxOptions.appendChild(compilerTestCase);
+	
+	const testAnswer = document.createElement('button');
+	testAnswer.innerText = 'Test Entire Problem';
+	testAnswer.setAttribute('onClick', 'testAnswer(0)');
+	inputBoxOptions.appendChild(testAnswer);
+	
+	
+	const compileMessage = document.createElement('div');
+	compileMessage.id = 'compileMessage';
+	compileMessage.classList.add('unusedRender');
+	compileMessage.innerText = '';
+	inputBoxOptions.appendChild(compileMessage);
+	
+	//output row
+	const testCaseWrapperHorz2 = document.createElement("div");
+	testCaseWrapperHorz2.classList.add("testCaseWrapperHorz");
+	problemLeft.appendChild(testCaseWrapperHorz2);
+	
+	//expected output box (from test case
+	const expectedOutputWrapper = document.createElement("div");
+	expectedOutputWrapper.setAttribute("id", "expcectedoutputcases");
+	expectedOutputWrapper.classList.add("testCaseWrapperVert");
+	testCaseWrapperHorz2.appendChild(expectedOutputWrapper);
+	
+	const expectedOutputBoxTitle = document.createElement("div");
+	expectedOutputBoxTitle.innerText = "Expected Output";
+	expectedOutputBoxTitle.classList.add("testCaseTitle");
+	expectedOutputWrapper.appendChild(expectedOutputBoxTitle);
+	
+	const expectedOutputBox = document.createElement("textarea");
+	expectedOutputBox.id = 'expectedOutputBoxValue';
+	expectedOutputBox.setAttribute("id", "expectedoutputvalue");
+	expectedOutputBox.classList.add("testCaseBox");
+	expectedOutputWrapper.appendChild(expectedOutputBox);
 	
 	//output
 	const outputWrapper = document.createElement("div");
 	outputWrapper.setAttribute("id", "outputcases");
 	outputWrapper.classList.add("testCaseWrapperVert");
-	testCaseWrapperHorz.appendChild(outputWrapper);
+	testCaseWrapperHorz2.appendChild(outputWrapper);
 	
 	const outputBoxTitle = document.createElement("div");
 	outputBoxTitle.innerText = "Output";
@@ -349,48 +434,175 @@ function generateIDE() {
 	outputWrapper.appendChild(outputBoxTitle);
 	
 	const outputBox = document.createElement("textarea");
+	outputBox.id = 'outputBoxValue';
 	outputBox.readOnly = true;
 	outputBox.setAttribute("id", "outputvalue");
 	outputBox.classList.add("testCaseBox");
 	outputWrapper.appendChild(outputBox);
-	
-	//compile button
-	const compileButton = document.createElement("button");
-	compileButton.innerText = "Compile";
-	compileButton.setAttribute("onClick", "startcompling()");
-	problemLeft.appendChild(compileButton);
-
-	const TestButton = document.createElement("button");
-	TestButton.innerText = "Testing";
-	TestButton.setAttribute("onClick", "changeinput()");
-	problemLeft.appendChild(TestButton);
-	
 }
-function changeinput(){
-	const input = document.querySelector("#inputcases textarea");
-	const Testinput = document.getElementById("testCaseUnused").nextSibling.firstChild.firstChild.lastChild;
-	input.value = Testinput.innerHTML.replace(/<br>/g,'\n');
 
-	const output = document.querySelector("#outputcases textarea");
-	const Testoutput = document.getElementById("testCaseUnused").nextSibling.firstChild.lastChild.lastChild;
-	output.value = Testoutput.innerHTML.replace(/<br>/g,'\n');
+function changeInput(){
+	//set values
+	document.getElementById('inputBoxValue').value = problemAllInput[document.getElementById('compilerTestCase').value];
+	document.getElementById('expectedoutputvalue').value = problemAllOutput[document.getElementById('compilerTestCase').value];
 }
+
+function setTestCase(num){
+	//set values
+	document.getElementById('inputBoxValue').value = problemAllInput[num];
+	document.getElementById('expectedoutputvalue').value = problemAllOutput[num];
+}
+
 function startcompling(){
-	const source = document.querySelector(".compilerBox");
-	const code = source.value;
-
-	const input = document.querySelector("#inputcases textarea");
-	const inputvalue = input.value;
-	
-	var e = document.getElementById("Language");
-	var strUser = e.value;
-	console.log(strUser);
+	const code = document.getElementById('compilerTextBox').value;
+	const input = document.getElementById('inputBoxValue').value;
+	const lang = document.getElementById('Language').value;
+	console.log('compiler lang: ' + lang);
 
 	const executing = document.querySelector("#outputvalue");
 	executing.value = "";
 	executing.value = "Compiling";
-	compiler(code , inputvalue ,strUser);
+	
+	compiler(code , input , lang);
 }
+
+//test entire answer
+function testAnswer(num) {
+	const code = document.getElementById('compilerTextBox').value;
+	const lang = document.getElementById('Language').value;
+	
+	autoTestCase = num;
+	
+	if (num == (userStorage.getItem('problemNumTest'))) { //no more test cases
+		renderCompileSuccess('All Test Cases Passed');
+		
+		if (tempStorage.getItem('loginFlag') == 'TRUE') {
+			sendAnswerPassed();
+		}
+		
+	} else {
+		renderCompileSuccess('Testing test case: ' + (num + 1));
+		setTestCase(num);
+		
+		//query and test
+		var input = problemAllInput[num];
+		var output = problemAllOutput[num];
+		
+		autoCompiler(code , input , lang);
+	}
+}
+
+function sendAnswerPassed() {
+	const username = tempStorage.getItem('username');
+	const problem = userStorage.getItem('problem');
+	const problemID = userStorage.getItem('problemID');
+	
+	//grab current date and time
+	var today = new Date();
+	var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + Math.floor((today.getFullYear() % 100));
+	var period = (today.getHours() > 12 ?  'PM' : 'AM');
+	var hours = today.getHours() == 0 ? 12 : today.getHours() % 12;
+	var minutes = today.getMinutes() < 10 ? '0'.toString() + today.getMinutes().toString() : today.getMinutes().toString();
+	var time = hours + ":" + minutes + " " + period;
+	const dateTime = date + ' ' + time;
+	
+	$.ajax({
+        url: '/updateProblemSolved',
+        type: 'POST',
+        data: {
+			"problem": problem,
+			"problemID": problemID,
+			"username": username,
+			"date": dateTime
+		},
+        datatype: 'text',
+        success: (res) => {
+			
+        },
+        error: (req,err) => {console.log('result error:' + err); }
+    });
+}
+
+function autoCompiler(code , input , id){
+    $.ajax({
+        url: '/compile',
+        type: 'GET',
+        datatype: 'JSON',
+        data: {
+			 id : id,
+             source : code,
+             input : input
+        },
+        success: (response) => {
+			// process response
+			console.log("success");
+			const submission = JSON.parse(response); // id of submission
+			console.log(submission);
+			autoGetResult(submission);
+        },
+        error: (req,err) => {console.log('error: ' + err); }
+    });
+}
+
+function autoGetData(sub_result){
+    $.ajax({
+        url: '/output',
+        type: 'GET',
+        data: {url: sub_result.result.streams.output.uri},
+        datatype: 'text',
+        success: (res) => {
+            //if(document.getElementById("output").value === "" || res === document.getElementById("output").value) {
+				const text = document.querySelector("#outputvalue");
+				text.value = res;
+			//compare results
+			console.log('checking results');
+			console.log(document.getElementById('expectedoutputvalue').value == document.getElementById('outputvalue').value);
+			
+			if (document.getElementById('expectedoutputvalue').value == document.getElementById('outputvalue').value) {
+				renderCompileSuccess('Correct Answer');
+				autoTestCase++;
+				testAnswer(autoTestCase);
+				
+			} else {
+				renderCompileError('Wrong Answer');
+			}
+
+        //   }else{
+		// 	document.querySelector("#outputcases textarea").value = "Wrong Ans: \n" + res;
+        //   }
+        },
+        error: (req,err) => {console.log('result error:' + err); }
+    });
+}
+
+function autoGetResult(submission){
+    $.ajax({
+        url: '/result',
+        type: 'GET',
+        datatype: 'JSON',
+        data: submission,
+        success: (response2) => {
+            console.log("loading");
+            var sub_result = JSON.parse(response2);
+            if(sub_result.executing){
+                    autoGetResult(submission);
+            }else{
+                if(sub_result.result.status.name === "accepted"){
+                    autoGetData(sub_result);
+                }else if(sub_result.result.status.name === "compilation error"){
+					compile_err(sub_result);
+                }else{
+					document.querySelector("#outputcases textarea").value = sub_result.result.status.name;
+				}
+            }
+
+        },
+        error: (req,err) => {console.log('result error:' + err); }
+    });
+}
+
+//manual testing
+
 function getdata(sub_result){
     $.ajax({
         url: '/output',
@@ -401,6 +613,16 @@ function getdata(sub_result){
             //if(document.getElementById("output").value === "" || res === document.getElementById("output").value) {
 				const text = document.querySelector("#outputvalue");
 				text.value = res;
+			//compare results
+			console.log('checking results');
+			console.log(document.getElementById('expectedoutputvalue').value == document.getElementById('outputvalue').value);
+			
+			if (document.getElementById('expectedoutputvalue').value == document.getElementById('outputvalue').value) {
+				renderCompileSuccess('Correct Answer');
+			} else {
+				renderCompileError('Wrong Answer');
+			}
+			
 
         //   }else{
 		// 	document.querySelector("#outputcases textarea").value = "Wrong Ans: \n" + res;
@@ -409,6 +631,7 @@ function getdata(sub_result){
         error: (req,err) => {console.log('result error:' + err); }
     });
 }
+
 function compile_err(sub_result){
 	console.log(sub_result.result.streams.cmpinfo.uri);
 	$.ajax({
@@ -423,6 +646,7 @@ function compile_err(sub_result){
 		error: (req,err) => {console.log('result error:' + err); }
 	});
 }
+
 function getresult(submission){
     $.ajax({
         url: '/result',
@@ -448,6 +672,18 @@ function getresult(submission){
         error: (req,err) => {console.log('result error:' + err); }
     });
 }
+
+function renderCompileSuccess(message) {
+	document.getElementById('compileMessage').className = 'compileResultSuccess';
+	document.getElementById('compileMessage').innerText = message;
+}
+
+function renderCompileError(message) {
+	document.getElementById('compileMessage').className  = 'compileResultFail';
+	document.getElementById('compileMessage').innerText = message;
+	
+}
+
 function compiler(code , input , id){
     $.ajax({
         url: '/compile',
@@ -459,22 +695,22 @@ function compiler(code , input , id){
              input : input
         },
         success: (response) => {
-        // process response
-        console.log("success");
-        const submission = JSON.parse(response); // id of submission
-        console.log(submission);
-        getresult(submission);
+			// process response
+			console.log("success");
+			const submission = JSON.parse(response); // id of submission
+			console.log(submission);
+			getresult(submission);
         },
         error: (req,err) => {console.log('error: ' + err); }
     });
 }
+
 function generateForum() {
 	console.log("generating forum");
 	//left side / content
 	const problemLeft = document.createElement("div");
 	problemLeft.id = "problemForum";
 	document.getElementById('menu').appendChild(problemLeft);
-	
 }
 
 //included in localStorageHandler.js because js apparently doesn't recognize this here

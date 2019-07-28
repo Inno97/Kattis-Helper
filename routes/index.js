@@ -13,6 +13,8 @@ let request2 = require('request');
 app.use(express.json());
 
 var requestNum = 0; //keep track of the number of requests
+var jsonFilesLoaded = 0;
+const jsonFilesToLoad = 4;
 
 /**
  * Api Token
@@ -45,6 +47,8 @@ app.listen(3001, () => {
 		userCollection = db.collection('users');
 		forumCollection = db.collection('forums');
 		queriedCollection = db.collection('problemsQueried');
+		
+		while (jsonFilesLoaded < jsonFilesToLoad); //wait for all files to be loaded
 		
 		//setup frontpage
 		createSuggestedProblems();
@@ -112,8 +116,9 @@ fs.readFile(appDir + '/data/problems.json', 'utf8', (err, jsonString) => {
     } else {
 		console.log('[SRV] [FS] problems.json read successfully');
 		problemsJSON = JSON.parse(jsonString);
+		jsonFilesLoaded++;
 	}
-})
+});
 
 var problemsListJSON = {}; //all problems
 fs.readFile(appDir + '/data/problemsList.json', 'utf8', (err, jsonString) => {
@@ -123,8 +128,9 @@ fs.readFile(appDir + '/data/problemsList.json', 'utf8', (err, jsonString) => {
     } else {
 		console.log('[SRV] [FS] problemsList.json read successfully');
 		problemsListJSON = JSON.parse(jsonString);
+		jsonFilesLoaded++;
 	}
-})
+});
 
 var problemsQueryJSON = {}; //problem names only, for querying whether a problem exists
 fs.readFile(appDir + '/data/problemsQuery.json', 'utf8', (err, jsonString) => {
@@ -134,8 +140,9 @@ fs.readFile(appDir + '/data/problemsQuery.json', 'utf8', (err, jsonString) => {
     } else {
 		console.log('[SRV] [FS] problemsQuery.json read successfully');
 		problemsQueryJSON = JSON.parse(jsonString);
+		jsonFilesLoaded++;
 	}
-})
+});
 
 var problemsIDQueryJSON = {}; //problem names only, for querying whether a problem exists
 fs.readFile(appDir + '/data/problemsIDQuery.json', 'utf8', (err, jsonString) => {
@@ -145,8 +152,9 @@ fs.readFile(appDir + '/data/problemsIDQuery.json', 'utf8', (err, jsonString) => 
     } else {
 		console.log('[SRV] [FS] problemsIDQuery.json read successfully');
 		problemsIDQueryJSON = JSON.parse(jsonString);
+		jsonFilesLoaded++;
 	}
-})
+});
 
 /**
  * HTTP routes for directs
@@ -161,7 +169,9 @@ router.get('/', function(req, res) {
 	console.log('[OUT] [GET] sent index.html');
 });
 
-//kattis problems related routes
+/**
+ * HTTP routes for kattis problems
+ */
 //get problem list
 router.get('/problemsList', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
@@ -172,26 +182,6 @@ router.get('/problemsList', function(req, res) {
 	console.log('[OUT] [GET] sent problemsList.html');
 });
 
-//get specific problem
-/*
-router.get('/problem/', function(req, res) {
-	console.log('[REQ] [' + requestNum + ']');
-	console.log('[INC] [GET] /problem/');
-	requestNum++;
-	
-	console.log(req.query.q);
-	console.log(req.query.q === undefined);
-	
-	if (req.query.q === undefined) {
-		res.sendFile(appDir + '/src/problemsList.html');
-	} else {
-		res.sendFile(appDir + '/src/problem.html');
-	}
-	
-	console.log('[OUT] [GET] sent problem.html');
-});
-*/
-
 router.get('/problem/', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
 	if (req.query.q === undefined) {
@@ -200,9 +190,6 @@ router.get('/problem/', function(req, res) {
 		console.log('[INC] [GET] /problem/?q=' + req.query.q);
 	}
 	requestNum++;
-	
-	//console.log(req.query.q);
-	//console.log(req.query.q === undefined);
 	
 	if (req.query.q === undefined) { //no query
 		res.sendFile(appDir + '/src/problemsList.html');
@@ -240,8 +227,6 @@ router.get('/problem', function(req, res) {
 	
 	console.log('[OUT] [GET] sent problem.html');
 });
-
-
 
 //get problem not found page
 router.get('/problemNotFound', function(req, res) {
@@ -1166,6 +1151,7 @@ router.get('/output', (req,res) => {
         }
     })
 })
+
 router.get('/compile_error', (req,res) => {
     request2({
         url: req.query.url,
@@ -1295,10 +1281,10 @@ router.post('/updateProblemSolved', function(req, res) {
 			console.log('[SRV] query error');
 			console.log('[SRV] user forum post update failed');
 		} else {
-			var problemsSolved = result.forumPosts;
+			var problemsSolved = result.problemsSolved;
 			var userNewProblem = [problem, problemID, date];
 			problemsSolved.push(userNewProblem);
-			userCollection.findOneAndUpdate({"username": postUsername}, {$set: {problemsSolved: problemsSolved}}, (error, result) => {
+			userCollection.findOneAndUpdate({"username": username}, {$set: {problemsSolved: problemsSolved}}, (error, result) => {
 				if (error) {
 					console.log('[SRV] [mongo] user problemsSolved update failed');
 					response = JSON.stringify('-1');

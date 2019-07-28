@@ -2,16 +2,6 @@
  * userPage.js
  * handles rendering of html elements in a user page
  */
- 
-/*
-	stuff to display:
-	username				forum posts (include link to problem)
-	email
-	
-	problems solved
-	name / date
- */
-
 function onload() {
 	console.log('userPage.js loaded');
 	
@@ -39,15 +29,6 @@ function fetchProfile() {
 	});
 }
 
-/**
- email: "mostlytoss@gmail.com"
-forumPosts: Array(1)
-0: (3) ["sampleProblem", "sampleDate", "sampleText"]
-length: 1
-__proto__: Array(0)
-problemsSolved: [Array(2)]
-username: "thomas"
- */
 function renderProfile(userProfile) {
 	const userProfileBox = document.createElement('div');
 	userProfileBox.classList.add('userBox');
@@ -119,7 +100,6 @@ function renderProfile(userProfile) {
 	}
 	
 	console.log('finished rendering problems solved');
-	
 	
 	//forum posts
 	const forumPostsHeader = document.createElement('div');

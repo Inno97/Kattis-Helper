@@ -37,6 +37,7 @@
   display: flex;
   flex: auto;
   flex-direction: column;
+  max-width: 250px;
 }
 .testCaseWrapper {
   padding: 1em;
@@ -60,6 +61,14 @@
   overflow: scroll;
   border: 1px solid grey;
   background: #f0efef;
+  resize: none;
+}
+.inputBox {
+  padding: 1em;
+  border: 1px solid grey;
+  width: 180px;
+  height: 200px;
+  background-color: #f0efef;
 }
 .problemRight {
   left: 140px;
@@ -93,6 +102,14 @@
   padding: 1em;
   background: #f0efef;
   border: 1px solid grey;
+}
+.compileResultSuccess {
+  border: 1px solid black;
+  background-color: green;
+}
+.compileResultFail {
+  border: 1px solid black;
+  background-color: red;
 }
 .unusedRender {
   visibility: hidden;
