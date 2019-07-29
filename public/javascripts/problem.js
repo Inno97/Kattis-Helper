@@ -988,11 +988,13 @@ function generateForumPosts(data) {
 				forumThread.appendChild(forumThreadText);
 				forumThreadText.innerText = data.posts[i][0][1];
 				
-				const replyButton = document.createElement('button');
-				replyButton.id = 'post' + i;
-				forumThread.appendChild(replyButton);
-				replyButton.innerText = 'Reply';
-				replyButton.setAttribute('onclick', 'handleReply(' + i + ')');
+				if (tempStorage.getItem('loginFlag') == 'TRUE') {
+					const replyButton = document.createElement('button');
+					replyButton.id = 'post' + i;
+					forumThread.appendChild(replyButton);
+					replyButton.innerText = 'Reply';
+					replyButton.setAttribute('onclick', 'handleReply(' + i + ')');
+				}
 				
 				//add delete button if post belongs to user
 				if (tempStorage.getItem('username') == data.posts[i][0][0]) {

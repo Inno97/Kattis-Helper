@@ -10,23 +10,42 @@ window.addEventListener("load", onload);
 
 function fetchProfile() {
 	if ((window.location.href).includes('/user/?q=')) {
-		//perform ajax query
-		const requestURL = '/fetchProfile/?username=' + window.location.href.split('user/?q=')[1];
-		$.ajax({
-			url: requestURL,
-			type: 'GET',
-			dataType: 'JSON',
-			success: (data) => {
-				console.log(data);
-				renderProfile(data)
-			},
-			error:function (xhr, ajaxOptions, thrownError){
-				if(xhr.status==404) {
-					fetchNotFound();
-					console.log('not found');
+		if (window.location.href.split('user/?q=')[1]) {
+			//perform ajax query
+			const requestURL = '/fetchProfile/?username=' + window.location.href.split('user/?q=')[1];
+			$.ajax({
+				url: requestURL,
+				type: 'GET',
+				dataType: 'JSON',
+				success: (data) => {
+					console.log(data);
+					renderProfile(data)
+				},
+				error:function (xhr, ajaxOptions, thrownError){
+					if(xhr.status==404) {
+						fetchNotFound();
+						console.log('not found');
+					}
 				}
-			}
-		});
+			});
+		} else {
+			const requestURL = '/login';
+			$.ajax({
+				url: requestURL,
+				type: 'GET',
+				dataType: 'html',
+				success: (data) => {
+					console.log(data);
+					window.location.href = '/login';
+				},
+				error:function (xhr, ajaxOptions, thrownError){
+					if(xhr.status==404) {
+						fetchNotFound();
+						console.log('not found');
+					}
+				}
+			});
+		}
 	} else { //redirect to login page
 		const requestURL = '/login';
 		$.ajax({

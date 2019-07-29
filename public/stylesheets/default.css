@@ -232,3 +232,12 @@ th, td {
   font-size: 2em;
   font-weight: bold;
 }
+body {
+    font: 14px/1.5em "Lucida Grande",Arial,sans-serif;
+    margin: 20px;
+    width: auto;
+}
+#wrap { 
+	width: 1200px; 
+	margin: 0 auto; 
+}
