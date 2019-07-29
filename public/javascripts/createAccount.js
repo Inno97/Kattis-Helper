@@ -37,7 +37,8 @@ function renderDetails() {
 	loginTextUser.innerText = 'Username';
 	loginForm.appendChild(loginTextUser);
 	
-	const loginTextUserBox = document.createElement('textarea');
+	const loginTextUserBox = document.createElement('input');
+	loginTextUserBox.type = 'text';
 	loginTextUserBox.classList.add('loginTextBox');
 	loginTextUserBox.id = 'username';
 	loginForm.appendChild(loginTextUserBox);
@@ -47,17 +48,30 @@ function renderDetails() {
 	loginTextPassword.innerText = 'Password';
 	loginForm.appendChild(loginTextPassword);
 	
-	const loginTextPasswordBox = document.createElement('textarea');
+	const loginTextPasswordBox = document.createElement('input');
+	loginTextPasswordBox.type = 'password';
 	loginTextPasswordBox.classList.add('loginTextBox');
 	loginTextPasswordBox.id = 'password';
 	loginForm.appendChild(loginTextPasswordBox);
+	
+	const loginTextConfirmPassword = document.createElement('div');
+	loginTextConfirmPassword.classList.add('loginTextElement');
+	loginTextConfirmPassword.innerText = 'Confirm Password';
+	loginForm.appendChild(loginTextConfirmPassword);
+	
+	const loginTextConfirmPasswordBox = document.createElement('input');
+	loginTextConfirmPasswordBox.type = 'password';
+	loginTextConfirmPasswordBox.classList.add('loginTextBox');
+	loginTextConfirmPasswordBox.id = 'password2';
+	loginForm.appendChild(loginTextConfirmPasswordBox);
 	
 	const loginTextEmail = document.createElement('div');
 	loginTextEmail.classList.add('loginTextElement');
 	loginTextEmail.innerText = 'Email';
 	loginForm.appendChild(loginTextEmail);
 	
-	const loginTextEmailBox = document.createElement('textarea');
+	const loginTextEmailBox = document.createElement('input');
+	loginTextEmailBox.type = 'text';
 	loginTextEmailBox.classList.add('loginTextBox');
 	loginTextEmailBox.id = 'email';
 	loginForm.appendChild(loginTextEmailBox);
@@ -81,6 +95,11 @@ function renderDetails() {
 	lostPassButton.innerText = 'Forgot Your Password?';
 	lostPassButton.setAttribute('onClick', 'handleLostPass()');
 	loginForm.appendChild(lostPassButton);
+	
+	const verifyButton = document.createElement('button');
+	verifyButton.innerText = 'Verify User';
+	verifyButton.setAttribute('onClick', 'handleVerify()');
+	loginForm.appendChild(verifyButton);
 	
 	const unusedRender = document.createElement('div');
 	unusedRender.classList.add('unusedObj');

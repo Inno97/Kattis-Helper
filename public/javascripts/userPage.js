@@ -4,29 +4,47 @@
  */
 function onload() {
 	console.log('userPage.js loaded');
-	
 	fetchProfile()
 }
 window.addEventListener("load", onload);
 
 function fetchProfile() {
-	//perform ajax query
-	const requestURL = '/fetchProfile/?username=' + tempStorage.getItem('username');
-	$.ajax({
-		url: requestURL,
-		type: 'GET',
-		dataType: 'JSON',
-		success: (data) => {
-			console.log(data);
-			renderProfile(data)
-		},
-		error:function (xhr, ajaxOptions, thrownError){
-			if(xhr.status==404) {
-				alert(thrownError);
-				console.log('not found');
+	if ((window.location.href).includes('/user/?q=')) {
+		//perform ajax query
+		const requestURL = '/fetchProfile/?username=' + window.location.href.split('user/?q=')[1];
+		$.ajax({
+			url: requestURL,
+			type: 'GET',
+			dataType: 'JSON',
+			success: (data) => {
+				console.log(data);
+				renderProfile(data)
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				if(xhr.status==404) {
+					fetchNotFound();
+					console.log('not found');
+				}
 			}
-		}
-	});
+		});
+	} else { //redirect to login page
+		const requestURL = '/login';
+		$.ajax({
+			url: requestURL,
+			type: 'GET',
+			dataType: 'html',
+			success: (data) => {
+				console.log(data);
+				window.location.href = '/login';
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				if(xhr.status==404) {
+					fetchNotFound();
+					console.log('not found');
+				}
+			}
+		});
+	}
 }
 
 function renderProfile(userProfile) {
@@ -55,10 +73,12 @@ function renderProfile(userProfile) {
 	userProfileUsername.innerText = userProfile.username;
 	userProfileLeft.appendChild(userProfileUsername);
 	
-	const userProfileEmail = document.createElement('div');
-	userProfileEmail.classList.add('userTextElement');
-	userProfileEmail.innerText = userProfile.email;
-	userProfileLeft.appendChild(userProfileEmail);
+	if ((window.location.href).includes('/?q=' + tempStorage.getItem('username'))) {
+		const userProfileEmail = document.createElement('div');
+		userProfileEmail.classList.add('userTextElement');
+		userProfileEmail.innerText = userProfile.email;
+		userProfileLeft.appendChild(userProfileEmail);
+	}
 	
 	//problems solved
 	const padding1 = document.createElement('div');
@@ -139,11 +159,5 @@ function renderProfile(userProfile) {
 		postDate.innerText = userProfile.forumPosts[i][2];
 		detailsContainer.appendChild(postDate);
 	}
-	
 	console.log('finished rendering forum posts');
-	
-	console.log(userProfile.username);
-	console.log(userProfile.problemsSolved);
-	console.log(userProfile.forumPosts);
-	console.log(userProfile.email);
 }

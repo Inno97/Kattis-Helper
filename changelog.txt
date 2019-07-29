@@ -149,9 +149,19 @@ Kattis Helper Changelog:
 	added actual querying of problems via URL
 		re-structured fetching of data to do so
 	
+28/7/19
+	added more compilation options
+		
+	added proper username / password inputs
+		hides passwords properly
+		allows autofill detection of user credentials
+	
+	added 404 error handling
+	
+	added separate buttons for searching for user and problems
+
 To do:
 
-fix http error 500 (server error)
 add buttons to search for users or search for problems instead
 	add public user profile - same as user page, except remove email
 	

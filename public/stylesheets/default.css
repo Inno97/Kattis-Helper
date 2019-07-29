@@ -16,6 +16,9 @@
 }
 .dashboardRight {
   position: relative;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
 }
 .icon {
   display: flex;
@@ -50,13 +53,25 @@
   flex-direction: row;
   max-width: 300px;
   max-height: 30px;
-  position: relative;
-  top: 1em;
+  top: 2em;
   resize: none;
   border: 2px solid grey;
+  background-color: white;
 }
 .searchbox {
   vertical-align: center;
+  resize: none;
+}
+.vertWrapper {
+  padding: 0.5em;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+}
+.horzWrapper {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
 }
 .searchIcon {
   max-width: 24px;
@@ -102,8 +117,25 @@
   background-color: white;
   
 }
+.errorBox {
+  border: 1px solid grey;
+  width: 500px;
+  height: 500px;
+  padding: 1em;
+  background-color: white;
+  align-self: center;
+  text-align: center;
+}
+.errorPic {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
 .nextPageButton{
 	width: 60px;
+}
+.searchButton {
+  height: 25px;
 }
 .unusedObj {
   visibility: hidden;

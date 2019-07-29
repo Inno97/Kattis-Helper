@@ -106,46 +106,50 @@ function handleLostPass() {
 //create account and send verification email
 function createAccount() {
 	console.log('trying to create account');
-	if (document.getElementById('username').value && document.getElementById('password').value && document.getElementById('email').value) {
-		var username = document.getElementById('username').value;
-		var password = document.getElementById('password').value;
-		var email = document.getElementById('email').value;
-		var credentials = '{\"username": \"' + username + '\", \"password\": \"' + password + '\", \"email\": \"' + email + '\"';
-		//perform ajax query
-		const requestURL = '/createUser';
-		$.ajax({
-			url: requestURL,
-			type: 'POST',			
-			data: {
-				"username": username,
-				"password": password,
-				"email": email
-			},
-			dataType: 'json',
-			success: (data) => {
-				console.log(data);
-				switch(data) {
-					case '-1': //no credentials
-						renderLoginError('Please fill in all 3 fields.');
-						break;
-					case '1': //auth successful 
-						removeLoginError();
-						//handleLoginSuccess(username);
-						break;
-					case '2': //wrong password
-						renderLoginError('Username is already taken.');
-						break;
-					case '3': //server-side error
-						renderLoginError('User creation failed, please try again.');
-						break;
-					case '4': //email parse error
-						renderLoginError('Please enter a valid email.');
-						break;
-				}
-			},
-			error: function(req, err){ console.log('[SRV] error occured: ' + err); }
-			
-		});
+	if (document.getElementById('username').value && document.getElementById('password').value && document.getElementById('password2').value && document.getElementById('email').value) {
+		if (document.getElementById('password').value == document.getElementById('password2').value) {
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			var email = document.getElementById('email').value;
+			var credentials = '{\"username": \"' + username + '\", \"password\": \"' + password + '\", \"email\": \"' + email + '\"';
+			//perform ajax query
+			const requestURL = '/createUser';
+			$.ajax({
+				url: requestURL,
+				type: 'POST',			
+				data: {
+					"username": username,
+					"password": password,
+					"email": email
+				},
+				dataType: 'json',
+				success: (data) => {
+					console.log(data);
+					switch(data) {
+						case '-1': //no credentials
+							renderLoginError('Please fill in all 3 fields.');
+							break;
+						case '1': //auth successful 
+							removeLoginError();
+							//handleLoginSuccess(username);
+							break;
+						case '2': //wrong password
+							renderLoginError('Username is already taken.');
+							break;
+						case '3': //server-side error
+							renderLoginError('User creation failed, please try again.');
+							break;
+						case '4': //email parse error
+							renderLoginError('Please enter a valid email.');
+							break;
+					}
+				},
+				error: function(req, err){ console.log('[SRV] error occured: ' + err); }
+				
+			});
+		} else {
+			renderLoginError('Passwords do not match');
+		}
 		
 	} else {
 		renderLoginError('Please fill in all fields!');
@@ -222,51 +226,56 @@ function verify() {
 //password recovery
 function resetPassword() {
 	if (document.getElementById('username').value && document.getElementById('verification').value
-	&& document.getElementById('password').value && document.getElementById('email').value) {
+	&& document.getElementById('password').value && document.getElementById('password2').value
+	&& document.getElementById('email').value) {
+		if (document.getElementById('password').value == document.getElementById('password2').value) {
 		var username = document.getElementById('username').value;
-		var email = document.getElementById('email').value;
-		var password = document.getElementById('password').value;
-		var verification = document.getElementById('verification').value;
-		
-		//perform ajax query
-		const requestURL = '/resetPassword';
-		$.ajax({
-			url: requestURL,
-			type: 'POST',			
-			data: {
-				"username": username,
-				"password": password,
-				"verification": verification,
-				"email": email
-			},
-			dataType: 'json',
-			success: (data) => {
-				console.log(data);
-				switch(data) {
-					case '-1': //no credentials
-						renderLoginError('Please fill in all 4 fields.');
-						break;
-					case '1': //reset successful 
-						removeLoginError();
-						redirectLoginPage();
-						//handleLoginSuccess(username);
-						break;
-					case '2': //wrong verification code
-						renderLoginError('Recovery code failed.');
-						break;
-					case '3': //user not found
-						renderLoginError('User not found.');
-						break;
-					case '4': //wrong email
-						renderLoginError('Wrong email.');
-						break;
-					case '5': //server error
-						renderLoginError('User verification failed, please try again');
-						break;
-				}
-			},
-			error: function(req, err){ console.log('[SRV] error occured: ' + err); }
-		});
+			var email = document.getElementById('email').value;
+			var password = document.getElementById('password').value;
+			var verification = document.getElementById('verification').value;
+			
+			//perform ajax query
+			const requestURL = '/resetPassword';
+			$.ajax({
+				url: requestURL,
+				type: 'POST',			
+				data: {
+					"username": username,
+					"password": password,
+					"verification": verification,
+					"email": email
+				},
+				dataType: 'json',
+				success: (data) => {
+					console.log(data);
+					switch(data) {
+						case '-1': //no credentials
+							renderLoginError('Please fill in all 4 fields.');
+							break;
+						case '1': //reset successful 
+							removeLoginError();
+							redirectLoginPage();
+							//handleLoginSuccess(username);
+							break;
+						case '2': //wrong verification code
+							renderLoginError('Recovery code failed.');
+							break;
+						case '3': //user not found
+							renderLoginError('User not found.');
+							break;
+						case '4': //wrong email
+							renderLoginError('Wrong email.');
+							break;
+						case '5': //server error
+							renderLoginError('User verification failed, please try again');
+							break;
+					}
+				},
+				error: function(req, err){ console.log('[SRV] error occured: ' + err); }
+			});
+		} else {
+			renderLoginError('Passwords do not match');
+		}
 	} else {
 		renderLoginError('Please fill in all fields!');
 	}
@@ -328,7 +337,7 @@ function redirectUserPage() {
 		dataType: 'html',
 		success: (data) => {
 			console.log('redirecting');
-			location = '/user';
+			location = '/user/?q=' + tempStorage.getItem('username');
 		},
 		error:function (xhr, ajaxOptions, thrownError){
 			if(xhr.status==404) {

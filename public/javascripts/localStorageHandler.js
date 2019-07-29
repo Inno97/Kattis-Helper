@@ -111,14 +111,14 @@ function fetchProblem(query) {
 }
 
 function fetchNotFound() {
-	const requestURL = '/problemNotFound';
+	const requestURL = '/error';
 	$.ajax({
 		url: requestURL,
 		type: 'GET',
 		dataType: 'html',
 		success: (data) => {
 			console.log('redirecting');
-			location = '/problemNotFound';
+			location = '/error';
 		},
 		error:function (xhr, ajaxOptions, thrownError){
 			if(xhr.status==404) {
@@ -148,7 +148,7 @@ function queryProblem() {
 		},
 		error:function (xhr, ajaxOptions, thrownError){
 			if(xhr.status==404) {
-				alert(thrownError);
+				fetchNotFound();
 				console.log('not found');
 			}
 		}

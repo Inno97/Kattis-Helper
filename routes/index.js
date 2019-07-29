@@ -229,13 +229,13 @@ router.get('/problem', function(req, res) {
 });
 
 //get problem not found page
-router.get('/problemNotFound', function(req, res) {
+router.get('/error', function(req, res) {
 	console.log('[REQ] [' + requestNum + ']');
-	console.log('[INC] [GET] /problemNotFound');
+	console.log('[INC] [GET] /error');
 	requestNum++;
 	
-	res.sendFile(appDir + '/src/problemNotFound.html');
-	console.log('[OUT] [GET] sent problemNotFound.html');
+	res.sendFile(appDir + '/src/error.html');
+	console.log('[OUT] [GET] sent error.html');
 });
 
 //get login page
@@ -1243,13 +1243,20 @@ router.get('/fetchProfile/', function(req, res) {
 				console.log('[SRV] [mongo] user query successful for user: ' + username);
 				console.log('[SRV] creating user profile to send');
 				
-				var userProfile = {
-					"username": result.username,
-					"email": result.email,
-					"forumPosts": result.forumPosts,
-					"problemsSolved": result.problemsSolved
-				};
+				if (result == undefined) {
+					console.log('[SRV] [mongo] user not found: ' + username);
+					res.send(404);
+					console.log('[OUT] [GET] sent over status 404');
+					
+				} else {
 				
+					var userProfile = {
+						"username": result.username,
+						"email": result.email,
+						"forumPosts": result.forumPosts,
+						"problemsSolved": result.problemsSolved
+					};
+				}
 				res.send(userProfile);
 				console.log('[OUT] [GET] sent over user profile for user: ' + username);
 			}

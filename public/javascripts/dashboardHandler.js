@@ -55,8 +55,29 @@ function renderDashboard() {
 	const dashboardRight = document.createElement("div");
 	dashboardRight.classList.add("dashboardRight");
 	
+	const searchBoxVertWrapper = document.createElement("div");
+	searchBoxVertWrapper.classList.add('vertWrapper');
+	dashboardRight.appendChild(searchBoxVertWrapper);
+	
 	const searchboxWrapper = document.createElement("div");
 	searchboxWrapper.classList.add("searchboxWrapper");
+	searchBoxVertWrapper.appendChild(searchboxWrapper);
+	
+	const searchBoxHorzWrapper = document.createElement("div");
+	searchBoxHorzWrapper.classList.add('horzWrapper');
+	searchBoxVertWrapper.appendChild(searchBoxHorzWrapper);
+	
+	const searchProblem = document.createElement("button");
+	searchProblem.innerText = "Find Problem";
+	searchProblem.classList.add('searchButton');
+	searchBoxHorzWrapper.appendChild(searchProblem);
+	searchProblem.setAttribute("onClick", "queryProblem(document.getElementById('searchText').value)");
+	
+	const searchUser = document.createElement("button");
+	searchUser.innerText = "Find User";
+	searchUser.classList.add('searchButton');
+	searchBoxHorzWrapper.appendChild(searchUser);
+	searchUser.setAttribute("onClick", "location.href=('/user/?q=' + document.getElementById('searchText').value)");
 	
 	const searchText = document.createElement("textarea");
 	searchText.id = "searchText";
@@ -64,18 +85,13 @@ function renderDashboard() {
 	searchText.placeholder = "Search Kattis Helper";
 	searchText.style = "border:none";
 	
-	const searchIcon = document.createElement("button");
-	searchIcon.id = "searchIconImage";
-	searchIcon.classList.add("searchIcon");
-	searchIcon.setAttribute("onClick", "queryProblem(document.getElementById('searchText').value)");
-	
 	const userIconWrapper = document.createElement("div");
 	userIconWrapper.classList.add('userIconWrapper');
 	userIconWrapper.id = 'userIconWrapper';
 	
 	const userIconAnchor = document.createElement("a");
 	if (tempStorage.getItem('loginFlag') == 'TRUE') {
-		userIconAnchor.href = "/user";
+		userIconAnchor.href = "/user/?q=" + tempStorage.getItem('username');
 	} else {
 		userIconAnchor.href = "/login";
 	}
@@ -91,12 +107,12 @@ function renderDashboard() {
 	userIconWrapper.appendChild(userIconAnchor);
 	
 	searchboxWrapper.appendChild(searchText);
-	searchboxWrapper.appendChild(searchIcon);
-	dashboardRight.appendChild(searchboxWrapper);
 	dashboard.appendChild(dashboardRight);
-	dashboard.appendChild(userIconWrapper);
+	dashboardRight.appendChild(userIconWrapper);
 	
 	dashboardLocation.appendChild(dashboard);
+	
+	
 	
 	//render login / logout button
 	console.log(tempStorage.getItem('loginFlag'));

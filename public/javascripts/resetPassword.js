@@ -48,7 +48,8 @@ function renderDetails() {
 	loginTextUser.innerText = 'Username';
 	loginForm.appendChild(loginTextUser);
 	
-	const loginTextUserBox = document.createElement('textarea');
+	const loginTextUserBox = document.createElement('input');
+	loginTextUserBox.type = 'text';
 	loginTextUserBox.classList.add('loginTextBox');
 	loginTextUserBox.id = 'username';
 	loginForm.appendChild(loginTextUserBox);
@@ -58,7 +59,8 @@ function renderDetails() {
 	loginTextEmail.innerText = 'Email';
 	loginForm.appendChild(loginTextEmail);
 	
-	const loginTextEmailBox = document.createElement('textarea');
+	const loginTextEmailBox = document.createElement('input');
+	loginTextEmailBox.type = 'text';
 	loginTextEmailBox.classList.add('loginTextBox');
 	loginTextEmailBox.id = 'email';
 	loginForm.appendChild(loginTextEmailBox);
@@ -68,25 +70,38 @@ function renderDetails() {
 	loginTextPassword.innerText = 'New Password';
 	loginForm.appendChild(loginTextPassword);
 	
-	const loginTextPasswordBox = document.createElement('textarea');
+	const loginTextPasswordBox = document.createElement('input');
+	loginTextPasswordBox.type = 'password';
 	loginTextPasswordBox.classList.add('loginTextBox');
 	loginTextPasswordBox.id = 'password';
 	loginForm.appendChild(loginTextPasswordBox);
+	
+	const loginTextConfirmPassword = document.createElement('div');
+	loginTextConfirmPassword.classList.add('loginTextElement');
+	loginTextConfirmPassword.innerText = 'Confirm New Password';
+	loginForm.appendChild(loginTextConfirmPassword);
+	
+	const loginTextConfirmPasswordBox = document.createElement('input');
+	loginTextConfirmPasswordBox.type = 'password';
+	loginTextConfirmPasswordBox.classList.add('loginTextBox');
+	loginTextConfirmPasswordBox.id = 'password2';
+	loginForm.appendChild(loginTextConfirmPasswordBox);
 	
 	const loginTextVerification = document.createElement('div');
 	loginTextVerification.classList.add('loginTextElement');
 	loginTextVerification.innerText = 'Recovery Code';
 	loginForm.appendChild(loginTextVerification);
 	
-	const loginTextVerificationBox = document.createElement('textarea');
+	const loginTextVerificationBox = document.createElement('input');
+	loginTextVerificationBox.type = 'text';
 	loginTextVerificationBox.classList.add('loginTextBox');
 	loginTextVerificationBox.id = 'verification';
 	loginForm.appendChild(loginTextVerificationBox);
 	
-	const verifyButton = document.createElement('button');
-	verifyButton.innerText = 'Reset Password';
-	verifyButton.setAttribute('onClick', 'resetPassword()');
-	loginForm.appendChild(verifyButton);
+	const resetButton = document.createElement('button');
+	resetButton.innerText = 'Reset Password';
+	resetButton.setAttribute('onClick', 'resetPassword()');
+	loginForm.appendChild(resetButton);
 	
 	const lostPassButton = document.createElement('button');
 	lostPassButton.innerText = 'Request New Recovery Code';
@@ -108,6 +123,10 @@ function renderDetails() {
 	createAccButton.setAttribute('onClick', 'handleCreateAccount()');
 	loginForm.appendChild(createAccButton);
 	
+	const verifyButton = document.createElement('button');
+	verifyButton.innerText = 'Verify User';
+	verifyButton.setAttribute('onClick', 'handleVerify()');
+	loginForm.appendChild(verifyButton);
 	
 	const unusedRender = document.createElement('div');
 	unusedRender.classList.add('unusedObj');
