@@ -1,7 +1,5 @@
 # Kattis-Helper
-===================================================================================================
 Kattis Helper Web Project, for the aspiring Thomas.
-===================================================================================================
 
 Kattis Helper is a website that aims to facilitate users with solving Kattis problems.
 
@@ -19,11 +17,8 @@ to test out their code in the online compiler in Kattis Helper.
 
 To access the website, users can use this link: https://kattis-helper.herokuapp.com/
 
-===================================================================================================
 Contributing: 
-===================================================================================================
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would 
 like to change.  Bug reporting is welcome.
 
----------------------------------------------------------------------------------------------------
