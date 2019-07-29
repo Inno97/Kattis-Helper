@@ -270,21 +270,24 @@ Meeting up and working on milestone 2 submission + discussion on what to do for 
 Milestone 3 (2/7/19 - 29/7/19):
 ---------------------------------------------------------------------------------------------------
 1/7/19 - 7/7/19:
-Scraping more questions into the database 2hr
+Scraping more questions into the database 5hr
+Configuring question database to better format to retrieve data more efficiently 4hr
 Finding and applying for suitable compiler api token 2hrs
 
 8/7/19 - 13/7/19:
 Reading up and testing compiler api document 4hr
-Implementing compiler api on server 6hr
-
+Setting up compiler api call for submitting code in backend 8hr
+Setting up compiler api call for retrieving comilpied files in backend 8hr
 
 14/7/19 - 20/7/19:
-Setting up compiler api call from frontend 6hr
-Adding language selection for compiler 3hr
+Setting up compiler api call for compilation error messages 6hr
+Adding language selection for compiler 6hr
+Setting up and debugging all compiler api call from frontend 14hr
 
 21/7/19 - 27/7/19:
-Adding option to directly test the questions with problem test case 3hr
-Tried to edit CSS of webpage 2hrs
+Adding option to directly test individual test case 4hr
+Adding option to test all test cases 4hr
+Tried to edit CSS of webpage 4hrs
 
 28/7/19 - 29/7/19:
 meeting up and creating milestone 3 submission 4 hrs
