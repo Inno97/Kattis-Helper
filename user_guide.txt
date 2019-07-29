@@ -1,0 +1,228 @@
+# Kattis-Helper
+===================================================================================================
+Kattis Helper Web Project, for the aspiring Thomas.
+===================================================================================================
+===================================================================================================
+Readme Contents:
+===================================================================================================
+
+1. Kattis Helper
+2. User Guide
+3. Project Folder Contents
+4. Project Log
+5. Testing
+6. Contributing
+
+===================================================================================================
+1. Kattis Helper:
+===================================================================================================
+
+Kattis Helper is a website that aims to facilitate users with solving Kattis problems.
+
+Kattis (open.kattis.com) is a website that provides programming problems, of which many are from
+programming competitions. Users are able to submit code on the Kattis website itself, but Kattis
+itself does not have any options for user discussion, or allowing users to test their code (users
+are only able to submit code and are told only whether their answers are correct or wrong).
+
+With this, Kattis Helper was designed with user discussion and testing, which the Kattis website
+does not. Built on nodejs express, Kattis Helper is hosted on herokuapp, using mongoDB atlas as
+cloud database for storage, with Sphere Engine for the online compiler.
+
+Users are able to create accounts to engage in forum discussion for problems, while also being able
+to test out their code in the online compiler in Kattis Helper. 
+
+To access the website, users can use this link: https://kattis-helper.herokuapp.com/
+
+===================================================================================================
+2. User Guide:
+===================================================================================================
+
+Kattis Helper can be accessed from the link: https://kattis-helper.herokuapp.com/
+
+The frontpage shows the following sets of problems:
+	Suggested Problems (from the Kattis Helper server)
+	Popular Problems (problems that are searched for the most)
+	
+Clicking on the names of the problems will redirect the user to the problem itself.
+
+Users can also search for specific problems using this link as an example:
+(the ID of the problem will be at the end at the ?q= query)
+https://kattis-helper.herokuapp.com/problem/?q=2048
+
+For each problem, there are 4 menus to interact with:
+	Details - Information regarding the problem
+	
+	Test Cases - Individual test cases for the questions
+	
+	IDE - Online compiler, allows the user to choose which test case they wanted to use
+		Users can test specific test cases, or the entire question
+	
+	Forum - Discussion platform, requires login to post and reply
+	
+	
+Login system:
+	Users can create an account in Kattis Helper
+		A verification email will be sent to the specified email with a verification code
+		Verification code is used at https://kattis-helper.herokuapp.com/verify
+	
+	Password recovery uses the same process
+	
+	Users are able to see the problems that they have completed, as well as recent forum posts
+	
+===================================================================================================
+3. Project Folder Contents:
+===================================================================================================
+Folders:
+---------------------------------------------------------------------------------------------------
+bin:
+	default file
+
+data:
+	JSON data storage
+
+node_modules:
+	npm
+
+public:
+	for express to serve
+	images:
+		img assets
+	javascripts:
+		client-side js
+	stylesheets:
+		css
+
+routes:
+	index.js:
+		default js file for server-side requests
+	users.js:
+		temp file
+		
+src:
+	all html files
+	
+utilities:
+	C++ scripts to manipulate JSON data
+
+views:
+	default file
+	
+---------------------------------------------------------------------------------------------------
+Files:
+---------------------------------------------------------------------------------------------------
+app.js:
+	for server-side setup
+	
+package.json & package-lock.json:
+	npm modules list & miscellaneous info
+	
+
+===================================================================================================
+4. Project Log:
+===================================================================================================
+---------------------------------------------------------------------------------------------------
+Daniel:
+---------------------------------------------------------------------------------------------------
+Milestone 1 (~ - 3/6/19):
+---------------------------------------------------------------------------------------------------
+
+13/5/19 - 24/5/19:
+orbital liftoff + full stack workshop by Eldric (https://blackening.github.io/)
+html workshop 8hrs
+css workshop 8hrs
+vue workshop 8hrs
+server workshop 8hrs
+self-learning 8hrs
+
+31/5/19:
+designing basicframe work 2hrs
+meeting up to do milestone video 2hrs
+
+---------------------------------------------------------------------------------------------------
+Milestone 2 (4/6/19 - 1/7/19):
+---------------------------------------------------------------------------------------------------
+
+4/6/19 - 9/6/19:
+Working on organising the frontend of the website 4 hrs
+Working on integrating and processing scraped data in the backend 6 hrs
+
+10/6/19 - 16/6/19:
+Working / figuring out how to make an user account system 8 hrs
+
+17/6/19 - 23/6/19:
+Working on backend implementation of forum system 3 hrs
+Reading up and brainstorming on how to setup an online compiler 2 hrs
+
+24/6/19 - 1/7/19:
+Meeting up and working on milestone 2 submission + discussion on what to do for milestone 3. 3 hrs
+
+---------------------------------------------------------------------------------------------------
+Milestone 3 (2/7/19 - 29/7/19):
+---------------------------------------------------------------------------------------------------
+
+1/7/19 - 7/7/19:
+re-writing of entire project to express (originally the project was in webpack) 16 hrs
+setup of mysql for local database (which was scrapped later on) 3 hrs
+discussing on how to handle forum and user system 2 hr
+
+8/7/19 - 13/7/19:
+setup of mongoDB atlas server for cloud database (including integrating with the serverside code) 5 hrs
+setup of authentication system, including email verification and password recovery 10 hrs
+
+14/7/19 - 20/7/19:
+setup of forum system 8 hrs
+setup of filtering and handling of data in problems list page 4 hrs
+setup of user account page 2 hrs
+
+21/7/19 - 27/7/19:
+setup and figuring out how to host server (using heroku after trying out other alternatives) 5 hrs
+fixing server-side issues in deployment 3 hrs
+(settling express session memory leak and http security error)
+added extra test cases to problems (that I have found before) 4 hrs
+tidying up code and testing 2 hrs
+
+28/7/19 - 29/7/19:
+meeting up and creating milestone 3 submission 4 hrs
+added extra test cases to problems (that I have found before) 6 hrs
+tidying up css 2 hrs
+
+===================================================================================================
+6. Testing:
+===================================================================================================
+
+Project is built on Express, using mongoDB Atlas to store user data in a cloud server.
+
+To run the server, type in the command:
+	npm run test
+
+and connect to http://localhost:3000/
+
+Do note that the server will restart with any changes in code due to nodemon.
+
+CLI will show tags for console outputs for verbose output as shown below:
+
+---------------------------------------------------------------------------------------------------
+[SRV] - SeRVer
+
+HTTP requests:
+[REQ] - (HTTP) Request
+[IN] - INcoming request
+[OUT] - OUTgoing request
+[GET] [POST] - Request types
+
+
+Modules:
+[FS] - File System (used to read JSON)
+[nodemailer] - npm nodemailer
+[mongo] - npm mongodb
+---------------------------------------------------------------------------------------------------
+
+===================================================================================================
+6. Contributing:
+===================================================================================================
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would 
+like to change.  Bug reporting is welcome.
+
+
+---------------------------------------------------------------------------------------------------
