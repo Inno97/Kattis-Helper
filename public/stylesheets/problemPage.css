@@ -1,0 +1,118 @@
+.problemWrapper {
+  max-width: 1000px;
+  max-height: 2000px;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  padding: 1em;
+}
+.problemLeft {
+  border: 1px solid grey;
+  width: 800px;
+  height: 1600px;
+  padding: 1em;
+  position: relative;
+  background-color: white;
+  overflow: scroll;
+}
+.problemTitle {
+  font-size: 44px;
+  text-align: center;
+}
+.problemContent {
+  padding-top: 1em;
+  text-align: left;
+}
+.problemHeaderLarge {
+  padding-top: 1em;
+  font-size: 32px;
+  text-align: left;
+}
+.testCaseWrapperHorz {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+.testCaseWrapperVert {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  max-width: 250px;
+}
+.testCaseWrapper {
+  padding: 1em;
+  max-width: 800px;
+  max-height: 1000px;
+  overflow: scroll;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+}
+.testCaseHeader {
+  padding-top: 1em;
+  font-size: 24px;
+  text-align: left;
+}
+.testCaseBox {
+  padding: 1em;
+  width: 180px;
+  height: 200px;
+  text-align: left;
+  overflow: scroll;
+  border: 1px solid grey;
+  background: #f0efef;
+  resize: none;
+}
+.inputBox {
+  padding: 1em;
+  border: 1px solid grey;
+  width: 180px;
+  height: 200px;
+  background-color: #f0efef;
+}
+.problemRight {
+  left: 140px;
+  border: 1px solid grey;
+  width: 400px;
+  height: 1600px;
+  padding: 1em;
+  position: relative;
+  background-color: white;
+  line-height: 2.5;
+}
+.problemSummaryTitle {
+  font-size: 24px;
+  text-align: center;
+}
+.sidebarHelperWrapper {
+  padding: 1em;
+  background: #f0efef;
+  border: 0.5px solid grey;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+.sidebarHelperButton {
+  width: 150px;
+}
+.testCaseMenuIconWrapper {
+  flex: auto;
+  flex-direction: row;
+  max-width: 500px;
+  padding: 1em;
+  background: #f0efef;
+  border: 1px solid grey;
+}
+.compileResultSuccess {
+  border: 1px solid black;
+  background-color: green;
+}
+.compileResultFail {
+  border: 1px solid black;
+  background-color: red;
+}
+.unusedRender {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}

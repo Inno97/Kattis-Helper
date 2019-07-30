@@ -1,0 +1,85 @@
+.forumWrapper{
+	padding: 1em;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	border: 0.5px solid grey;
+	width: 450px;
+	max-height: 1200px;
+}
+.forumPostWrapper{
+	padding: 0.5em;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	border: 0.5px solid black;
+	width: 400px;
+	max-height: 800px;
+	background-color: grey;
+}
+.forumPost{
+	padding: 0.5em;
+	border: 0.5px solid white;
+	width: 350px;
+	max-height: 400px;
+	background-color: #f0efef;
+}
+.forumTextHeader{
+	font-size: 1.5em;
+}
+.forumTextContent{
+	font-size: 1em;
+}
+.forumReplyWrapper{
+	padding: 0.5em;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	width: 350px;
+	max-height: 800px;
+	background-color: grey;
+}
+.forumReply{
+	padding: 0.5em;
+	border: 0.5px solid white;
+	width: 300px;
+	max-height: 400px;
+	background-color: #f0efef;
+	align-self: right;
+}
+.forumInputBox{
+	padding: 0.5em;
+	border: 0.5px solid grey;
+	width: 400px;
+	height: 150px;
+	background-color: #f0efef;
+	align-self: right;
+}
+.forumInputWrapper{
+	padding: 0.5em;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	width: 450px;
+	max-height: 200px;
+	background-color: grey;
+	border: 0.5px solid grey;
+}
+.forumInputTextArea{
+	width: 350px;
+	height: 100px;
+	resize: none;
+}
+.forumInputBoxHorzWrapper{
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+}
+.forumPlaceholderText{
+	font-size: 1.5em;
+	text-align: center;
+}
+.forumPlaceholderBox{
+	background-color: #f0efef;
+	border: 0.5px solid grey;
+}

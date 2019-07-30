@@ -1,0 +1,255 @@
+===================================================================================================
+Site Navigation
+===================================================================================================
+From the dashboard
+1. Front Page
+	- Contains various items, maybe most popular questions / stuff
+	
+2. Problems List
+	- List of problems
+
+3. Help
+	- Miscellaneous stuff
+	
+From the searchbar
+4. Problem Page
+	- Displays the appropriate problem
+	
+===================================================================================================
+Kattis Helper Changelog:
+===================================================================================================
+23/5/19:
+	Initial build
+	
+	Added static question page
+	
+27/5/19:
+	Tidied up layout, current template page can be found at template.html
+	
+	Added problemPage.html (display the queried problem for hte user)
+	
+	Added local storage for session (call the script localStorageHandler.js)
+
+23/6/19:
+	After a long hiatus, work has continued
+	
+	Tidied up some stuff, implemented searching function for question names (based on URL only)
+	Note: this is not case sensitive, but certain questions like Fire! have ID as fire3 instead
+	we strictly follow the name based on the URL
+	
+	Problems list now is in a table form
+	
+24/6/19:
+	Changed questions.json format to support more information
+	
+	Question page now fetches the appropriate information and stores in local storage
+	* We don't want to keep fetching info at a time, so throw them in local storage
+	
+26/6/19:
+	Merged questions.json using new format
+	
+	Added 100 sample questions
+	
+	Problem page now correctly loads in the information
+	
+	Tidied up problem page layout
+	
+27/6/19:
+	Added linking of questions from problem list to actual problem page
+	
+	Fixed bug: searching for a new problem when at the problem page, does not render the sample
+	test cases properly
+	
+	Added context menu switching for problem page:
+		details, test case, IDE, forum (tentative menus)
+		all 4 context menus are stored in a hidden div in the page
+	Split generation and rendering of all 4 context menus
+	
+	Test case context menu currently
+		Currently hooks onto sample test cases until I bother to copy over for each question
+		Possibly want to include a flag to check whether the question has test cases that we have
+		or not
+		Total number of test cases for the question will be manually added
+		Determine whether we have the test cases or not via checking the IO list against the
+		known number of test cases for those questions
+		
+28/6/19:
+	Added rendering of random questions in the index page
+	Added placeholder stuff for IDE
+	
+	Hooked test case context menu to use the internal test cases instead of only the sample test cases
+	
+1/7/19 - 6/7/19:
+	Recreating entire project using express instead
+	Since we're not using webpack (atm), alot of functionalities are different:
+		Styling is now using css instead of scss (lack of webpack like loaders for sass)
+	
+7/7/19:
+	Settled sending of JSON data
+	Setup search function & redirection to problem page
+	Fixed error handling of wrong queries for questions
+	
+8/7/19:
+	Setup authentication system
+	Hooked up login system, will add on hashing of passwords in the future
+
+9/7/19:
+	Tidied some minor things in authentication
+	Added 404 page
+	Added login / logout button in dashboard
+	
+10/7/19:
+	migrated to mongodb
+	
+11/7/19:
+	User system is up and running (finally)
+	added user account creation
+	slowly changing console syntax to show better logging
+	added user account verification:
+		upon successful creation of account, send an email to the user, containing a verification code
+	added ability to remove unverified users
+	added password recovery
+
+12/7/19:
+	added database quering for forum
+
+13/7/19:
+	added forum system to each question
+	CSS is not polished
+
+20/7/19:
+	added next / previous buttons to problem list
+	added filtering of problems in problem list
+	added placeholder text for problems with no forum posts
+	fixed loading error in forum posts (cannot read property of null object because it didn't load)
+		will display proper error message in client-side and prompt for refresh
+
+21/7/19:
+	added user profile page
+		now shows problems that the user has completed and forum posts (recent 50)
+	added extra fields to user schema in mongo
+	added http request on serverside to handle update of problems solved by user
+	
+24/7/19:
+	added suggested problems to the frontpage
+		it is a glorified random problem generator
+	added popular problems to the frontpage
+		tracks based on problemID queried and stored in mongo
+		
+26/7/19:
+	fixed error in data that was rendering the wrong questions
+	added some questions that we have test cases for
+	added help page
+	
+27/7/19:
+	merged code
+	setup heroku for deployment
+	fixed memoryStore memory leak
+		will clear all expired express sessions every minute
+	added actual querying of problems via URL
+		re-structured fetching of data to do so
+	
+28/7/19
+	added more compilation options
+		
+	added proper username / password inputs
+		hides passwords properly
+		allows autofill detection of user credentials
+	
+	added 404 error handling
+	
+	added separate buttons for searching for user and problems
+
+To do:
+
+add buttons to search for users or search for problems instead
+	add public user profile - same as user page, except remove email
+	
+===================================================================================================
+Notes:
+===================================================================================================
+
+Project is built on Express, using mongoDB Atlas to store user data in a cloud server.
+
+kattisHelper
+Aq#TG5Ia#YtHhmmQMBxl
+
+To run the server, type in the command:
+	npm run test
+
+and connect to http://localhost:3000/
+
+Do note that the server will restart with any changes in code due to nodemon, and requires the
+addition of user IP to the whitelist of the mongodb cluster
+
+For user accounts, emails will be sent for verification and resetting of passwords, however, at
+the moment we do not support links to verify users (it's alot more work to do)
+
+CLI will show tags for console outputs for verbose output
+
+
+
+===================================================================================================
+Project Folder Contents:
+===================================================================================================
+Folders:
+---------------------------------------------------------------------------------------------------
+bin:
+	default file
+
+data:
+	JSON data storage
+
+node_modules:
+	npm
+
+public:
+	for express to serve
+	images:
+		img assets
+	javascripts:
+		client-side js
+	stylesheets:
+		css
+
+routes:
+	index.js:
+		default js file for server-side requests
+	users.js:
+		temp file
+		
+src:
+	all html files
+	
+utilities:
+	C++ scripts to manipulate JSON data
+
+views:
+	default file
+	
+---------------------------------------------------------------------------------------------------
+Files:
+---------------------------------------------------------------------------------------------------
+app.js:
+	for server-side setup
+	
+package.json & package-lock.json:
+	npm modules list & miscellaneous info
+	
+===================================================================================================
+CLI Output:
+===================================================================================================
+[SRV] - SeRVer
+
+HTTP requests:
+[REQ] - (HTTP) Request
+[IN] - INcoming request
+[OUT] - OUTgoing request
+[GET] [POST] - Request types
+
+
+Modules:
+[FS] - File System (used to read JSON)
+[nodemailer] - npm nodemailer
+[mongo] - npm mongodb
+

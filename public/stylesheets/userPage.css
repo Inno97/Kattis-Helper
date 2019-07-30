@@ -1,0 +1,114 @@
+.userBox {
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	
+	border: 1px solid grey;
+	max-width: 1200px;
+	max-height: 800px;
+	padding: 1em;
+	position: relative;
+	background-color: white;	
+}
+
+.userHorzWrapper {
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+}
+
+.userVertWrapper {
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+}
+
+.userTextHeader {
+	font-size: 2em;
+}
+
+.userTextElement {
+	font-size: 1.5em;
+}
+
+.userProblemBox {
+	width: 400px;
+	max-height: 600px;
+	background-color: grey;
+	border: 1px solid black;
+	overflow: scroll;
+}
+
+.userForumBox {
+	width: 600px;
+	max-height: 800px;
+	background-color: grey;
+	border: 1px solid black;
+	overflow: scroll;
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid grey;
+}
+thead th:nth-child(1) {
+	width: 50%;
+}
+thead th:nth-child(2) {
+	width: 30%;
+}
+thead th:nth-child(3) {
+	width: 20%;
+}
+th, td {
+	padding: 0.5em;
+	border: 0.5px solid grey;
+	background: #f0efef;
+	height: 30px;
+	overflow: hidden;
+}
+tbody td:nth-child(1) {
+	width: 50%;
+}
+tbody td:nth-child(2) {
+	width: 30%;
+}
+tbody td:nth-child(3) {
+	width: 30%;
+}
+
+.forumTable {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid grey;
+}
+
+
+.forumTable thead th:nth-child(1) {
+	width: 20%;
+}
+.forumTable thead th:nth-child(2) {
+	width: 60%;
+}
+.forumTable thead th:nth-child(3) {
+	width: 20%;
+}
+.forumTable th, td {
+	padding: 0.5em;
+	border: 0.5px solid grey;
+	background: #f0efef;
+	height: 30px;
+	overflow: hidden;
+}
+.forumTable tbody td:nth-child(1) {
+	width: 20%;
+}
+.forumTable tbody td:nth-child(2) {
+	width: 60%;
+}
+.forumTable tbody td:nth-child(3) {
+	width: 20%;
+}

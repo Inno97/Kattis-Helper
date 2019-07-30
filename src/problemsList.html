@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kattis Helper</title>
+  
+  <link rel="stylesheet" type="text/css" href="/static/default.css">
+  <link rel="stylesheet" type="text/css" href="/static/problems.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/static/auth.js"></script>
+  <script src="/static/localStorageHandler.js"></script>
+  <script src="/static/dashboardHandler.js"></script>
+  <script src="/static/problemsList.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+	  <div class="wrapper">
+		  <div id="dashboardLocation">
+		  </div>
+		  
+		  <div id="questions" class="contentWrapper">
+			<div id="filterBox" class="filterBox"> 
+			</div>
+			<div id="questionBox" class="questionBox">
+			<table>
+				<thead> 
+					<tr>
+					<th><a id="filterName" onclick="filterProblems(0, 0)">Name</a></th>
+					<th><a id="filterLink" onclick="filterProblems(1, 0)">Kattis Link</a></th>
+					<th><a id="filterCategory" onclick="filterProblems(2, 0)">Category</a></th>
+					<th><a id="filterDifficulty" onclick="filterProblems(3, 0)">Difficulty</a></th>
+					</tr>
+				</thead>
+				<tbody id="problemTableBody">
+				</tbody>
+			</table>
+			</div>
+		  </div>
+	  </div>
+  </div>
+  
+</body>
+</html>

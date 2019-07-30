@@ -1,0 +1,33 @@
+{
+  "name": "kattis-helper",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "serve": "set DEBUG=myapp:* & npm start",
+    "test": "nodemon \"set DEBUG=myapp:* & npm start\""
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "email-verification": "^0.4.6",
+    "express": "~4.16.1",
+    "express-compile-sass": "^4.0.0",
+    "express-session": "^1.16.2",
+    "http-errors": "~1.6.3",
+    "jade": "^1.11.0",
+    "jquery": "^3.4.1",
+    "memorystore": "^1.6.1",
+    "mongodb": "^3.2.7",
+    "morgan": "~1.9.1",
+    "mysql": "^2.17.1",
+    "node-sass": "^4.12.0",
+    "nodemailer": "^6.2.1",
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7",
+    "pug": "^2.0.4"
+  }
+}
