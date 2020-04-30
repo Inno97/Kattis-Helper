@@ -19,7 +19,7 @@
     "express-session": "^1.16.2",
     "http-errors": "~1.6.3",
     "jade": "^1.11.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "memorystore": "^1.6.1",
     "mongodb": "^3.2.7",
     "morgan": "~1.9.1",
